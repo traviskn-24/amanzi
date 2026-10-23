@@ -1,4 +1,5 @@
-import { useMemo, useState } from 'react'
+import { useEffect, useMemo, useState } from 'react'
+import { isSupabaseConfigured, supabase } from './lib/supabase'
 import './App.css'
 
 const seed = [
@@ -12,6 +13,7 @@ const areas = ['Phoenix', 'Mount Edgecombe', 'Verulam', 'Durban North']
 
 function App() {
   const [posts, setPosts] = useState(() => {
+    if (isSupabaseConfigured) return []
     try { return JSON.parse(localStorage.getItem('amanzi-updates')) || seed } catch { return seed }
   })
   const [area, setArea] = useState('Phoenix')
@@ -20,21 +22,93 @@ function App() {
   const [showComposer, setShowComposer] = useState(false)
   const [draft, setDraft] = useState('')
   const [notice, setNotice] = useState('')
+  const [dbStatus, setDbStatus] = useState(isSupabaseConfigured ? 'connecting' : 'demo')
+  const [dbMessage, setDbMessage] = useState('')
+
+  async function loadSharedUpdates() {
+    const [{ data: updates, error: updatesError }, { data: confirmations, error: confirmationsError }] = await Promise.all([
+      supabase.from('water_updates').select('id, area, message, display_name, created_at').order('created_at', { ascending: false }).limit(100),
+      supabase.from('update_confirmations').select('update_id, user_id'),
+    ])
+    if (updatesError) throw updatesError
+    if (confirmationsError) throw confirmationsError
+    const counts = new Map()
+    for (const confirmation of confirmations) counts.set(confirmation.update_id, (counts.get(confirmation.update_id) || 0) + 1)
+    const sharedPosts = updates.map((row) => ({
+      id: row.id,
+      area: row.area,
+      title: row.message,
+      detail: `Shared by a neighbour in ${row.area}.`,
+      time: new Intl.RelativeTimeFormat('en', { numeric: 'auto' }).format(-Math.max(0, Math.round((Date.now() - new Date(row.created_at).getTime()) / 60000)), 'minute'),
+      author: row.display_name,
+      kind: 'Community update',
+      replies: 0,
+      confirms: counts.get(row.id) || 0,
+      verified: false,
+    }))
+    setPosts(sharedPosts)
+    setDbStatus('connected')
+  }
+
+  useEffect(() => {
+    if (!supabase) return undefined
+    let active = true
+    let channel
+    async function connect() {
+      const { data: { session }, error: sessionError } = await supabase.auth.getSession()
+      if (sessionError) throw sessionError
+      if (!session?.user) {
+        const { error: signInError } = await supabase.auth.signInAnonymously()
+        if (signInError) throw signInError
+      }
+      if (!active) return
+      await loadSharedUpdates()
+      channel = supabase.channel('amanzi-water-updates')
+        .on('postgres_changes', { event: '*', schema: 'public', table: 'water_updates' }, () => loadSharedUpdates().catch(() => {}))
+        .on('postgres_changes', { event: '*', schema: 'public', table: 'update_confirmations' }, () => loadSharedUpdates().catch(() => {}))
+        .subscribe()
+    }
+    connect().catch((error) => {
+      if (!active) return
+      setDbStatus('error')
+      setDbMessage(error.message || 'Could not connect to Amanzi data.')
+    })
+    return () => {
+      active = false
+      if (channel) supabase.removeChannel(channel)
+    }
+  }, [])
 
   const visiblePosts = useMemo(() => posts.filter((post) => {
     const inScope = scope === 'nearby' ? post.area === area : true
     const matches = `${post.title} ${post.detail} ${post.area}`.toLowerCase().includes(query.toLowerCase())
     return inScope && matches
   }), [posts, area, scope, query])
+  const areaPosts = posts.filter((post) => post.area === area && !post.verified)
+  const areaConfirmations = areaPosts.reduce((sum, post) => sum + post.confirms, 0)
+  const latestUpdate = areaPosts[0]?.time || 'No updates yet'
 
   function save(next) {
     setPosts(next)
-    localStorage.setItem('amanzi-updates', JSON.stringify(next))
+    if (!supabase) localStorage.setItem('amanzi-updates', JSON.stringify(next))
   }
 
-  function publish(event) {
+  async function publish(event) {
     event.preventDefault()
     if (!draft.trim()) return
+    if (supabase && dbStatus === 'connected') {
+      const { error } = await supabase.from('water_updates').insert({ area, message: draft.trim(), display_name: 'Neighbour' })
+      if (error) {
+        setNotice('Could not post right now. Please try again.')
+        return
+      }
+      await loadSharedUpdates()
+      setDraft('')
+      setShowComposer(false)
+      setNotice(`Your update is now shared with ${area}.`)
+      window.setTimeout(() => setNotice(''), 3500)
+      return
+    }
     const next = [{ id: Date.now(), area, title: draft.trim().slice(0, 72), detail: 'Shared with your local Amanzi community. Add a reply if you have more context.', time: 'Just now', author: 'You', kind: 'Community update', replies: 0, confirms: 0, verified: false }, ...posts]
     save(next)
     setDraft('')
@@ -43,7 +117,16 @@ function App() {
     window.setTimeout(() => setNotice(''), 3500)
   }
 
-  function confirm(id) {
+  async function confirm(id) {
+    if (supabase && dbStatus === 'connected') {
+      const { data: { user } } = await supabase.auth.getUser()
+      const { error } = await supabase.from('update_confirmations').insert({ update_id: id, user_id: user.id })
+      if (error?.code === '23505') setNotice('You’ve already confirmed this update.')
+      else if (error) setNotice('Could not confirm right now. Please try again.')
+      else await loadSharedUpdates()
+      window.setTimeout(() => setNotice(''), 3500)
+      return
+    }
     save(posts.map((post) => post.id === id ? { ...post, confirms: post.confirms + 1 } : post))
   }
 
@@ -51,7 +134,7 @@ function App() {
     <div className="app-shell">
       <header className="topbar">
         <a className="brand" href="#home" aria-label="Amanzi home"><span className="brand-mark">a</span><span>amanzi</span></a>
-        <div className="top-context"><span className="demo-tag">DEMO DATA</span><span className="live-dot" /> Phoenix community <span className="context-divider">/</span> Water updates</div>
+        <div className="top-context"><span className={`demo-tag ${dbStatus === 'connected' ? 'live-tag' : ''}`}>{dbStatus === 'connected' ? 'LIVE DATA' : 'DEMO DATA'}</span><span className="live-dot" /> Phoenix community <span className="context-divider">/</span> Water updates</div>
         <button className="avatar" aria-label="Your profile">T</button>
       </header>
 
@@ -71,10 +154,12 @@ function App() {
         <section className="feed-column">
           <div className="welcome-row"><div><p className="eyebrow">FRIDAY, 23 OCTOBER <span>·</span> PHOENIX, DURBAN</p><h1>Good morning, neighbour.</h1><p className="intro">What’s happening with water around you?</p></div><button className="post-button" onClick={() => setShowComposer(true)}><span>＋</span> Share an update</button></div>
 
-          <div className="status-card"><div className="status-symbol"><span>≈</span></div><div className="status-copy"><div className="status-title">Water updates in {area}<span className="status-pill">COMMUNITY PICTURE</span></div><p><strong>18 neighbours</strong> have confirmed an interruption nearby <span className="dot-sep">·</span> Updated 4 min ago</p></div><button className="status-arrow" aria-label="View local status">↗</button></div>
+          <div className="status-card"><div className="status-symbol"><span>≈</span></div><div className="status-copy"><div className="status-title">Water updates in {area}<span className="status-pill">COMMUNITY PICTURE</span></div><p>{areaConfirmations > 0 ? <><strong>{areaConfirmations} neighbour confirmations</strong> in this area</> : 'No neighbour confirmations yet'} <span className="dot-sep">·</span> {latestUpdate}</p></div><button className="status-arrow" aria-label="View local status">↗</button></div>
 
           <div className="feed-toolbar"><div className="feed-tabs"><button className={scope === 'nearby' ? 'selected' : ''} onClick={() => setScope('nearby')}>Near me <span>12</span></button><button className={scope === 'all' ? 'selected' : ''} onClick={() => setScope('all')}>Across Durban</button></div><label className="search-box"><span>⌕</span><input value={query} onChange={(e) => setQuery(e.target.value)} placeholder="Search updates" /></label></div>
 
+          {dbStatus === 'connecting' && <div className="toast" role="status">Connecting to Amanzi’s shared community updates…</div>}
+          {dbStatus === 'error' && <div className="toast" role="status">Shared updates aren’t available: {dbMessage}. You can still explore the demo view.</div>}
           {notice && <div className="toast" role="status">✓ {notice}</div>}
           {showComposer && <form className="composer" onSubmit={publish}><div className="composer-head"><div className="mini-avatar">T</div><div><strong>Share with {area}</strong><small>Keep it useful. Don’t include your exact address.</small></div><button type="button" className="close-button" onClick={() => setShowComposer(false)} aria-label="Close">×</button></div><textarea autoFocus maxLength={180} value={draft} onChange={(e) => setDraft(e.target.value)} placeholder="What are you noticing? e.g. No water on our street since 6am…" /><div className="composer-foot"><span>{draft.length}/180 · Community update</span><button className="post-button small" disabled={!draft.trim()}>Post update <span>↗</span></button></div></form>}
 
@@ -91,7 +176,7 @@ function App() {
           <p className="demo-disclaimer">Community updates reflect what residents report. Official notices are labelled and linked to their source.</p>
         </section>
 
-        <aside className="right-rail"><div className="rail-card area-card"><div className="rail-head"><div><span className="eyebrow">AREA PULSE</span><h2>{area}</h2></div><span className="pulse-icon">⌁</span></div><p className="rail-summary">Neighbours are reporting a water interruption in parts of the area.</p><div className="pulse-metrics"><div><strong>18</strong><span>seeing an issue</span></div><div><strong>4 min</strong><span>last update</span></div></div><div className="pulse-bars"><span style={{height:'25%'}}/><span style={{height:'36%'}}/><span style={{height:'32%'}}/><span style={{height:'47%'}}/><span style={{height:'55%'}}/><span style={{height:'68%'}}/><span style={{height:'78%'}}/><span style={{height:'90%'}}/><span style={{height:'83%'}}/><span style={{height:'100%'}}/><span style={{height:'95%'}}/><span style={{height:'88%'}}/><span style={{height:'76%'}}/><span style={{height:'69%'}}/><span style={{height:'60%'}}/><span style={{height:'54%'}}/><span style={{height:'43%'}}/><span style={{height:'34%'}}/><span style={{height:'26%'}}/><span style={{height:'19%'}}/></div><div className="chart-labels"><span>6 AM</span><span>NOW</span></div><p className="chart-caption">Neighbour confirmations over the last 2 hours</p></div>
+        <aside className="right-rail"><div className="rail-card area-card"><div className="rail-head"><div><span className="eyebrow">AREA PULSE</span><h2>{area}</h2></div><span className="pulse-icon">⌁</span></div><p className="rail-summary">{areaPosts.length ? 'Neighbour water updates shared in this area.' : 'No neighbour updates have been posted in this area yet.'}</p><div className="pulse-metrics"><div><strong>{areaConfirmations}</strong><span>confirmations</span></div><div><strong>{areaPosts.length}</strong><span>updates</span></div></div><div className="pulse-bars"><span style={{height:'25%'}}/><span style={{height:'36%'}}/><span style={{height:'32%'}}/><span style={{height:'47%'}}/><span style={{height:'55%'}}/><span style={{height:'68%'}}/><span style={{height:'78%'}}/><span style={{height:'90%'}}/><span style={{height:'83%'}}/><span style={{height:'100%'}}/><span style={{height:'95%'}}/><span style={{height:'88%'}}/><span style={{height:'76%'}}/><span style={{height:'69%'}}/><span style={{height:'60%'}}/><span style={{height:'54%'}}/><span style={{height:'43%'}}/><span style={{height:'34%'}}/><span style={{height:'26%'}}/><span style={{height:'19%'}}/></div><div className="chart-labels"><span>EARLIER</span><span>NOW</span></div><p className="chart-caption">Illustrative activity view</p></div>
           <div className="rail-card notice-card"><div className="notice-label"><span>✓</span> SAMPLE OFFICIAL NOTICE</div><h3>Water supply update</h3><p>Demo content only. A live version should link to the original notice and clearly show when it was published.</p><a href="https://www.durban.gov.za/" target="_blank" rel="noreferrer">Municipality website <span>↗</span></a><div className="notice-time">Sample · not a live notice</div></div>
           <div className="rail-help"><span>Need to report a fault?</span><a href="https://www.durban.gov.za/" target="_blank" rel="noreferrer">Go to eThekwini services ↗</a><small>Amanzi community posts are not sent to the municipality.</small></div>
         </aside>

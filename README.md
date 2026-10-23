@@ -1,16 +1,15 @@
-# React + Vite
+# Amanzi
 
-This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
+Community water updates for Phoenix, Durban. Residents can share what they are experiencing and confirm nearby updates. Community reports are not municipal fault tickets.
 
-Currently, two official plugins are available:
+## Local setup
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+1. Install dependencies with `npm install`.
+2. Copy `.env.example` to `.env.local` and add the Supabase project URL and publishable key.
+3. Enable anonymous sign-ins in Supabase Auth so residents can post without submitting personal information.
+4. Apply `supabase/migrations/20261023095000_amanzi_community_updates.sql` to the Supabase project.
+5. Start the app with `npm run dev`.
 
-## React Compiler
+The publishable key is intended for browser use with Row Level Security enabled. Never put a Supabase secret or service-role key in a `VITE_` variable or commit it to the repository.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
-
-## Expanding the Oxlint configuration
-
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and Oxlint's TypeScript related rules in your project.
+Without Supabase settings, the app opens in demo mode with local browser data. That data is not shared between devices.
