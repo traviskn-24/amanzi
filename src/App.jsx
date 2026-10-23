@@ -24,6 +24,7 @@ function App() {
   const [notice, setNotice] = useState('')
   const [dbStatus, setDbStatus] = useState(isSupabaseConfigured ? 'connecting' : 'demo')
   const [dbMessage, setDbMessage] = useState('')
+  const [chatArea, setChatArea] = useState(null)
 
   async function loadSharedUpdates() {
     const [{ data: updates, error: updatesError }, { data: confirmations, error: confirmationsError }] = await Promise.all([
@@ -177,7 +178,7 @@ function App() {
             <h3>{post.title}</h3><p className="post-detail">{post.detail}</p>
             {post.verified && <a className="source-link" href="https://www.durban.gov.za/" target="_blank" rel="noreferrer">View municipal source <span>↗</span></a>}
             <div className="post-meta"><span className="mini-avatar">{post.author === 'You' ? 'T' : post.author.charAt(0)}</span><strong>{post.author}</strong><span className="meta-dot">·</span><span>{post.area}</span><span className="meta-dot">·</span><span>{post.time}</span></div>
-            <div className="post-actions"><button onClick={() => confirm(post.id)}><span>◉</span> I’m seeing this too <b>{post.confirms}</b></button><button onClick={() => setNotice('Conversation view is coming next. For now, share an update with your area.') }><span>◌</span> Join conversation <b>{post.replies}</b></button><button className="share-action" onClick={() => navigator.clipboard?.writeText(`${post.title} — Amanzi ${post.area}`)}><span>↗</span> Share</button></div>
+            <div className="post-actions"><button onClick={() => confirm(post.id)}><span>◉</span> I’m seeing this too <b>{post.confirms}</b></button><button onClick={() => setChatArea(post.area)}><span>◌</span> Join conversation <b>{post.replies}</b></button><button className="share-action" onClick={() => navigator.clipboard?.writeText(`${post.title} — Amanzi ${post.area}`)}><span>↗</span> Share</button></div>
           </article>)}
           {visiblePosts.length === 0 && <div className="empty-state"><div>⌕</div><strong>No updates found</strong><p>Try another search or check a wider area.</p></div>}
           </div>
@@ -189,9 +190,72 @@ function App() {
           <div className="rail-help"><span>Need to report a fault?</span><a href="https://www.durban.gov.za/" target="_blank" rel="noreferrer">Go to eThekwini services ↗</a><small>Amanzi community posts are not sent to the municipality.</small></div>
         </aside>
       </main>
+      {chatArea && <CommunityChat initialArea={chatArea} onClose={() => setChatArea(null)} dbStatus={dbStatus} />}
       <footer className="footer"><span>© 2026 Amanzi</span><span>Community-powered water updates for South Africa</span><a href="#home">About Amanzi</a></footer>
     </div>
   )
+}
+
+function CommunityChat({ initialArea, onClose, dbStatus }) {
+  const [room, setRoom] = useState(initialArea === 'Phoenix' ? 'Phoenix' : 'Greater Durban')
+  const [messages, setMessages] = useState([])
+  const [draft, setDraft] = useState('')
+  const [loading, setLoading] = useState(true)
+  const [error, setError] = useState('')
+  const [sending, setSending] = useState(false)
+  const areasInRoom = room === 'Phoenix' ? ['Phoenix'] : areas
+
+  useEffect(() => {
+    if (!supabase || dbStatus !== 'connected') { setLoading(false); return undefined }
+    let active = true
+    let channel
+    setLoading(true)
+    setMessages([])
+    const loadMessages = async () => {
+      const { data, error: queryError } = await supabase.from('community_messages')
+        .select('id, area, message, display_name, created_at')
+        .in('area', areasInRoom)
+        .order('created_at', { ascending: false })
+        .limit(100)
+      if (queryError) throw queryError
+      if (active) { setMessages((data || []).reverse()); setError(''); setLoading(false) }
+    }
+    loadMessages().catch((queryError) => {
+      if (active) { setError(queryError.message || 'Could not load messages.'); setLoading(false) }
+    })
+    channel = supabase.channel(`amanzi-chat-${room.toLowerCase().replaceAll(' ', '-')}`)
+      .on('postgres_changes', { event: '*', schema: 'public', table: 'community_messages' }, () => loadMessages().catch(() => {}))
+      .subscribe()
+    return () => { active = false; if (channel) supabase.removeChannel(channel) }
+  }, [room, dbStatus])
+
+  async function sendMessage(event) {
+    event.preventDefault()
+    const message = draft.trim()
+    if (!message || sending) return
+    if (!supabase || dbStatus !== 'connected') { setError('Chat is unavailable until Amanzi reconnects.'); return }
+    setSending(true)
+    const { error: insertError } = await supabase.from('community_messages').insert({ area: initialArea, message, display_name: 'Neighbour' })
+    setSending(false)
+    if (insertError) { setError('Could not send that message. Please try again.'); return }
+    setDraft('')
+  }
+
+  return <div className="chat-backdrop" onMouseDown={(event) => { if (event.target === event.currentTarget) onClose() }}>
+    <section className="chat-panel" role="dialog" aria-modal="true" aria-labelledby="chat-title">
+      <header className="chat-header"><div><span className="chat-eyebrow">AMANZI COMMUNITY CHAT</span><h2 id="chat-title">Talk to neighbours</h2><p>Share local observations and help each other plan.</p></div><button className="close-button" onClick={onClose} aria-label="Close chat">×</button></header>
+      <div className="chat-tabs"><button className={room === 'Phoenix' ? 'active' : ''} onClick={() => setRoom('Phoenix')}>Phoenix</button><button className={room === 'Greater Durban' ? 'active' : ''} onClick={() => setRoom('Greater Durban')}>Greater Durban</button></div>
+      <div className="chat-safety"><span>●</span> Neighbour reports, not official notices. Don’t share your address or personal details.</div>
+      <div className="chat-messages" aria-live="polite">
+        {loading && <div className="chat-empty">Loading the community conversation…</div>}
+        {!loading && error && messages.length === 0 && <div className="chat-empty">{error}</div>}
+        {!loading && !error && messages.length === 0 && <div className="chat-empty"><strong>Start the conversation</strong><span>No messages yet. Share what you’re seeing in {room === 'Phoenix' ? 'Phoenix' : 'Greater Durban'}.</span></div>}
+        {messages.map((item) => <article className="chat-message" key={item.id}><div className="chat-avatar">{item.display_name?.charAt(0) || 'N'}</div><div className="chat-message-body"><div className="chat-message-meta"><strong>{item.display_name}</strong>{room === 'Greater Durban' && <span>{item.area}</span>}<time>{new Intl.DateTimeFormat('en-ZA', { hour: '2-digit', minute: '2-digit' }).format(new Date(item.created_at))}</time></div><p>{item.message}</p></div></article>)}
+      </div>
+      <form className="chat-composer" onSubmit={sendMessage}><label className="sr-only" htmlFor="chat-draft">Message your neighbours</label><textarea id="chat-draft" maxLength={300} value={draft} onChange={(event) => setDraft(event.target.value)} placeholder={`Message ${initialArea} neighbours…`} /><div className="chat-composer-foot"><span>{draft.length}/300 · Keep it kind and useful</span><button className="post-button small" disabled={!draft.trim() || sending}>{sending ? 'Sending…' : 'Send message'} <span>↑</span></button></div></form>
+      {error && messages.length > 0 && <p className="chat-error" role="status">{error}</p>}
+    </section>
+  </div>
 }
 
 export default App
