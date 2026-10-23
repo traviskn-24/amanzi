@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useRef, useState } from 'react'
+import { useEffect, useMemo, useState } from 'react'
 import { isSupabaseConfigured, supabase } from './lib/supabase'
 import './App.css'
 
@@ -9,13 +9,8 @@ const seed = [
   { id: 4, area: 'Mount Edgecombe', municipality: 'eThekwini', province: 'KwaZulu-Natal', waterStatus: 'low_pressure', title: 'Pressure is lower than usual', detail: 'Not completely off, but water is only coming through slowly in our block.', time: '1 hr ago', author: 'Ayesha K.', kind: 'Community update', replies: 3, confirms: 5, verified: false },
 ]
 
-const popularAreas = [
-  { area: 'Phoenix', municipality: 'eThekwini', province: 'KwaZulu-Natal' },
-  { area: 'Mount Edgecombe', municipality: 'eThekwini', province: 'KwaZulu-Natal' },
-  { area: 'Verulam', municipality: 'eThekwini', province: 'KwaZulu-Natal' },
-  { area: 'Durban North', municipality: 'eThekwini', province: 'KwaZulu-Natal' },
-]
-const defaultLocation = popularAreas[0]
+const provinces = ['Eastern Cape', 'Free State', 'Gauteng', 'KwaZulu-Natal', 'Limpopo', 'Mpumalanga', 'Northern Cape', 'North West', 'Western Cape']
+const defaultLocation = { area: 'Phoenix', municipality: 'eThekwini', province: 'KwaZulu-Natal' }
 const locationKey = (location) => `${(location.area || '').trim().toLocaleLowerCase()}|${(location.municipality || 'eThekwini').trim().toLocaleLowerCase()}|${location.province || 'KwaZulu-Natal'}`
 const locationMatches = (left, right) => locationKey(left) === locationKey(right)
 
@@ -99,8 +94,6 @@ function App() {
   })
   const [location, setLocation] = useState(readSavedLocation)
   const { area, municipality, province } = location
-  const [showAreaMenu, setShowAreaMenu] = useState(false)
-  const areaTriggerRef = useRef(null)
   const [scope, setScope] = useState('nearby')
   const [query, setQuery] = useState('')
   const [showComposer, setShowComposer] = useState(false)
@@ -186,7 +179,6 @@ function App() {
     return inScope && matches
   }), [posts, location, scope, query])
   const areaPosts = posts.filter((post) => locationMatches(post, location) && !post.verified)
-  const areaReportCounts = (target) => posts.filter((post) => locationMatches(post, target) && !post.verified).length
   const areaConfirmations = areaPosts.reduce((sum, post) => sum + post.confirms, 0)
   const latestUpdate = areaPosts[0]?.time || 'No updates yet'
   const recentAreaPosts = areaPosts.filter((post) => !post.createdAt || Date.now() - new Date(post.createdAt).getTime() < 24 * 60 * 60 * 1000)
@@ -250,7 +242,6 @@ function App() {
     const cleanLocation = { area: nextLocation.area.trim(), municipality: nextLocation.municipality.trim(), province: nextLocation.province }
     setLocation(cleanLocation)
     try { localStorage.setItem('amanzi-location', JSON.stringify(cleanLocation)) } catch { /* Area selection still works for this session. */ }
-    setShowAreaMenu(false)
   }
 
   function openComposer(target = location) {
@@ -270,17 +261,6 @@ function App() {
 
       <main id="home" className="layout">
         <aside className="sidebar">
-          <div className="side-label" id="area-picker-label">YOUR AREA</div>
-          <div className="area-picker">
-            <button ref={areaTriggerRef} type="button" className="area-trigger" aria-labelledby="area-picker-label area-picker-value" aria-haspopup="dialog" aria-expanded={showAreaMenu} aria-controls="area-picker-options" onClick={() => setShowAreaMenu((open) => !open)}>
-              <span className="pin-icon" aria-hidden="true">⌖</span><span className="area-trigger-value" id="area-picker-value">{area}</span><span className="area-trigger-count">{municipality}, {province}</span><span className={`area-trigger-chevron ${showAreaMenu ? 'open' : ''}`} aria-hidden="true">⌄</span>
-            </button>
-            {showAreaMenu && <div className="area-menu nationwide-area-menu" id="area-picker-options" role="dialog" aria-labelledby="area-picker-label">
-              <div className="area-menu-heading"><strong>Choose your community</strong><small>Use a neighbourhood or town, not your street address.</small></div>
-              <LocationSearch location={location} onChoose={chooseLocation} disabled={dbStatus !== 'connected'} />
-              {popularAreas.map((preset) => <button key={locationKey(preset)} type="button" className={`area-option ${locationMatches(location, preset) ? 'selected' : ''}`} onClick={() => chooseLocation(preset)}><span className="area-option-copy"><strong>{preset.area}</strong><small>{preset.municipality}, {preset.province} · {areaReportCounts(preset)} {areaReportCounts(preset) === 1 ? 'report' : 'reports'}</small></span><span className="area-option-check" aria-hidden="true">✓</span></button>)}
-            </div>}
-          </div>
           <div className="side-label spaces-label">COMMUNITY SPACES</div>
           <button className={`nav-item ${scope === 'nearby' ? 'active' : ''}`} onClick={() => setScope('nearby')}><span className="nav-icon">◉</span><span>Near me</span><span className="nav-count">{areaPosts.length}</span></button>
           <button className={`nav-item ${scope === 'all' ? 'active' : ''}`} onClick={() => setScope('all')}><span className="nav-icon">◎</span><span>Across South Africa</span></button>
@@ -291,6 +271,10 @@ function App() {
         </aside>
 
         <section className="feed-column">
+          <section className="community-search-panel" aria-labelledby="community-search-title">
+            <div className="community-search-current"><span className="community-search-pin" aria-hidden="true">⌖</span><div><span className="community-search-overline">YOUR COMMUNITY</span><strong id="community-search-title">{area}</strong><small>{municipality}, {province}</small></div></div>
+            <LocationSearch location={location} onChoose={chooseLocation} disabled={dbStatus !== 'connected'} />
+          </section>
           <div className="welcome-row"><div><p className="eyebrow">{area.toUpperCase()} <span>·</span> {municipality.toUpperCase()}, {province.toUpperCase()}</p><h1>Good morning, neighbour.</h1><p className="intro">What’s happening with water around you?</p></div><button className="post-button" onClick={() => openComposer()}><span>＋</span> Share an update</button></div>
 
           <div className="status-card"><div className="status-symbol"><span>≈</span></div><div className="status-copy"><div className="status-title">Water picture in {area}<span className="status-pill">COMMUNITY REPORTS</span></div><p>{recentAreaPosts.length} resident {recentReportLabel} in the last 24 hours <span className="dot-sep">·</span> {areaConfirmations} confirmations overall <span className="dot-sep">·</span> Latest: {latestUpdate}</p><div className="status-breakdown">{pulseStatuses.map((status) => <span key={status.value} className={`status-count status-${status.value}`}><strong>{statusCounts[status.value]}</strong> {status.label}</span>)}</div></div></div>
