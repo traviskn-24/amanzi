@@ -9,7 +9,6 @@ const seed = [
   { id: 4, area: 'Mount Edgecombe', municipality: 'eThekwini', province: 'KwaZulu-Natal', waterStatus: 'low_pressure', title: 'Pressure is lower than usual', detail: 'Not completely off, but water is only coming through slowly in our block.', time: '1 hr ago', author: 'Ayesha K.', kind: 'Community update', replies: 3, confirms: 5, verified: false },
 ]
 
-const provinces = ['Eastern Cape', 'Free State', 'Gauteng', 'KwaZulu-Natal', 'Limpopo', 'Mpumalanga', 'Northern Cape', 'North West', 'Western Cape']
 const popularAreas = [
   { area: 'Phoenix', municipality: 'eThekwini', province: 'KwaZulu-Natal' },
   { area: 'Mount Edgecombe', municipality: 'eThekwini', province: 'KwaZulu-Natal' },
@@ -19,6 +18,62 @@ const popularAreas = [
 const defaultLocation = popularAreas[0]
 const locationKey = (location) => `${(location.area || '').trim().toLocaleLowerCase()}|${(location.municipality || 'eThekwini').trim().toLocaleLowerCase()}|${location.province || 'KwaZulu-Natal'}`
 const locationMatches = (left, right) => locationKey(left) === locationKey(right)
+
+function LocationSearch({ location, onChoose, disabled }) {
+  const [searchText, setSearchText] = useState('')
+  const [results, setResults] = useState([])
+  const [resultsFor, setResultsFor] = useState('')
+  const [loading, setLoading] = useState(false)
+  const [error, setError] = useState('')
+
+  useEffect(() => {
+    const search = searchText.trim()
+    if (search.length < 3 || disabled || !supabase) return undefined
+    let active = true
+    const timer = window.setTimeout(async () => {
+      setLoading(true)
+      setError('')
+      const { data, error: searchError } = await supabase.functions.invoke('location-search', { body: { query: search } })
+      if (!active) return
+      setLoading(false)
+      if (searchError) {
+        let message = 'Location search is unavailable right now. Please try again shortly.'
+        try {
+          const body = await searchError.context?.json()
+          if (typeof body?.error === 'string') message = body.error
+        } catch { /* Keep the generic message when the response has no readable error body. */ }
+        setResults([])
+        setResultsFor(search)
+        setError(message)
+        return
+      }
+      setResults(Array.isArray(data?.results) ? data.results : [])
+      setResultsFor(search)
+      if (data?.error) setError(data.error)
+    }, 400)
+    return () => {
+      active = false
+      window.clearTimeout(timer)
+    }
+  }, [searchText, disabled])
+
+  return <div className="location-search">
+    <label htmlFor="community-location-search">Search South Africa</label>
+    <div className="location-search-input"><span aria-hidden="true">⌕</span><input id="community-location-search" type="search" autoComplete="off" minLength={3} maxLength={80} value={searchText} onChange={(event) => setSearchText(event.target.value)} placeholder="Try Phoenix, Mamelodi or Gqeberha" disabled={disabled} /></div>
+    {disabled && <p className="location-search-hint">Connecting to Amanzi before searching…</p>}
+    {!disabled && searchText.trim().length > 0 && searchText.trim().length < 3 && <p className="location-search-hint">Type at least 3 characters to search.</p>}
+    {loading && searchText.trim().length >= 3 && <p className="location-search-hint" role="status">Searching neighbourhoods and towns…</p>}
+    {error && resultsFor === searchText.trim() && <p className="location-search-error" role="status">{error}</p>}
+    {!loading && !error && searchText.trim().length >= 3 && resultsFor === searchText.trim() && results.length === 0 && !disabled && <p className="location-search-hint">No matching neighbourhoods or towns. Try a nearby city or suburb.</p>}
+    {resultsFor === searchText.trim() && results.length > 0 && <div className="location-results" role="group" aria-label="Location search results">
+      {results.map((result) => <button key={`${result.area}|${result.municipality}|${result.province}`} type="button" className={`area-option location-result ${locationMatches(location, result) ? 'selected' : ''}`} aria-pressed={locationMatches(location, result)} onClick={() => { onChoose(result); setSearchText(''); setResults([]) }}>
+        <span className="location-result-pin" aria-hidden="true">⌖</span><span className="area-option-copy"><strong>{result.area}</strong><small>{result.municipality}, {result.province}</small></span><span className="area-option-check" aria-hidden="true">✓</span>
+      </button>)}
+    </div>}
+    <small className="location-attribution">Search by Geoapify · © OpenStreetMap contributors</small>
+  </div>
+}
+
 function readSavedLocation() {
   try {
     const saved = JSON.parse(localStorage.getItem('amanzi-location'))
@@ -222,14 +277,8 @@ function App() {
             </button>
             {showAreaMenu && <div className="area-menu nationwide-area-menu" id="area-picker-options" role="dialog" aria-labelledby="area-picker-label">
               <div className="area-menu-heading"><strong>Choose your community</strong><small>Use a neighbourhood or town, not your street address.</small></div>
+              <LocationSearch location={location} onChoose={chooseLocation} disabled={dbStatus !== 'connected'} />
               {popularAreas.map((preset) => <button key={locationKey(preset)} type="button" className={`area-option ${locationMatches(location, preset) ? 'selected' : ''}`} onClick={() => chooseLocation(preset)}><span className="area-option-copy"><strong>{preset.area}</strong><small>{preset.municipality}, {preset.province} · {areaReportCounts(preset)} {areaReportCounts(preset) === 1 ? 'report' : 'reports'}</small></span><span className="area-option-check" aria-hidden="true">✓</span></button>)}
-              <form className="location-form" onSubmit={(event) => { event.preventDefault(); if (event.currentTarget.reportValidity()) chooseLocation({ area: event.currentTarget.elements.localArea.value, municipality: event.currentTarget.elements.municipality.value, province: event.currentTarget.elements.province.value }) }}>
-                <span className="location-form-title">Set an area anywhere in South Africa</span>
-                <label>Neighbourhood, suburb or town<input name="localArea" required minLength={2} maxLength={80} defaultValue={area} placeholder="e.g. Mamelodi East" /></label>
-                <label>Municipality or city<input name="municipality" required minLength={2} maxLength={100} defaultValue={municipality} placeholder="e.g. City of Tshwane" /></label>
-                <label>Province<select name="province" defaultValue={province}>{provinces.map((name) => <option key={name}>{name}</option>)}</select></label>
-                <button className="post-button small" type="submit">Use this area</button>
-              </form>
             </div>}
           </div>
           <div className="side-label spaces-label">COMMUNITY SPACES</div>
