@@ -96,7 +96,11 @@ function App() {
   async function publish(event) {
     event.preventDefault()
     if (!draft.trim()) return
-    if (supabase && dbStatus === 'connected') {
+    if (supabase) {
+      if (dbStatus !== 'connected') {
+        setNotice('Amanzi is not connected, so this update was not shared. Refresh after Supabase is enabled.')
+        return
+      }
       const { error } = await supabase.from('water_updates').insert({ area, message: draft.trim(), display_name: 'Neighbour' })
       if (error) {
         setNotice('Could not post right now. Please try again.')
@@ -118,7 +122,11 @@ function App() {
   }
 
   async function confirm(id) {
-    if (supabase && dbStatus === 'connected') {
+    if (supabase) {
+      if (dbStatus !== 'connected') {
+        setNotice('Amanzi is not connected, so this confirmation was not saved.')
+        return
+      }
       const { data: { user } } = await supabase.auth.getUser()
       const { error } = await supabase.from('update_confirmations').insert({ update_id: id, user_id: user.id })
       if (error?.code === '23505') setNotice('You’ve already confirmed this update.')
@@ -134,7 +142,7 @@ function App() {
     <div className="app-shell">
       <header className="topbar">
         <a className="brand" href="#home" aria-label="Amanzi home"><span className="brand-mark">a</span><span>amanzi</span></a>
-        <div className="top-context"><span className={`demo-tag ${dbStatus === 'connected' ? 'live-tag' : ''}`}>{dbStatus === 'connected' ? 'LIVE DATA' : 'DEMO DATA'}</span><span className="live-dot" /> Phoenix community <span className="context-divider">/</span> Water updates</div>
+        <div className="top-context"><span className={`demo-tag ${dbStatus === 'connected' ? 'live-tag' : ''}`}>{dbStatus === 'connected' ? 'LIVE DATA' : dbStatus === 'error' ? 'OFFLINE' : dbStatus === 'connecting' ? 'CONNECTING' : 'DEMO DATA'}</span><span className="live-dot" /> Phoenix community <span className="context-divider">/</span> Water updates</div>
         <button className="avatar" aria-label="Your profile">T</button>
       </header>
 
