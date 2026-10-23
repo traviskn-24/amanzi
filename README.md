@@ -1,6 +1,6 @@
 # Amanzi
 
-Community water updates for Phoenix, Durban. Residents can share what they are experiencing and confirm nearby updates. Community reports are not municipal fault tickets.
+Community water updates for neighbourhoods across South Africa. Residents choose their neighbourhood or town, municipality or city, and province to find local reports, share water conditions, and talk with neighbours. Amanzi community reports are not municipal fault tickets.
 
 ## Local setup
 
@@ -18,8 +18,9 @@ Without Supabase settings, the app opens in demo mode with local browser data. T
 
 1. Select **Phoenix** and review the live water picture. It summarizes resident reports from the last 24 hours; it is not an official municipal status.
 2. Choose **Share an update** and select a water status: no water, low pressure, or water restored. Add a short observation without an exact address.
-3. Select **Across Durban**, open the update form, choose a neighbourhood, and share another status report.
-4. Open **Join area chat** on a report to see the Phoenix or Greater Durban neighbour conversation.
-5. In another browser, confirm a report or send a chat message to show that the shared feed updates across sessions.
+3. Open the area picker and set a different neighbourhood, municipality, and province to see how a resident anywhere in South Africa joins Amanzi.
+4. Select **Across South Africa**, share a report from a second province, then compare the national feed with the local area feed.
+5. Open **Join area chat** on a report to switch between the exact area, province, and nationwide community conversations.
+6. In another browser, confirm a report or send a chat message to show that the shared feed updates across sessions.
 
 Official municipal notices and service fault submissions are not integrated yet. Community reports are separate from municipal reports.
