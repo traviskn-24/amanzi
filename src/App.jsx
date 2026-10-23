@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from 'react'
+import { useEffect, useMemo, useRef, useState } from 'react'
 import { isSupabaseConfigured, supabase } from './lib/supabase'
 import './App.css'
 
@@ -24,6 +24,8 @@ function App() {
     try { return JSON.parse(localStorage.getItem('amanzi-updates')) || seed } catch { return seed }
   })
   const [area, setArea] = useState('Phoenix')
+  const [showAreaMenu, setShowAreaMenu] = useState(false)
+  const areaTriggerRef = useRef(null)
   const [scope, setScope] = useState('nearby')
   const [query, setQuery] = useState('')
   const [showComposer, setShowComposer] = useState(false)
@@ -103,6 +105,7 @@ function App() {
     return inScope && matches
   }), [posts, area, scope, query])
   const areaPosts = posts.filter((post) => post.area === area && !post.verified)
+  const areaReportCounts = Object.fromEntries(areas.map((name) => [name, posts.filter((post) => post.area === name && !post.verified).length]))
   const areaConfirmations = areaPosts.reduce((sum, post) => sum + post.confirms, 0)
   const latestUpdate = areaPosts[0]?.time || 'No updates yet'
   const recentAreaPosts = areaPosts.filter((post) => !post.createdAt || Date.now() - new Date(post.createdAt).getTime() < 24 * 60 * 60 * 1000)
@@ -166,14 +169,34 @@ function App() {
     <div className="app-shell">
       <header className="topbar">
         <a className="brand" href="#home" aria-label="Amanzi home"><span className="brand-mark">a</span><span>amanzi</span></a>
-        <div className="top-context"><span className={`demo-tag ${dbStatus === 'connected' ? 'live-tag' : ''}`}>{dbStatus === 'connected' ? 'LIVE DATA' : dbStatus === 'error' ? 'OFFLINE' : dbStatus === 'connecting' ? 'CONNECTING' : 'DEMO DATA'}</span><span className="live-dot" /> Phoenix community <span className="context-divider">/</span> Water updates</div>
+        <div className="top-context"><span className={`demo-tag ${dbStatus === 'connected' ? 'live-tag' : ''}`}>{dbStatus === 'connected' ? 'LIVE DATA' : dbStatus === 'error' ? 'OFFLINE' : dbStatus === 'connecting' ? 'CONNECTING' : 'DEMO DATA'}</span><span className="live-dot" /> {area} community <span className="context-divider">/</span> Water updates</div>
         <button className="avatar" aria-label="Your profile">T</button>
       </header>
 
       <main id="home" className="layout">
         <aside className="sidebar">
-          <div className="side-label">YOUR AREA</div>
-          <label className="select-wrap"><span className="pin-icon">⌖</span><select value={area} onChange={(e) => setArea(e.target.value)}>{areas.map((name) => <option key={name}>{name}</option>)}</select><span className="chevron">⌄</span></label>
+          <div className="side-label" id="area-picker-label">YOUR AREA</div>
+          <div className="area-picker" onBlur={(event) => { if (!event.currentTarget.contains(event.relatedTarget)) setShowAreaMenu(false) }} onKeyDown={(event) => {
+            if (!showAreaMenu) return
+            const options = [...event.currentTarget.querySelectorAll('[role="option"]')]
+            const activeIndex = options.indexOf(document.activeElement)
+            let nextIndex = activeIndex
+            if (event.key === 'ArrowDown') nextIndex = (activeIndex + 1 + options.length) % options.length
+            else if (event.key === 'ArrowUp') nextIndex = (activeIndex - 1 + options.length) % options.length
+            else if (event.key === 'Home') nextIndex = 0
+            else if (event.key === 'End') nextIndex = options.length - 1
+            else if (event.key === 'Escape') { setShowAreaMenu(false); areaTriggerRef.current?.focus(); return }
+            else return
+            event.preventDefault()
+            options[nextIndex]?.focus()
+          }}>
+            <button ref={areaTriggerRef} type="button" className="area-trigger" aria-labelledby="area-picker-label area-picker-value" aria-haspopup="listbox" aria-expanded={showAreaMenu} aria-controls="area-picker-options" onClick={() => setShowAreaMenu((open) => !open)}>
+              <span className="pin-icon" aria-hidden="true">⌖</span><span className="area-trigger-value" id="area-picker-value">{area}</span><span className="area-trigger-count">{areaReportCounts[area]} {areaReportCounts[area] === 1 ? 'report' : 'reports'}</span><span className={`area-trigger-chevron ${showAreaMenu ? 'open' : ''}`} aria-hidden="true">⌄</span>
+            </button>
+            {showAreaMenu && <div className="area-menu" id="area-picker-options" role="listbox" aria-labelledby="area-picker-label">
+              {areas.map((name) => <button key={name} type="button" role="option" aria-selected={area === name} className={`area-option ${area === name ? 'selected' : ''}`} onClick={() => { setArea(name); setShowAreaMenu(false) }}><span className="area-option-copy"><strong>{name}</strong><small>{areaReportCounts[name]} {areaReportCounts[name] === 1 ? 'report' : 'reports'}</small></span><span className="area-option-check" aria-hidden="true">✓</span></button>)}
+            </div>}
+          </div>
           <div className="side-label spaces-label">COMMUNITY SPACES</div>
           <button className={`nav-item ${scope === 'nearby' ? 'active' : ''}`} onClick={() => setScope('nearby')}><span className="nav-icon">◉</span><span>Near me</span><span className="nav-count">{areaPosts.length}</span></button>
           <button className={`nav-item ${scope === 'all' ? 'active' : ''}`} onClick={() => setScope('all')}><span className="nav-icon">◎</span><span>Greater Durban</span></button>
@@ -184,7 +207,7 @@ function App() {
         </aside>
 
         <section className="feed-column">
-          <div className="welcome-row"><div><p className="eyebrow">PHOENIX <span>·</span> DURBAN</p><h1>Good morning, neighbour.</h1><p className="intro">What’s happening with water around you?</p></div><button className="post-button" onClick={() => { setDraftArea(area); setShowComposer(true) }}><span>＋</span> Share an update</button></div>
+          <div className="welcome-row"><div><p className="eyebrow">{area.toUpperCase()} <span>·</span> DURBAN</p><h1>Good morning, neighbour.</h1><p className="intro">What’s happening with water around you?</p></div><button className="post-button" onClick={() => { setDraftArea(area); setShowComposer(true) }}><span>＋</span> Share an update</button></div>
 
           <div className="status-card"><div className="status-symbol"><span>≈</span></div><div className="status-copy"><div className="status-title">Water picture in {area}<span className="status-pill">COMMUNITY REPORTS</span></div><p>{recentAreaPosts.length} resident {recentReportLabel} in the last 24 hours <span className="dot-sep">·</span> {areaConfirmations} confirmations overall <span className="dot-sep">·</span> Latest: {latestUpdate}</p><div className="status-breakdown">{pulseStatuses.map((status) => <span key={status.value} className={`status-count status-${status.value}`}><strong>{statusCounts[status.value]}</strong> {status.label}</span>)}</div></div></div>
 
