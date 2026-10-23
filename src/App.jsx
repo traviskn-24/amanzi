@@ -9,12 +9,11 @@ const seed = [
   { id: 4, area: 'Mount Edgecombe', municipality: 'eThekwini', province: 'KwaZulu-Natal', waterStatus: 'low_pressure', title: 'Pressure is lower than usual', detail: 'Not completely off, but water is only coming through slowly in our block.', time: '1 hr ago', author: 'Ayesha K.', kind: 'Community update', replies: 3, confirms: 5, verified: false },
 ]
 
-const provinces = ['Eastern Cape', 'Free State', 'Gauteng', 'KwaZulu-Natal', 'Limpopo', 'Mpumalanga', 'Northern Cape', 'North West', 'Western Cape']
 const defaultLocation = { area: 'Phoenix', municipality: 'eThekwini', province: 'KwaZulu-Natal' }
 const locationKey = (location) => `${(location.area || '').trim().toLocaleLowerCase()}|${(location.municipality || 'eThekwini').trim().toLocaleLowerCase()}|${location.province || 'KwaZulu-Natal'}`
 const locationMatches = (left, right) => locationKey(left) === locationKey(right)
 
-function LocationSearch({ location, onChoose, disabled }) {
+function LocationSearch({ location, onChoose, disabled, inputId = 'community-location-search', label = 'Search South Africa' }) {
   const [searchText, setSearchText] = useState('')
   const [results, setResults] = useState([])
   const [resultsFor, setResultsFor] = useState('')
@@ -53,8 +52,8 @@ function LocationSearch({ location, onChoose, disabled }) {
   }, [searchText, disabled])
 
   return <div className="location-search">
-    <label htmlFor="community-location-search">Search South Africa</label>
-    <div className="location-search-input"><span aria-hidden="true">⌕</span><input id="community-location-search" type="search" autoComplete="off" minLength={3} maxLength={80} value={searchText} onChange={(event) => setSearchText(event.target.value)} placeholder="Try Phoenix, Mamelodi or Gqeberha" disabled={disabled} /></div>
+    <label htmlFor={inputId}>{label}</label>
+    <div className="location-search-input"><span aria-hidden="true">⌕</span><input id={inputId} type="search" autoComplete="off" minLength={3} maxLength={80} value={searchText} onChange={(event) => setSearchText(event.target.value)} placeholder="Try Phoenix, Mamelodi or Gqeberha" disabled={disabled} /></div>
     {disabled && <p className="location-search-hint">Connecting to Amanzi before searching…</p>}
     {!disabled && searchText.trim().length > 0 && searchText.trim().length < 3 && <p className="location-search-hint">Type at least 3 characters to search.</p>}
     {loading && searchText.trim().length >= 3 && <p className="location-search-hint" role="status">Searching neighbourhoods and towns…</p>}
@@ -286,7 +285,7 @@ function App() {
           {notice && <div className="toast" role="status">✓ {notice}</div>}
           {showComposer && <form className="composer" onSubmit={publish}>
             <div className="composer-head"><div className="mini-avatar">T</div><div><strong>{scope === 'all' ? 'Share a South Africa update' : `Share with ${area}`}</strong><small>Neighbour report · don’t include your exact address.</small></div><button type="button" className="close-button" onClick={() => setShowComposer(false)} aria-label="Close">×</button></div>
-            {scope === 'all' && <fieldset className="choice-group"><legend>Where is this happening?</legend><div className="report-fields nationwide-report-fields"><label>Neighbourhood, suburb or town<input required minLength={2} maxLength={80} value={draftArea} onChange={(event) => setDraftArea(event.target.value)} /></label><label>Municipality or city<input required minLength={2} maxLength={100} value={draftMunicipality} onChange={(event) => setDraftMunicipality(event.target.value)} /></label><label>Province<select value={draftProvince} onChange={(event) => setDraftProvince(event.target.value)}>{provinces.map((name) => <option key={name}>{name}</option>)}</select></label></div></fieldset>}
+            {scope === 'all' && <fieldset className="choice-group nationwide-report-location"><legend>Where is this happening?</legend><div className="report-location-current"><span>REPORT LOCATION</span><strong>{draftArea}</strong><small>{draftMunicipality}, {draftProvince}</small></div><LocationSearch location={{ area: draftArea, municipality: draftMunicipality, province: draftProvince }} onChoose={(next) => { setDraftArea(next.area); setDraftMunicipality(next.municipality); setDraftProvince(next.province) }} disabled={dbStatus !== 'connected'} inputId="report-community-search" label="Search to change the report location" /></fieldset>}
             <fieldset className="choice-group status-choice-group"><legend>What’s happening with the water?</legend><div className="status-choices">{waterStatuses.map((status) => <label className={`status-choice ${draftStatus === status.value ? `selected status-${status.value}` : ''}`} key={status.value}><input type="radio" name="water-status" value={status.value} checked={draftStatus === status.value} onChange={() => setDraftStatus(status.value)} /><span className="status-choice-icon" aria-hidden="true">{status.icon}</span><span className="status-choice-copy"><strong>{status.label}</strong><small>{status.description}</small></span><span className="choice-check" aria-hidden="true">✓</span></label>)}</div></fieldset>
             <textarea autoFocus minLength={8} maxLength={180} value={draft} onChange={(e) => setDraft(e.target.value)} placeholder="Add useful context, such as when it started or if it has returned…" />
             <div className="composer-foot"><span>{draft.length}/180 · {draftArea}, {draftMunicipality} · {waterStatusLabels[draftStatus] || 'Choose a status'}</span><button className="post-button small" disabled={draft.trim().length < 8 || !draftStatus || draftArea.trim().length < 2 || draftMunicipality.trim().length < 2}>Post update <span>↗</span></button></div>

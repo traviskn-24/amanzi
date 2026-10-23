@@ -20,7 +20,7 @@ Without Supabase settings, the app opens in demo mode with local browser data. T
 1. Select **Phoenix** and review the live water picture. It summarizes resident reports from the last 24 hours; it is not an official municipal status.
 2. Choose **Share an update** and select a water status: no water, low pressure, or water restored. Add a short observation without an exact address.
 3. Use the community search above the feed to find a South African neighbourhood or town, then select a result. Amanzi resolves its municipality and province against the Municipal Demarcation Board boundary service.
-4. Select **Across South Africa**, share a report from a second province, then compare the national feed with the local area feed.
+4. Select **Across South Africa**, choose a different community with the report location search, share a report, then compare the national feed with the local area feed.
 5. Open **Join area chat** on a report to switch between the exact area, province, and nationwide community conversations.
 6. In another browser, confirm a report or send a chat message to show that the shared feed updates across sessions.
 
