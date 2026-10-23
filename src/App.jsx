@@ -3,13 +3,20 @@ import { isSupabaseConfigured, supabase } from './lib/supabase'
 import './App.css'
 
 const seed = [
-  { id: 1, area: 'Phoenix', title: 'No water in parts of Phoenix', detail: 'Low pressure since early this morning around Starwood. Anyone else affected?', time: '8 min ago', author: 'Nandi M.', kind: 'Community update', replies: 12, confirms: 18, verified: false },
-  { id: 2, area: 'Phoenix', title: 'Water is back in Clayfield', detail: 'Our taps are running again. Pressure is still low on our side.', time: '21 min ago', author: 'Sihle P.', kind: 'Community update', replies: 6, confirms: 9, verified: false },
+  { id: 1, area: 'Phoenix', waterStatus: 'no_water', title: 'No water in parts of Phoenix', detail: 'Water has been off in our area since early this morning. Anyone else affected?', time: '8 min ago', author: 'Nandi M.', kind: 'Community update', replies: 12, confirms: 18, verified: false },
+  { id: 2, area: 'Phoenix', waterStatus: 'restored', title: 'Water is back in Clayfield', detail: 'Our taps are running again. Pressure is still low on our side.', time: '21 min ago', author: 'Sihle P.', kind: 'Community update', replies: 6, confirms: 9, verified: false },
   { id: 3, area: 'Phoenix', title: 'Sample water interruption notice', detail: 'Demo content only. A real notice would show the municipality’s original message, affected areas and latest update time.', time: '42 min ago', author: 'Sample municipal notice', kind: 'Official notice · sample', replies: 4, confirms: 0, verified: true },
-  { id: 4, area: 'Mount Edgecombe', title: 'Pressure is lower than usual', detail: 'Not completely off, but water is only coming through slowly in our block.', time: '1 hr ago', author: 'Ayesha K.', kind: 'Community update', replies: 3, confirms: 5, verified: false },
+  { id: 4, area: 'Mount Edgecombe', waterStatus: 'low_pressure', title: 'Pressure is lower than usual', detail: 'Not completely off, but water is only coming through slowly in our block.', time: '1 hr ago', author: 'Ayesha K.', kind: 'Community update', replies: 3, confirms: 5, verified: false },
 ]
 
 const areas = ['Phoenix', 'Mount Edgecombe', 'Verulam', 'Durban North']
+const waterStatuses = [
+  { value: 'no_water', label: 'No water' },
+  { value: 'low_pressure', label: 'Low pressure' },
+  { value: 'restored', label: 'Water restored' },
+]
+const waterStatusLabels = Object.fromEntries(waterStatuses.map(({ value, label }) => [value, label]))
+const pulseStatuses = [...waterStatuses, { value: 'unclassified', label: 'Status not captured' }]
 
 function App() {
   const [posts, setPosts] = useState(() => {
@@ -21,6 +28,8 @@ function App() {
   const [query, setQuery] = useState('')
   const [showComposer, setShowComposer] = useState(false)
   const [draft, setDraft] = useState('')
+  const [draftArea, setDraftArea] = useState('Phoenix')
+  const [draftStatus, setDraftStatus] = useState('no_water')
   const [notice, setNotice] = useState('')
   const [dbStatus, setDbStatus] = useState(isSupabaseConfigured ? 'connecting' : 'demo')
   const [dbMessage, setDbMessage] = useState('')
@@ -28,7 +37,7 @@ function App() {
 
   async function loadSharedUpdates() {
     const [{ data: updates, error: updatesError }, { data: confirmations, error: confirmationsError }] = await Promise.all([
-      supabase.from('water_updates').select('id, area, message, display_name, created_at').order('created_at', { ascending: false }).limit(100),
+      supabase.from('water_updates').select('id, area, message, water_status, display_name, created_at').order('created_at', { ascending: false }).limit(100),
       supabase.from('update_confirmations').select('update_id, user_id'),
     ])
     if (updatesError) throw updatesError
@@ -43,6 +52,8 @@ function App() {
     const sharedPosts = updates.map((row) => ({
       id: row.id,
       area: row.area,
+      waterStatus: row.water_status,
+      createdAt: row.created_at,
       title: row.message,
       detail: `Shared by a neighbour in ${row.area}.`,
       time: new Intl.RelativeTimeFormat('en', { numeric: 'auto' }).format(-Math.max(0, Math.round((Date.now() - new Date(row.created_at).getTime()) / 60000)), 'minute'),
@@ -94,6 +105,12 @@ function App() {
   const areaPosts = posts.filter((post) => post.area === area && !post.verified)
   const areaConfirmations = areaPosts.reduce((sum, post) => sum + post.confirms, 0)
   const latestUpdate = areaPosts[0]?.time || 'No updates yet'
+  const recentAreaPosts = areaPosts.filter((post) => !post.createdAt || Date.now() - new Date(post.createdAt).getTime() < 24 * 60 * 60 * 1000)
+  const recentReportLabel = recentAreaPosts.length === 1 ? 'report' : 'reports'
+  const statusCounts = recentAreaPosts.reduce((counts, post) => {
+    if (counts[post.waterStatus] !== undefined) counts[post.waterStatus] += 1
+    return counts
+  }, { no_water: 0, low_pressure: 0, restored: 0, unclassified: 0 })
 
   function save(next) {
     setPosts(next)
@@ -108,7 +125,7 @@ function App() {
         setNotice('Amanzi is not connected, so this update was not shared. Refresh after Supabase is enabled.')
         return
       }
-      const { error } = await supabase.from('water_updates').insert({ area, message: draft.trim(), display_name: 'Neighbour' })
+      const { error } = await supabase.from('water_updates').insert({ area: draftArea, message: draft.trim(), water_status: draftStatus, display_name: 'Neighbour' })
       if (error) {
         setNotice('Could not post right now. Please try again.')
         return
@@ -116,11 +133,11 @@ function App() {
       await loadSharedUpdates()
       setDraft('')
       setShowComposer(false)
-      setNotice(`Your update is now shared with ${area}.`)
+      setNotice(`Your update is now shared with ${draftArea}.`)
       window.setTimeout(() => setNotice(''), 3500)
       return
     }
-    const next = [{ id: Date.now(), area, title: draft.trim().slice(0, 72), detail: 'Shared with your local Amanzi community. Add a reply if you have more context.', time: 'Just now', author: 'You', kind: 'Community update', replies: 0, confirms: 0, verified: false }, ...posts]
+    const next = [{ id: Date.now(), area: draftArea, waterStatus: draftStatus, title: draft.trim().slice(0, 72), detail: 'Shared with your local Amanzi community. Add a reply if you have more context.', time: 'Just now', createdAt: new Date().toISOString(), author: 'You', kind: 'Community update', replies: 0, confirms: 0, verified: false }, ...posts]
     save(next)
     setDraft('')
     setShowComposer(false)
@@ -158,7 +175,7 @@ function App() {
           <div className="side-label">YOUR AREA</div>
           <label className="select-wrap"><span className="pin-icon">⌖</span><select value={area} onChange={(e) => setArea(e.target.value)}>{areas.map((name) => <option key={name}>{name}</option>)}</select><span className="chevron">⌄</span></label>
           <div className="side-label spaces-label">COMMUNITY SPACES</div>
-          <button className={`nav-item ${scope === 'nearby' ? 'active' : ''}`} onClick={() => setScope('nearby')}><span className="nav-icon">◉</span><span>Near me</span><span className="nav-count">12</span></button>
+          <button className={`nav-item ${scope === 'nearby' ? 'active' : ''}`} onClick={() => setScope('nearby')}><span className="nav-icon">◉</span><span>Near me</span><span className="nav-count">{areaPosts.length}</span></button>
           <button className={`nav-item ${scope === 'all' ? 'active' : ''}`} onClick={() => setScope('all')}><span className="nav-icon">◎</span><span>Greater Durban</span></button>
           <div className="side-label spaces-label">QUICK LINKS</div>
           <button className="nav-item muted" onClick={() => setNotice('Official notices are labelled and shown with their source.') }><span className="nav-icon">▤</span><span>Official notices</span></button>
@@ -167,20 +184,20 @@ function App() {
         </aside>
 
         <section className="feed-column">
-          <div className="welcome-row"><div><p className="eyebrow">FRIDAY, 23 OCTOBER <span>·</span> PHOENIX, DURBAN</p><h1>Good morning, neighbour.</h1><p className="intro">What’s happening with water around you?</p></div><button className="post-button" onClick={() => setShowComposer(true)}><span>＋</span> Share an update</button></div>
+          <div className="welcome-row"><div><p className="eyebrow">PHOENIX <span>·</span> DURBAN</p><h1>Good morning, neighbour.</h1><p className="intro">What’s happening with water around you?</p></div><button className="post-button" onClick={() => { setDraftArea(area); setShowComposer(true) }}><span>＋</span> Share an update</button></div>
 
-          <div className="status-card"><div className="status-symbol"><span>≈</span></div><div className="status-copy"><div className="status-title">Water updates in {area}<span className="status-pill">COMMUNITY PICTURE</span></div><p>{areaConfirmations > 0 ? <><strong>{areaConfirmations} neighbour confirmations</strong> in this area</> : 'No neighbour confirmations yet'} <span className="dot-sep">·</span> {latestUpdate}</p></div><button className="status-arrow" aria-label="View local status">↗</button></div>
+          <div className="status-card"><div className="status-symbol"><span>≈</span></div><div className="status-copy"><div className="status-title">Water picture in {area}<span className="status-pill">COMMUNITY REPORTS</span></div><p>{recentAreaPosts.length} resident {recentReportLabel} in the last 24 hours <span className="dot-sep">·</span> {areaConfirmations} confirmations overall <span className="dot-sep">·</span> Latest: {latestUpdate}</p><div className="status-breakdown">{pulseStatuses.map((status) => <span key={status.value} className={`status-count status-${status.value}`}><strong>{statusCounts[status.value]}</strong> {status.label}</span>)}</div></div></div>
 
-          <div className="feed-toolbar"><div className="feed-tabs"><button className={scope === 'nearby' ? 'selected' : ''} onClick={() => setScope('nearby')}>Near me <span>12</span></button><button className={scope === 'all' ? 'selected' : ''} onClick={() => setScope('all')}>Across Durban</button></div><label className="search-box"><span>⌕</span><input value={query} onChange={(e) => setQuery(e.target.value)} placeholder="Search updates" /></label></div>
+          <div className="feed-toolbar"><div className="feed-tabs"><button className={scope === 'nearby' ? 'selected' : ''} onClick={() => setScope('nearby')}>Near me <span>{areaPosts.length}</span></button><button className={scope === 'all' ? 'selected' : ''} onClick={() => setScope('all')}>Across Durban</button></div><label className="search-box"><span>⌕</span><input value={query} onChange={(e) => setQuery(e.target.value)} placeholder="Search updates" /></label></div>
 
           {dbStatus === 'connecting' && <div className="toast" role="status">Connecting to Amanzi’s shared community updates…</div>}
           {dbStatus === 'error' && <div className="toast" role="status">Shared updates aren’t available: {dbMessage}. You can still explore the demo view.</div>}
           {notice && <div className="toast" role="status">✓ {notice}</div>}
-          {showComposer && <form className="composer" onSubmit={publish}><div className="composer-head"><div className="mini-avatar">T</div><div><strong>Share with {area}</strong><small>Keep it useful. Don’t include your exact address.</small></div><button type="button" className="close-button" onClick={() => setShowComposer(false)} aria-label="Close">×</button></div><textarea autoFocus maxLength={180} value={draft} onChange={(e) => setDraft(e.target.value)} placeholder="What are you noticing? e.g. No water on our street since 6am…" /><div className="composer-foot"><span>{draft.length}/180 · Community update</span><button className="post-button small" disabled={!draft.trim()}>Post update <span>↗</span></button></div></form>}
+          {showComposer && <form className="composer" onSubmit={publish}><div className="composer-head"><div className="mini-avatar">T</div><div><strong>{scope === 'all' ? 'Share a Durban update' : `Share with ${area}`}</strong><small>Neighbour report · don’t include your exact address.</small></div><button type="button" className="close-button" onClick={() => setShowComposer(false)} aria-label="Close">×</button></div><div className="report-fields">{scope === 'all' && <label>Neighbourhood<select value={draftArea} onChange={(event) => setDraftArea(event.target.value)}>{areas.map((name) => <option key={name} value={name}>{name}</option>)}</select></label>}<label>Water status<select value={draftStatus} onChange={(event) => setDraftStatus(event.target.value)}>{waterStatuses.map((status) => <option key={status.value} value={status.value}>{status.label}</option>)}</select></label></div><textarea autoFocus minLength={8} maxLength={180} value={draft} onChange={(e) => setDraft(e.target.value)} placeholder="What are you noticing? Add useful context, not your exact address…" /><div className="composer-foot"><span>{draft.length}/180 · {draftArea} · Community report</span><button className="post-button small" disabled={draft.trim().length < 8}>Post update <span>↗</span></button></div></form>}
 
           <div className="feed-heading"><h2>Latest from your community</h2><button className="sort-button">Most recent <span>⌄</span></button></div>
           <div className="posts-list">{visiblePosts.map((post) => <article className="post-card" key={post.id}>
-            <div className="post-top"><div className={`post-type ${post.verified ? 'official' : ''}`}><span>{post.verified ? '✓' : '◉'}</span>{post.kind}</div><button className="more-button" aria-label="More options">···</button></div>
+            <div className="post-top"><div className={`post-type ${post.verified ? 'official' : ''}`}><span>{post.verified ? '✓' : '◉'}</span>{post.kind}{post.waterStatus && post.waterStatus !== 'unclassified' && <span className={`water-status-tag status-${post.waterStatus}`}>{waterStatusLabels[post.waterStatus]}</span>}</div><button className="more-button" aria-label="More options">···</button></div>
             <h3>{post.title}</h3><p className="post-detail">{post.detail}</p>
             {post.verified && <a className="source-link" href="https://www.durban.gov.za/" target="_blank" rel="noreferrer">View municipal source <span>↗</span></a>}
             <div className="post-meta"><span className="mini-avatar">{post.author === 'You' ? 'T' : post.author.charAt(0)}</span><strong>{post.author}</strong><span className="meta-dot">·</span><span>{post.area}</span><span className="meta-dot">·</span><span>{post.time}</span></div>
@@ -191,8 +208,8 @@ function App() {
           <p className="demo-disclaimer">Community updates reflect what residents report. Official notices are labelled and linked to their source.</p>
         </section>
 
-        <aside className="right-rail"><div className="rail-card area-card"><div className="rail-head"><div><span className="eyebrow">AREA PULSE</span><h2>{area}</h2></div><span className="pulse-icon">⌁</span></div><p className="rail-summary">{areaPosts.length ? 'Neighbour water updates shared in this area.' : 'No neighbour updates have been posted in this area yet.'}</p><div className="pulse-metrics"><div><strong>{areaConfirmations}</strong><span>confirmations</span></div><div><strong>{areaPosts.length}</strong><span>updates</span></div></div><div className="pulse-bars"><span style={{height:'25%'}}/><span style={{height:'36%'}}/><span style={{height:'32%'}}/><span style={{height:'47%'}}/><span style={{height:'55%'}}/><span style={{height:'68%'}}/><span style={{height:'78%'}}/><span style={{height:'90%'}}/><span style={{height:'83%'}}/><span style={{height:'100%'}}/><span style={{height:'95%'}}/><span style={{height:'88%'}}/><span style={{height:'76%'}}/><span style={{height:'69%'}}/><span style={{height:'60%'}}/><span style={{height:'54%'}}/><span style={{height:'43%'}}/><span style={{height:'34%'}}/><span style={{height:'26%'}}/><span style={{height:'19%'}}/></div><div className="chart-labels"><span>EARLIER</span><span>NOW</span></div><p className="chart-caption">Illustrative activity view</p></div>
-          <div className="rail-card notice-card"><div className="notice-label"><span>✓</span> SAMPLE OFFICIAL NOTICE</div><h3>Water supply update</h3><p>Demo content only. A live version should link to the original notice and clearly show when it was published.</p><a href="https://www.durban.gov.za/" target="_blank" rel="noreferrer">Municipality website <span>↗</span></a><div className="notice-time">Sample · not a live notice</div></div>
+        <aside className="right-rail"><div className="rail-card area-card"><div className="rail-head"><div><span className="eyebrow">AREA PULSE · LAST 24H</span><h2>{area}</h2></div><span className="pulse-icon">⌁</span></div><p className="rail-summary">{recentAreaPosts.length ? 'Resident reports by water status. Reports describe what neighbours are experiencing.' : 'No recent status reports for this area yet.'}</p><div className="pulse-status-list">{pulseStatuses.map((status) => <div key={status.value}><span className={`pulse-status-dot status-${status.value}`} />{status.label}<strong>{statusCounts[status.value]}</strong></div>)}</div><div className="pulse-metrics"><div><strong>{areaConfirmations}</strong><span>confirmations</span></div><div><strong>{areaPosts.length}</strong><span>all time reports</span></div></div></div>
+          <div className="rail-card notice-card"><div className="notice-label"><span>i</span> OFFICIAL NOTICES</div><h3>Source matters</h3><p>Amanzi community reports are not official municipal notices. We’ll label official sources clearly when a live notice feed is connected.</p><a href="https://www.durban.gov.za/" target="_blank" rel="noreferrer">Visit eThekwini municipality <span>↗</span></a></div>
           <div className="rail-help"><span>Need to report a fault?</span><a href="https://www.durban.gov.za/" target="_blank" rel="noreferrer">Go to eThekwini services ↗</a><small>Amanzi community posts are not sent to the municipality.</small></div>
         </aside>
       </main>
