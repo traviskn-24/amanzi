@@ -1,0 +1,5547 @@
+{
+  "checkedOn": "2026-10-23",
+  "sourceListUrl": "https://municipalities.co.za/municipalities/type/1/metropolitan",
+  "records": [
+    {
+      "id": "7",
+      "name": "Buffalo City Metropolitan",
+      "category": "metro",
+      "province": "Eastern Cape",
+      "parentDistrictId": null,
+      "parentDistrictName": null,
+      "sourceUrl": "https://municipalities.co.za/contacts/7/buffalo-city-metropolitan-municipality",
+      "water": {
+        "raw": "043 705 2000 \n \n siyamcelam@buffalocity.gov.za",
+        "emails": [
+          "siyamcelam@buffalocity.gov.za"
+        ],
+        "phones": [
+          "0437052000"
+        ],
+        "whatsapps": []
+      },
+      "generalEmails": [
+        "citymanager@buffalocity.gov.za"
+      ],
+      "generalWhatsapps": []
+    },
+    {
+      "id": "6",
+      "name": "City of Cape Town Metropolitan",
+      "category": "metro",
+      "province": "Western Cape",
+      "parentDistrictId": null,
+      "parentDistrictName": null,
+      "sourceUrl": "https://municipalities.co.za/contacts/6/city-of-cape-town-metropolitan-municipality",
+      "water": {
+        "raw": "086 010 3089 \n \n water@capetown.gov.za",
+        "emails": [
+          "water@capetown.gov.za"
+        ],
+        "phones": [
+          "0860103089"
+        ],
+        "whatsapps": []
+      },
+      "generalEmails": [
+        "contact.us@capetown.gov.za"
+      ],
+      "generalWhatsapps": []
+    },
+    {
+      "id": "4",
+      "name": "City of Ekurhuleni Metropolitan",
+      "category": "metro",
+      "province": "Gauteng",
+      "parentDistrictId": null,
+      "parentDistrictName": null,
+      "sourceUrl": "https://municipalities.co.za/contacts/4/city-of-ekurhuleni-metropolitan-municipality",
+      "water": {
+        "raw": "0860 543 000 \n \n call.centre@ekurhuleni.gov.za",
+        "emails": [
+          "call.centre@ekurhuleni.gov.za"
+        ],
+        "phones": [
+          "0860543000"
+        ],
+        "whatsapps": []
+      },
+      "generalEmails": [
+        "city.manager@ekurhuleni.gov.za"
+      ],
+      "generalWhatsapps": []
+    },
+    {
+      "id": "2",
+      "name": "City of Johannesburg Metropolitan",
+      "category": "metro",
+      "province": "Gauteng",
+      "parentDistrictId": null,
+      "parentDistrictName": null,
+      "sourceUrl": "https://municipalities.co.za/contacts/2/city-of-johannesburg-metropolitan-municipality",
+      "water": {
+        "raw": "0860 562 874 \n \n customerserviceemails@jwater.co.za",
+        "emails": [
+          "customerserviceemails@jwater.co.za"
+        ],
+        "phones": [
+          "0860562874"
+        ],
+        "whatsapps": []
+      },
+      "generalEmails": [
+        "joburgconnect@joburg.org.za"
+      ],
+      "generalWhatsapps": []
+    },
+    {
+      "id": "3",
+      "name": "City of Tshwane Metropolitan",
+      "category": "metro",
+      "province": "Gauteng",
+      "parentDistrictId": null,
+      "parentDistrictName": null,
+      "sourceUrl": "https://municipalities.co.za/contacts/3/city-of-tshwane-metropolitan-municipality",
+      "water": {
+        "raw": "012 358 2111 / 0801111556 \n \n customercare@tshwane.gov.za",
+        "emails": [
+          "customercare@tshwane.gov.za"
+        ],
+        "phones": [
+          "0123582111",
+          "0801111556"
+        ],
+        "whatsapps": []
+      },
+      "generalEmails": [
+        "customercare@tshwane.gov.za"
+      ],
+      "generalWhatsapps": []
+    },
+    {
+      "id": "5",
+      "name": "eThekwini Metropolitan",
+      "category": "metro",
+      "province": "KwaZulu-Natal",
+      "parentDistrictId": null,
+      "parentDistrictName": null,
+      "sourceUrl": "https://municipalities.co.za/contacts/5/ethekwini-metropolitan-municipality",
+      "water": {
+        "raw": "080 13 13 013 \n \n 073 148 3477 (Whatsapp)",
+        "emails": [],
+        "phones": [
+          "0801313013",
+          "0731483477"
+        ],
+        "whatsapps": [
+          "0731483477"
+        ]
+      },
+      "generalEmails": [
+        "sizakala@durban.gov.za"
+      ],
+      "generalWhatsapps": [
+        "0731483477"
+      ]
+    },
+    {
+      "id": "8",
+      "name": "Mangaung Metropolitan",
+      "category": "metro",
+      "province": "Free State",
+      "parentDistrictId": null,
+      "parentDistrictName": null,
+      "sourceUrl": "https://municipalities.co.za/contacts/8/mangaung-metropolitan-municipality",
+      "water": {
+        "raw": "0800 111 300 \n \n mlondolozi.ndlovu@mangaung.co.za",
+        "emails": [
+          "mlondolozi.ndlovu@mangaung.co.za"
+        ],
+        "phones": [
+          "0800111300"
+        ],
+        "whatsapps": []
+      },
+      "generalEmails": [
+        "enquiry@mangaung.co.za"
+      ],
+      "generalWhatsapps": []
+    },
+    {
+      "id": "1",
+      "name": "Nelson Mandela Bay Metropolitan",
+      "category": "metro",
+      "province": "Eastern Cape",
+      "parentDistrictId": null,
+      "parentDistrictName": null,
+      "sourceUrl": "https://municipalities.co.za/contacts/1/nelson-mandela-bay-metropolitan-municipality",
+      "water": {
+        "raw": "041 506 2258 \n \n waterleaks@mandelametro.gov.za",
+        "emails": [
+          "waterleaks@mandelametro.gov.za"
+        ],
+        "phones": [
+          "0415062258"
+        ],
+        "whatsapps": []
+      },
+      "generalEmails": [],
+      "generalWhatsapps": []
+    },
+    {
+      "id": "101",
+      "name": "Alfred Nzo District",
+      "category": "district",
+      "province": "Eastern Cape",
+      "parentDistrictId": null,
+      "parentDistrictName": null,
+      "sourceUrl": "https://municipalities.co.za/contacts/101/alfred-nzo-district-municipality",
+      "water": {
+        "raw": "039 254 5015 \n \n gulen@andm.gov.za",
+        "emails": [
+          "gulen@andm.gov.za"
+        ],
+        "phones": [
+          "0392545015"
+        ],
+        "whatsapps": []
+      },
+      "generalEmails": [
+        "customercare@andm.gov.za"
+      ],
+      "generalWhatsapps": []
+    },
+    {
+      "id": "116",
+      "name": "Amajuba District",
+      "category": "district",
+      "province": "KwaZulu-Natal",
+      "parentDistrictId": null,
+      "parentDistrictName": null,
+      "sourceUrl": "https://municipalities.co.za/contacts/116/amajuba-district-municipality",
+      "water": {
+        "raw": "0860 262 582 \n \n contact@amajuba.gov.za",
+        "emails": [
+          "contact@amajuba.gov.za"
+        ],
+        "phones": [
+          "0860262582"
+        ],
+        "whatsapps": []
+      },
+      "generalEmails": [
+        "info@amajuba.gov.za"
+      ],
+      "generalWhatsapps": []
+    },
+    {
+      "id": "102",
+      "name": "Amathole District",
+      "category": "district",
+      "province": "Eastern Cape",
+      "parentDistrictId": null,
+      "parentDistrictName": null,
+      "sourceUrl": "https://municipalities.co.za/contacts/102/amathole-district-municipality",
+      "water": {
+        "raw": "081 432 9630 \n \n info@amathole.gov.za",
+        "emails": [
+          "info@amathole.gov.za"
+        ],
+        "phones": [
+          "0814329630"
+        ],
+        "whatsapps": []
+      },
+      "generalEmails": [
+        "info@amathole.gov.za"
+      ],
+      "generalWhatsapps": []
+    },
+    {
+      "id": "139",
+      "name": "Bojanala Platinum District",
+      "category": "district",
+      "province": "North West",
+      "parentDistrictId": null,
+      "parentDistrictName": null,
+      "sourceUrl": "https://municipalities.co.za/contacts/139/bojanala-platinum-district-municipality",
+      "water": {
+        "raw": "n/a",
+        "emails": [],
+        "phones": [],
+        "whatsapps": []
+      },
+      "generalEmails": [
+        "municipalmanager@bojanala.gov.za"
+      ],
+      "generalWhatsapps": []
+    },
+    {
+      "id": "143",
+      "name": "Cape Winelands District",
+      "category": "district",
+      "province": "Western Cape",
+      "parentDistrictId": null,
+      "parentDistrictName": null,
+      "sourceUrl": "https://municipalities.co.za/contacts/143/cape-winelands-district-municipality",
+      "water": {
+        "raw": "n/a",
+        "emails": [],
+        "phones": [],
+        "whatsapps": []
+      },
+      "generalEmails": [
+        "admin@capewinelands.gov.za"
+      ],
+      "generalWhatsapps": []
+    },
+    {
+      "id": "126",
+      "name": "Capricorn District",
+      "category": "district",
+      "province": "Limpopo",
+      "parentDistrictId": null,
+      "parentDistrictName": null,
+      "sourceUrl": "https://municipalities.co.za/contacts/126/capricorn-district-municipality",
+      "water": {
+        "raw": "n/a",
+        "emails": [],
+        "phones": [],
+        "whatsapps": []
+      },
+      "generalEmails": [
+        "communications@cdm.org.za"
+      ],
+      "generalWhatsapps": []
+    },
+    {
+      "id": "144",
+      "name": "Central Karoo District",
+      "category": "district",
+      "province": "Western Cape",
+      "parentDistrictId": null,
+      "parentDistrictName": null,
+      "sourceUrl": "https://municipalities.co.za/contacts/144/central-karoo-district-municipality",
+      "water": {
+        "raw": "023 414 8100",
+        "emails": [],
+        "phones": [
+          "0234148100"
+        ],
+        "whatsapps": []
+      },
+      "generalEmails": [
+        "manager@skdm.co.za"
+      ],
+      "generalWhatsapps": []
+    },
+    {
+      "id": "104",
+      "name": "Chris Hani District",
+      "category": "district",
+      "province": "Eastern Cape",
+      "parentDistrictId": null,
+      "parentDistrictName": null,
+      "sourceUrl": "https://municipalities.co.za/contacts/104/chris-hani-district-municipality",
+      "water": {
+        "raw": "045 808 4681 \n \n mshasha@chrishanidm.gov.za",
+        "emails": [
+          "mshasha@chrishanidm.gov.za"
+        ],
+        "phones": [
+          "0458084681"
+        ],
+        "whatsapps": []
+      },
+      "generalEmails": [
+        "customercare@chrishanidm.gov.za"
+      ],
+      "generalWhatsapps": []
+    },
+    {
+      "id": "140",
+      "name": "Dr Kenneth Kaunda District",
+      "category": "district",
+      "province": "North West",
+      "parentDistrictId": null,
+      "parentDistrictName": null,
+      "sourceUrl": "https://municipalities.co.za/contacts/140/dr-kenneth-kaunda-district-municipality",
+      "water": {
+        "raw": "n/a",
+        "emails": [],
+        "phones": [],
+        "whatsapps": []
+      },
+      "generalEmails": [
+        "admin@kaundadistrict.gov.za"
+      ],
+      "generalWhatsapps": []
+    },
+    {
+      "id": "141",
+      "name": "Dr Ruth Segomotsi Mompati District",
+      "category": "district",
+      "province": "North West",
+      "parentDistrictId": null,
+      "parentDistrictName": null,
+      "sourceUrl": "https://municipalities.co.za/contacts/141/dr-ruth-segomotsi-mompati-district-municipality",
+      "water": {
+        "raw": "053 928 6400 \n \n MatopeE@drrsmdm.gov.za",
+        "emails": [
+          "matopee@drrsmdm.gov.za"
+        ],
+        "phones": [
+          "0539286400"
+        ],
+        "whatsapps": []
+      },
+      "generalEmails": [
+        "info@drrsmdm.gov.za"
+      ],
+      "generalWhatsapps": []
+    },
+    {
+      "id": "131",
+      "name": "Ehlanzeni District",
+      "category": "district",
+      "province": "Mpumalanga",
+      "parentDistrictId": null,
+      "parentDistrictName": null,
+      "sourceUrl": "https://municipalities.co.za/contacts/131/ehlanzeni-district-municipality",
+      "water": {
+        "raw": "n/a",
+        "emails": [],
+        "phones": [],
+        "whatsapps": []
+      },
+      "generalEmails": [
+        "info@ehlanzeni.org.za"
+      ],
+      "generalWhatsapps": []
+    },
+    {
+      "id": "107",
+      "name": "Fezile Dabi District",
+      "category": "district",
+      "province": "Free State",
+      "parentDistrictId": null,
+      "parentDistrictName": null,
+      "sourceUrl": "https://municipalities.co.za/contacts/107/fezile-dabi-district-municipality",
+      "water": {
+        "raw": "n/a",
+        "emails": [],
+        "phones": [],
+        "whatsapps": []
+      },
+      "generalEmails": [
+        "info@nfsdc.co.za"
+      ],
+      "generalWhatsapps": []
+    },
+    {
+      "id": "134",
+      "name": "Frances Baard District",
+      "category": "district",
+      "province": "Northern Cape",
+      "parentDistrictId": null,
+      "parentDistrictName": null,
+      "sourceUrl": "https://municipalities.co.za/contacts/134/frances-baard-district-municipality",
+      "water": {
+        "raw": "n/a",
+        "emails": [],
+        "phones": [],
+        "whatsapps": []
+      },
+      "generalEmails": [
+        "info@francesbaard.gov.za"
+      ],
+      "generalWhatsapps": []
+    },
+    {
+      "id": "145",
+      "name": "Garden Route District",
+      "category": "district",
+      "province": "Western Cape",
+      "parentDistrictId": null,
+      "parentDistrictName": null,
+      "sourceUrl": "https://municipalities.co.za/contacts/145/garden-route-district-municipality",
+      "water": {
+        "raw": "n/a",
+        "emails": [],
+        "phones": [],
+        "whatsapps": []
+      },
+      "generalEmails": [
+        "info@gardenroute.gov.za"
+      ],
+      "generalWhatsapps": []
+    },
+    {
+      "id": "132",
+      "name": "Gert Sibande District",
+      "category": "district",
+      "province": "Mpumalanga",
+      "parentDistrictId": null,
+      "parentDistrictName": null,
+      "sourceUrl": "https://municipalities.co.za/contacts/132/gert-sibande-district-municipality",
+      "water": {
+        "raw": "017 801 7163/7149 \n \n tshidip@gsibande.gov.za",
+        "emails": [
+          "tshidip@gsibande.gov.za"
+        ],
+        "phones": [
+          "0178017163"
+        ],
+        "whatsapps": []
+      },
+      "generalEmails": [
+        "records@gsibande.gov.za"
+      ],
+      "generalWhatsapps": []
+    },
+    {
+      "id": "118",
+      "name": "Harry Gwala District",
+      "category": "district",
+      "province": "KwaZulu-Natal",
+      "parentDistrictId": null,
+      "parentDistrictName": null,
+      "sourceUrl": "https://municipalities.co.za/contacts/118/harry-gwala-district-municipality",
+      "water": {
+        "raw": "086 010 3651 \n \n nkabanen@sisonkedm.gov.za",
+        "emails": [
+          "nkabanen@sisonkedm.gov.za"
+        ],
+        "phones": [
+          "0860103651"
+        ],
+        "whatsapps": []
+      },
+      "generalEmails": [],
+      "generalWhatsapps": []
+    },
+    {
+      "id": "117",
+      "name": "iLembe District",
+      "category": "district",
+      "province": "KwaZulu-Natal",
+      "parentDistrictId": null,
+      "parentDistrictName": null,
+      "sourceUrl": "https://municipalities.co.za/contacts/117/ilembe-district-municipality",
+      "water": {
+        "raw": "032 551 8704/05 \n \n Kuhle.Mthonjeni@ilembe.gov.za",
+        "emails": [
+          "kuhle.mthonjeni@ilembe.gov.za"
+        ],
+        "phones": [
+          "0325518704"
+        ],
+        "whatsapps": []
+      },
+      "generalEmails": [
+        "call.centre@ilembe.gov.za"
+      ],
+      "generalWhatsapps": []
+    },
+    {
+      "id": "105",
+      "name": "Joe Gqabi District",
+      "category": "district",
+      "province": "Eastern Cape",
+      "parentDistrictId": null,
+      "parentDistrictName": null,
+      "sourceUrl": "https://municipalities.co.za/contacts/105/joe-gqabi-district-municipality",
+      "water": {
+        "raw": "0800 201 726 \n \n callcentre@jgdm.gov.za",
+        "emails": [
+          "callcentre@jgdm.gov.za"
+        ],
+        "phones": [
+          "0800201726"
+        ],
+        "whatsapps": []
+      },
+      "generalEmails": [
+        "info@jgdm.gov.za"
+      ],
+      "generalWhatsapps": []
+    },
+    {
+      "id": "135",
+      "name": "John Taolo Gaetsewe District",
+      "category": "district",
+      "province": "Northern Cape",
+      "parentDistrictId": null,
+      "parentDistrictName": null,
+      "sourceUrl": "https://municipalities.co.za/contacts/135/john-taolo-gaetsewe-district-municipality",
+      "water": {
+        "raw": "053 712 8700 \n \n molusim@taologaetsewe.gov.za",
+        "emails": [
+          "molusim@taologaetsewe.gov.za"
+        ],
+        "phones": [
+          "0537128700"
+        ],
+        "whatsapps": []
+      },
+      "generalEmails": [
+        "info@taologaetsewe.gov.za"
+      ],
+      "generalWhatsapps": []
+    },
+    {
+      "id": "124",
+      "name": "King Cetshwayo District",
+      "category": "district",
+      "province": "KwaZulu-Natal",
+      "parentDistrictId": null,
+      "parentDistrictName": null,
+      "sourceUrl": "https://municipalities.co.za/contacts/124/king-cetshwayo-district-municipality",
+      "water": {
+        "raw": "080 011 1258 \n \n report@kingcetshwayo.gov.za",
+        "emails": [
+          "report@kingcetshwayo.gov.za"
+        ],
+        "phones": [
+          "0800111258"
+        ],
+        "whatsapps": []
+      },
+      "generalEmails": [
+        "info@kingcetshwayo.gov.za"
+      ],
+      "generalWhatsapps": []
+    },
+    {
+      "id": "108",
+      "name": "Lejweleputswa District",
+      "category": "district",
+      "province": "Free State",
+      "parentDistrictId": null,
+      "parentDistrictName": null,
+      "sourceUrl": "https://municipalities.co.za/contacts/108/lejweleputswa-district-municipality",
+      "water": {
+        "raw": "n/a",
+        "emails": [],
+        "phones": [],
+        "whatsapps": []
+      },
+      "generalEmails": [
+        "communications@lejwe.co.za"
+      ],
+      "generalWhatsapps": []
+    },
+    {
+      "id": "128",
+      "name": "Mopani District",
+      "category": "district",
+      "province": "Limpopo",
+      "parentDistrictId": null,
+      "parentDistrictName": null,
+      "sourceUrl": "https://municipalities.co.za/contacts/128/mopani-district-municipality",
+      "water": {
+        "raw": "n/a \n \n ralulimit@mopani.gov.za",
+        "emails": [
+          "ralulimit@mopani.gov.za"
+        ],
+        "phones": [],
+        "whatsapps": []
+      },
+      "generalEmails": [
+        "moganotj@mopani.gov.za"
+      ],
+      "generalWhatsapps": []
+    },
+    {
+      "id": "136",
+      "name": "Namakwa District",
+      "category": "district",
+      "province": "Northern Cape",
+      "parentDistrictId": null,
+      "parentDistrictName": null,
+      "sourceUrl": "https://municipalities.co.za/contacts/136/namakwa-district-municipality",
+      "water": {
+        "raw": "n/a",
+        "emails": [],
+        "phones": [],
+        "whatsapps": []
+      },
+      "generalEmails": [
+        "info@namakwa-dm.gov.za"
+      ],
+      "generalWhatsapps": []
+    },
+    {
+      "id": "142",
+      "name": "Ngaka Modiri Molema District",
+      "category": "district",
+      "province": "North West",
+      "parentDistrictId": null,
+      "parentDistrictName": null,
+      "sourceUrl": "https://municipalities.co.za/contacts/142/ngaka-modiri-molema-district-municipality",
+      "water": {
+        "raw": "018 381 9417",
+        "emails": [],
+        "phones": [
+          "0183819417"
+        ],
+        "whatsapps": []
+      },
+      "generalEmails": [
+        "info@nmmdm.gov.za"
+      ],
+      "generalWhatsapps": []
+    },
+    {
+      "id": "133",
+      "name": "Nkangala District",
+      "category": "district",
+      "province": "Mpumalanga",
+      "parentDistrictId": null,
+      "parentDistrictName": null,
+      "sourceUrl": "https://municipalities.co.za/contacts/133/nkangala-district-municipality",
+      "water": {
+        "raw": "n/a",
+        "emails": [],
+        "phones": [],
+        "whatsapps": []
+      },
+      "generalEmails": [],
+      "generalWhatsapps": []
+    },
+    {
+      "id": "106",
+      "name": "OR Tambo District",
+      "category": "district",
+      "province": "Eastern Cape",
+      "parentDistrictId": null,
+      "parentDistrictName": null,
+      "sourceUrl": "https://municipalities.co.za/contacts/106/or-tambo-district-municipality",
+      "water": {
+        "raw": "047 501 9115 \n \n nomalangam@ortambodm.org.za",
+        "emails": [
+          "nomalangam@ortambodm.org.za"
+        ],
+        "phones": [
+          "0475019115"
+        ],
+        "whatsapps": []
+      },
+      "generalEmails": [],
+      "generalWhatsapps": []
+    },
+    {
+      "id": "146",
+      "name": "Overberg District",
+      "category": "district",
+      "province": "Western Cape",
+      "parentDistrictId": null,
+      "parentDistrictName": null,
+      "sourceUrl": "https://municipalities.co.za/contacts/146/overberg-district-municipality",
+      "water": {
+        "raw": "n/a",
+        "emails": [],
+        "phones": [],
+        "whatsapps": []
+      },
+      "generalEmails": [
+        "info@odm.org.za"
+      ],
+      "generalWhatsapps": []
+    },
+    {
+      "id": "137",
+      "name": "Pixley Ka Seme District",
+      "category": "district",
+      "province": "Northern Cape",
+      "parentDistrictId": null,
+      "parentDistrictName": null,
+      "sourceUrl": "https://municipalities.co.za/contacts/137/pixley-ka-seme-district-municipality",
+      "water": {
+        "raw": "n/a",
+        "emails": [],
+        "phones": [],
+        "whatsapps": []
+      },
+      "generalEmails": [
+        "pixley@telkomsa.net"
+      ],
+      "generalWhatsapps": []
+    },
+    {
+      "id": "103",
+      "name": "Sarah Baartman District",
+      "category": "district",
+      "province": "Eastern Cape",
+      "parentDistrictId": null,
+      "parentDistrictName": null,
+      "sourceUrl": "https://municipalities.co.za/contacts/103/sarah-baartman-district-municipality",
+      "water": {
+        "raw": "041 508 7107 / 7336 \n \n nmagoloza@sbdm.co.za",
+        "emails": [
+          "nmagoloza@sbdm.co.za"
+        ],
+        "phones": [
+          "0415087107"
+        ],
+        "whatsapps": []
+      },
+      "generalEmails": [
+        "npeterson@sbdm.co.za"
+      ],
+      "generalWhatsapps": []
+    },
+    {
+      "id": "114",
+      "name": "Sedibeng District",
+      "category": "district",
+      "province": "Gauteng",
+      "parentDistrictId": null,
+      "parentDistrictName": null,
+      "sourceUrl": "https://municipalities.co.za/contacts/114/sedibeng-district-municipality",
+      "water": {
+        "raw": "n/a",
+        "emails": [],
+        "phones": [],
+        "whatsapps": []
+      },
+      "generalEmails": [
+        "info@sedibeng.gov.za"
+      ],
+      "generalWhatsapps": []
+    },
+    {
+      "id": "127",
+      "name": "Sekhukhune District",
+      "category": "district",
+      "province": "Limpopo",
+      "parentDistrictId": null,
+      "parentDistrictName": null,
+      "sourceUrl": "https://municipalities.co.za/contacts/127/sekhukhune-district-municipality",
+      "water": {
+        "raw": "013 262 7300/7301/7302 \n \n sekinfo@sekhukhune.gov.za",
+        "emails": [
+          "sekinfo@sekhukhune.gov.za"
+        ],
+        "phones": [
+          "0132627300"
+        ],
+        "whatsapps": []
+      },
+      "generalEmails": [
+        "sekinfo@sekhukhune.gov.za"
+      ],
+      "generalWhatsapps": []
+    },
+    {
+      "id": "110",
+      "name": "Thabo Mofutsanyana District",
+      "category": "district",
+      "province": "Free State",
+      "parentDistrictId": null,
+      "parentDistrictName": null,
+      "sourceUrl": "https://municipalities.co.za/contacts/110/thabo-mofutsanyana-district-municipality",
+      "water": {
+        "raw": "n/a",
+        "emails": [],
+        "phones": [],
+        "whatsapps": []
+      },
+      "generalEmails": [],
+      "generalWhatsapps": []
+    },
+    {
+      "id": "119",
+      "name": "Ugu District",
+      "category": "district",
+      "province": "KwaZulu-Natal",
+      "parentDistrictId": null,
+      "parentDistrictName": null,
+      "sourceUrl": "https://municipalities.co.za/contacts/119/ugu-district-municipality",
+      "water": {
+        "raw": "080 009 2837 \n \n enquiries@ugu.gov.za",
+        "emails": [
+          "enquiries@ugu.gov.za"
+        ],
+        "phones": [
+          "0800092837"
+        ],
+        "whatsapps": []
+      },
+      "generalEmails": [
+        "info@ugu.gov.za",
+        "enquiries@ugu.gov.za"
+      ],
+      "generalWhatsapps": []
+    },
+    {
+      "id": "120",
+      "name": "uMgungundlovu District",
+      "category": "district",
+      "province": "KwaZulu-Natal",
+      "parentDistrictId": null,
+      "parentDistrictName": null,
+      "sourceUrl": "https://municipalities.co.za/contacts/120/umgungundlovu-district-municipality",
+      "water": {
+        "raw": "033 897 6708 \n \n Zenzele.Ndlovu@umdm.gov.za",
+        "emails": [
+          "zenzele.ndlovu@umdm.gov.za"
+        ],
+        "phones": [
+          "0338976708"
+        ],
+        "whatsapps": []
+      },
+      "generalEmails": [
+        "info@umdm.gov.za"
+      ],
+      "generalWhatsapps": []
+    },
+    {
+      "id": "121",
+      "name": "uMkhanyakude District",
+      "category": "district",
+      "province": "KwaZulu-Natal",
+      "parentDistrictId": null,
+      "parentDistrictName": null,
+      "sourceUrl": "https://municipalities.co.za/contacts/121/umkhanyakude-district-municipality",
+      "water": {
+        "raw": "035 573 8600 \n \n sizwek@ukdm.gov.za",
+        "emails": [
+          "sizwek@ukdm.gov.za"
+        ],
+        "phones": [
+          "0355738600"
+        ],
+        "whatsapps": []
+      },
+      "generalEmails": [
+        "mm@ukdm.gov.za",
+        "communications@ukdm.gov.za"
+      ],
+      "generalWhatsapps": []
+    },
+    {
+      "id": "122",
+      "name": "uMzinyathi District",
+      "category": "district",
+      "province": "KwaZulu-Natal",
+      "parentDistrictId": null,
+      "parentDistrictName": null,
+      "sourceUrl": "https://municipalities.co.za/contacts/122/umzinyathi-district-municipality",
+      "water": {
+        "raw": "034 212 2222 / 086 167888",
+        "emails": [],
+        "phones": [
+          "0342122222",
+          "086167888"
+        ],
+        "whatsapps": []
+      },
+      "generalEmails": [
+        "rc3@umzinyathi.gov.za"
+      ],
+      "generalWhatsapps": []
+    },
+    {
+      "id": "123",
+      "name": "uThukela District",
+      "category": "district",
+      "province": "KwaZulu-Natal",
+      "parentDistrictId": null,
+      "parentDistrictName": null,
+      "sourceUrl": "https://municipalities.co.za/contacts/123/uthukela-district-municipality",
+      "water": {
+        "raw": "086 010 4257 \n \n wqueries@uthukela.gov.za",
+        "emails": [
+          "wqueries@uthukela.gov.za"
+        ],
+        "phones": [
+          "0860104257"
+        ],
+        "whatsapps": []
+      },
+      "generalEmails": [
+        "administration@uthukela.gov.za"
+      ],
+      "generalWhatsapps": []
+    },
+    {
+      "id": "129",
+      "name": "Vhembe District",
+      "category": "district",
+      "province": "Limpopo",
+      "parentDistrictId": null,
+      "parentDistrictName": null,
+      "sourceUrl": "https://municipalities.co.za/contacts/129/vhembe-district-municipality",
+      "water": {
+        "raw": "015 960 2117 \n \n gmtechnical@vhembe.gov.za",
+        "emails": [
+          "gmtechnical@vhembe.gov.za"
+        ],
+        "phones": [
+          "0159602117"
+        ],
+        "whatsapps": []
+      },
+      "generalEmails": [],
+      "generalWhatsapps": []
+    },
+    {
+      "id": "130",
+      "name": "Waterberg District",
+      "category": "district",
+      "province": "Limpopo",
+      "parentDistrictId": null,
+      "parentDistrictName": null,
+      "sourceUrl": "https://municipalities.co.za/contacts/130/waterberg-district-municipality",
+      "water": {
+        "raw": "n/a",
+        "emails": [],
+        "phones": [],
+        "whatsapps": []
+      },
+      "generalEmails": [
+        "admin@waterberg.gov.za"
+      ],
+      "generalWhatsapps": []
+    },
+    {
+      "id": "147",
+      "name": "West Coast District",
+      "category": "district",
+      "province": "Western Cape",
+      "parentDistrictId": null,
+      "parentDistrictName": null,
+      "sourceUrl": "https://municipalities.co.za/contacts/147/west-coast-district-municipality",
+      "water": {
+        "raw": "082 557 7696/083 668 6087 \n \n majvisser@wcdm.co.za / bbvdmerwe@wcdm.co.za",
+        "emails": [
+          "majvisser@wcdm.co.za",
+          "bbvdmerwe@wcdm.co.za"
+        ],
+        "phones": [
+          "0825577696",
+          "0836686087"
+        ],
+        "whatsapps": []
+      },
+      "generalEmails": [
+        "westcoastdm@wcdm.co.za"
+      ],
+      "generalWhatsapps": []
+    },
+    {
+      "id": "115",
+      "name": "West Rand District",
+      "category": "district",
+      "province": "Gauteng",
+      "parentDistrictId": null,
+      "parentDistrictName": null,
+      "sourceUrl": "https://municipalities.co.za/contacts/115/west-rand-district-municipality",
+      "water": {
+        "raw": "n/a",
+        "emails": [],
+        "phones": [],
+        "whatsapps": []
+      },
+      "generalEmails": [
+        "admin@wrdm.gov.za"
+      ],
+      "generalWhatsapps": []
+    },
+    {
+      "id": "111",
+      "name": "Xhariep District",
+      "category": "district",
+      "province": "Free State",
+      "parentDistrictId": null,
+      "parentDistrictName": null,
+      "sourceUrl": "https://municipalities.co.za/contacts/111/xhariep-district-municipality",
+      "water": {
+        "raw": "0716774535 \n \n xhariepehp@gmail.com",
+        "emails": [
+          "xhariepehp@gmail.com"
+        ],
+        "phones": [
+          "0716774535"
+        ],
+        "whatsapps": []
+      },
+      "generalEmails": [
+        "municipalmanager@xhariep.gov.za"
+      ],
+      "generalWhatsapps": []
+    },
+    {
+      "id": "138",
+      "name": "ZF Mgcawu District",
+      "category": "district",
+      "province": "Northern Cape",
+      "parentDistrictId": null,
+      "parentDistrictName": null,
+      "sourceUrl": "https://municipalities.co.za/contacts/138/zf-mgcawu-district-municipality",
+      "water": {
+        "raw": "n/a",
+        "emails": [],
+        "phones": [],
+        "whatsapps": []
+      },
+      "generalEmails": [
+        "admin@zfm-dm.gov.za"
+      ],
+      "generalWhatsapps": []
+    },
+    {
+      "id": "125",
+      "name": "Zululand District",
+      "category": "district",
+      "province": "KwaZulu-Natal",
+      "parentDistrictId": null,
+      "parentDistrictName": null,
+      "sourceUrl": "https://municipalities.co.za/contacts/125/zululand-district-municipality",
+      "water": {
+        "raw": "035 874 5509 \n \n sngubane@zululand.org.za",
+        "emails": [
+          "sngubane@zululand.org.za"
+        ],
+        "phones": [
+          "0358745509"
+        ],
+        "whatsapps": []
+      },
+      "generalEmails": [
+        "info@www.zululand.gov.za"
+      ],
+      "generalWhatsapps": []
+    },
+    {
+      "id": "1181",
+      "name": "!Kheis Local",
+      "category": "local",
+      "province": "Northern Cape",
+      "parentDistrictId": "138",
+      "parentDistrictName": "ZF Mgcawu District",
+      "sourceUrl": "https://municipalities.co.za/contacts/1181/kheis-local-municipality",
+      "water": {
+        "raw": "054 833 9500 \n \n petrukoopman@gmail.com",
+        "emails": [
+          "petrukoopman@gmail.com"
+        ],
+        "phones": [
+          "0548339500"
+        ],
+        "whatsapps": []
+      },
+      "generalEmails": [
+        "admin@kheis.co.za"
+      ],
+      "generalWhatsapps": []
+    },
+    {
+      "id": "1112",
+      "name": "AbaQulusi Local",
+      "category": "local",
+      "province": "KwaZulu-Natal",
+      "parentDistrictId": "125",
+      "parentDistrictName": "Zululand District",
+      "sourceUrl": "https://municipalities.co.za/contacts/1112/abaqulusi-local-municipality",
+      "water": {
+        "raw": "034 982 2133 \n \n engineering@abaqulusi.gov.za",
+        "emails": [
+          "engineering@abaqulusi.gov.za"
+        ],
+        "phones": [
+          "0349822133"
+        ],
+        "whatsapps": []
+      },
+      "generalEmails": [
+        "information@abaqulusi.gov.za"
+      ],
+      "generalWhatsapps": []
+    },
+    {
+      "id": "1238",
+      "name": "Alfred Duma Local",
+      "category": "local",
+      "province": "KwaZulu-Natal",
+      "parentDistrictId": "123",
+      "parentDistrictName": "uThukela District",
+      "sourceUrl": "https://municipalities.co.za/contacts/1238/alfred-duma-local-municipality",
+      "water": {
+        "raw": "036 638 5100",
+        "emails": [],
+        "phones": [
+          "0366385100"
+        ],
+        "whatsapps": []
+      },
+      "generalEmails": [
+        "adlmfaults@alfredduma.gov.za"
+      ],
+      "generalWhatsapps": []
+    },
+    {
+      "id": "1003",
+      "name": "Amahlathi Local",
+      "category": "local",
+      "province": "Eastern Cape",
+      "parentDistrictId": "102",
+      "parentDistrictName": "Amathole District",
+      "sourceUrl": "https://municipalities.co.za/contacts/1003/amahlathi-local-municipality",
+      "water": {
+        "raw": "043 783 2373 \n \n nomfundisok@amathole.gov.za",
+        "emails": [
+          "nomfundisok@amathole.gov.za"
+        ],
+        "phones": [
+          "0437832373"
+        ],
+        "whatsapps": []
+      },
+      "generalEmails": [
+        "info@amahlathi.gov.za"
+      ],
+      "generalWhatsapps": []
+    },
+    {
+      "id": "1127",
+      "name": "Ba-Phalaborwa Local",
+      "category": "local",
+      "province": "Limpopo",
+      "parentDistrictId": "128",
+      "parentDistrictName": "Mopani District",
+      "sourceUrl": "https://municipalities.co.za/contacts/1127/ba-phalaborwa-local-municipality",
+      "water": {
+        "raw": "015 780 6344/6902/6308",
+        "emails": [],
+        "phones": [
+          "0157806344"
+        ],
+        "whatsapps": []
+      },
+      "generalEmails": [
+        "phalamun@ba-phalaborwa.gov.za"
+      ],
+      "generalWhatsapps": []
+    },
+    {
+      "id": "1212",
+      "name": "Beaufort West Local",
+      "category": "local",
+      "province": "Western Cape",
+      "parentDistrictId": "144",
+      "parentDistrictName": "Central Karoo District",
+      "sourceUrl": "https://municipalities.co.za/contacts/1212/beaufort-west-local-municipality",
+      "water": {
+        "raw": "023 414 8101",
+        "emails": [],
+        "phones": [
+          "0234148101"
+        ],
+        "whatsapps": []
+      },
+      "generalEmails": [
+        "admin@beaufortwestmun.co.za"
+      ],
+      "generalWhatsapps": []
+    },
+    {
+      "id": "1136",
+      "name": "Bela-Bela Local",
+      "category": "local",
+      "province": "Limpopo",
+      "parentDistrictId": "130",
+      "parentDistrictName": "Waterberg District",
+      "sourceUrl": "https://municipalities.co.za/contacts/1136/bela-bela-local-municipality",
+      "water": {
+        "raw": "014 736 8000 \n \n molotoj@belabela.gov.za",
+        "emails": [
+          "molotoj@belabela.gov.za"
+        ],
+        "phones": [
+          "0147368000"
+        ],
+        "whatsapps": []
+      },
+      "generalEmails": [
+        "info@belabela.gov.za",
+        "enquiries@belabela.gov.za"
+      ],
+      "generalWhatsapps": []
+    },
+    {
+      "id": "1226",
+      "name": "Bergrivier Local",
+      "category": "local",
+      "province": "Western Cape",
+      "parentDistrictId": "147",
+      "parentDistrictName": "West Coast District",
+      "sourceUrl": "https://municipalities.co.za/contacts/1226/bergrivier-local-municipality",
+      "water": {
+        "raw": "083 272 3805 \n \n breunissenj@bergmun.org.za",
+        "emails": [
+          "breunissenj@bergmun.org.za"
+        ],
+        "phones": [
+          "0832723805"
+        ],
+        "whatsapps": []
+      },
+      "generalEmails": [
+        "bergmun@telkomsa.net"
+      ],
+      "generalWhatsapps": []
+    },
+    {
+      "id": "1239",
+      "name": "Big 5 Hlabisa Local",
+      "category": "local",
+      "province": "KwaZulu-Natal",
+      "parentDistrictId": "121",
+      "parentDistrictName": "uMkhanyakude District",
+      "sourceUrl": "https://municipalities.co.za/contacts/1239/big-5-hlabisa-local-municipality",
+      "water": {
+        "raw": "072 690 6243",
+        "emails": [],
+        "phones": [
+          "0726906243"
+        ],
+        "whatsapps": []
+      },
+      "generalEmails": [
+        "executive@big5hlabisa.gov.za"
+      ],
+      "generalWhatsapps": []
+    },
+    {
+      "id": "1215",
+      "name": "Bitou Local",
+      "category": "local",
+      "province": "Western Cape",
+      "parentDistrictId": "145",
+      "parentDistrictName": "Garden Route District",
+      "sourceUrl": "https://municipalities.co.za/contacts/1215/bitou-local-municipality",
+      "water": {
+        "raw": "0445013174/5 / 0800212797 \n \n customercare@plett.gov.za",
+        "emails": [
+          "customercare@plett.gov.za"
+        ],
+        "phones": [
+          "0445013174",
+          "0800212797"
+        ],
+        "whatsapps": []
+      },
+      "generalEmails": [
+        "records@plett.gov.za",
+        "communications@plett.gov.za"
+      ],
+      "generalWhatsapps": []
+    },
+    {
+      "id": "1118",
+      "name": "Blouberg Local",
+      "category": "local",
+      "province": "Limpopo",
+      "parentDistrictId": "126",
+      "parentDistrictName": "Capricorn District",
+      "sourceUrl": "https://municipalities.co.za/contacts/1118/blouberg-local-municipality",
+      "water": {
+        "raw": "n/a",
+        "emails": [],
+        "phones": [],
+        "whatsapps": []
+      },
+      "generalEmails": [
+        "info@blouberg.gov.za"
+      ],
+      "generalWhatsapps": []
+    },
+    {
+      "id": "1012",
+      "name": "Blue Crane Route Local",
+      "category": "local",
+      "province": "Eastern Cape",
+      "parentDistrictId": "103",
+      "parentDistrictName": "Sarah Baartman District",
+      "sourceUrl": "https://municipalities.co.za/contacts/1012/blue-crane-route-local-municipality",
+      "water": {
+        "raw": "042 243 6400",
+        "emails": [],
+        "phones": [
+          "0422436400"
+        ],
+        "whatsapps": []
+      },
+      "generalEmails": [
+        "mmanager@bcrm.gov.za"
+      ],
+      "generalWhatsapps": []
+    },
+    {
+      "id": "1207",
+      "name": "Breede Valley Local",
+      "category": "local",
+      "province": "Western Cape",
+      "parentDistrictId": "143",
+      "parentDistrictName": "Cape Winelands District",
+      "sourceUrl": "https://municipalities.co.za/contacts/1207/breede-valley-local-municipality",
+      "water": {
+        "raw": "0860 12 12 12 \n \n ssc@bvm.gov.za",
+        "emails": [
+          "ssc@bvm.gov.za"
+        ],
+        "phones": [
+          "0860121212"
+        ],
+        "whatsapps": []
+      },
+      "generalEmails": [],
+      "generalWhatsapps": []
+    },
+    {
+      "id": "1142",
+      "name": "Bushbuckridge Local",
+      "category": "local",
+      "province": "Mpumalanga",
+      "parentDistrictId": "131",
+      "parentDistrictName": "Ehlanzeni District",
+      "sourceUrl": "https://municipalities.co.za/contacts/1142/bushbuckridge-local-municipality",
+      "water": {
+        "raw": "013 799 1851/57 \n \n baloyir@bushbuckridge.gov.za",
+        "emails": [
+          "baloyir@bushbuckridge.gov.za"
+        ],
+        "phones": [
+          "0137991851"
+        ],
+        "whatsapps": []
+      },
+      "generalEmails": [
+        "info@bushbuckridge.gov.za"
+      ],
+      "generalWhatsapps": []
+    },
+    {
+      "id": "1222",
+      "name": "Cape Agulhas Local",
+      "category": "local",
+      "province": "Western Cape",
+      "parentDistrictId": "146",
+      "parentDistrictName": "Overberg District",
+      "sourceUrl": "https://municipalities.co.za/contacts/1222/cape-agulhas-local-municipality",
+      "water": {
+        "raw": "028 425 5780 \n \n info@capeagulhas.gov.za",
+        "emails": [
+          "info@capeagulhas.gov.za"
+        ],
+        "phones": [
+          "0284255780"
+        ],
+        "whatsapps": []
+      },
+      "generalEmails": [
+        "info@capeagulhas.gov.za"
+      ],
+      "generalWhatsapps": []
+    },
+    {
+      "id": "1227",
+      "name": "Cederberg Local",
+      "category": "local",
+      "province": "Western Cape",
+      "parentDistrictId": "147",
+      "parentDistrictName": "West Coast District",
+      "sourceUrl": "https://municipalities.co.za/contacts/1227/cederberg-local-municipality",
+      "water": {
+        "raw": "027 482 8000 \n \n eltonk@cederberg.gov.za",
+        "emails": [
+          "eltonk@cederberg.gov.za"
+        ],
+        "phones": [
+          "0274828000"
+        ],
+        "whatsapps": []
+      },
+      "generalEmails": [
+        "admin@cederbergraad.co.za"
+      ],
+      "generalWhatsapps": []
+    },
+    {
+      "id": "1147",
+      "name": "Chief Albert Luthuli Local",
+      "category": "local",
+      "province": "Mpumalanga",
+      "parentDistrictId": "132",
+      "parentDistrictName": "Gert Sibande District",
+      "sourceUrl": "https://municipalities.co.za/contacts/1147/chief-albert-luthuli-local-municipality",
+      "water": {
+        "raw": "017 843 4000/ 080 001 489 \n \n mm@albertluthuli.gov.za; Records@albertluthuli.go",
+        "emails": [
+          "mm@albertluthuli.gov.za",
+          "records@albertluthuli.go"
+        ],
+        "phones": [
+          "0178434000",
+          "080001489"
+        ],
+        "whatsapps": []
+      },
+      "generalEmails": [
+        "mm@albertluthuli.gov.za"
+      ],
+      "generalWhatsapps": []
+    },
+    {
+      "id": "1193",
+      "name": "City of Matlosana Local",
+      "category": "local",
+      "province": "North West",
+      "parentDistrictId": "140",
+      "parentDistrictName": "Dr Kenneth Kaunda District",
+      "sourceUrl": "https://municipalities.co.za/contacts/1193/city-of-matlosana-local-municipality",
+      "water": {
+        "raw": "018 487 8035/8383 \n \n kkeikabile@klerksdorp.org / tmodipa@klerksdorp.org",
+        "emails": [
+          "kkeikabile@klerksdorp.org",
+          "tmodipa@klerksdorp.org"
+        ],
+        "phones": [
+          "0184878035"
+        ],
+        "whatsapps": []
+      },
+      "generalEmails": [
+        "managers@klerksdorp.org"
+      ],
+      "generalWhatsapps": []
+    },
+    {
+      "id": "1244",
+      "name": "City of Mbombela Local",
+      "category": "local",
+      "province": "Mpumalanga",
+      "parentDistrictId": "131",
+      "parentDistrictName": "Ehlanzeni District",
+      "sourceUrl": "https://municipalities.co.za/contacts/1244/city-of-mbombela-local-municipality",
+      "water": {
+        "raw": "013 759 9227/8 \n \n bertha.seloane@mbombela.gov.za",
+        "emails": [
+          "bertha.seloane@mbombela.gov.za"
+        ],
+        "phones": [
+          "0137599227"
+        ],
+        "whatsapps": []
+      },
+      "generalEmails": [
+        "customercare@mbombela.gov.za"
+      ],
+      "generalWhatsapps": []
+    },
+    {
+      "id": "1110",
+      "name": "City of uMhlathuze Local",
+      "category": "local",
+      "province": "KwaZulu-Natal",
+      "parentDistrictId": "124",
+      "parentDistrictName": "King Cetshwayo District",
+      "sourceUrl": "https://municipalities.co.za/contacts/1110/city-of-umhlathuze-local-municipality",
+      "water": {
+        "raw": "035 907 5454/035 907 5865 \n \n creg@umhlathuze.gov.za",
+        "emails": [
+          "creg@umhlathuze.gov.za"
+        ],
+        "phones": [
+          "0359075454",
+          "0359075865"
+        ],
+        "whatsapps": []
+      },
+      "generalEmails": [],
+      "generalWhatsapps": []
+    },
+    {
+      "id": "1241",
+      "name": "Collins Chabane Local",
+      "category": "local",
+      "province": "Limpopo",
+      "parentDistrictId": "129",
+      "parentDistrictName": "Vhembe District",
+      "sourceUrl": "https://municipalities.co.za/contacts/1241/collins-chabane-local-municipality",
+      "water": {
+        "raw": "015 851 0110/066 475 8413 \n \n peter.baloyi@collinschabane.gov.za",
+        "emails": [
+          "peter.baloyi@collinschabane.gov.za"
+        ],
+        "phones": [
+          "0158510110",
+          "0664758413"
+        ],
+        "whatsapps": []
+      },
+      "generalEmails": [
+        "giyani@collinschabane.gov.za"
+      ],
+      "generalWhatsapps": []
+    },
+    {
+      "id": "1067",
+      "name": "Dannhauser Local",
+      "category": "local",
+      "province": "KwaZulu-Natal",
+      "parentDistrictId": "116",
+      "parentDistrictName": "Amajuba District",
+      "sourceUrl": "https://municipalities.co.za/contacts/1067/dannhauser-local-municipality",
+      "water": {
+        "raw": "n/a",
+        "emails": [],
+        "phones": [],
+        "whatsapps": []
+      },
+      "generalEmails": [
+        "municipalmanager@dannhauser.gov.za"
+      ],
+      "generalWhatsapps": []
+    },
+    {
+      "id": "1245",
+      "name": "Dawid Kruiper Local",
+      "category": "local",
+      "province": "Northern Cape",
+      "parentDistrictId": "138",
+      "parentDistrictName": "ZF Mgcawu District",
+      "sourceUrl": "https://municipalities.co.za/contacts/1245/dawid-kruiper-local-municipality",
+      "water": {
+        "raw": "054 338 7181 \n \n customercare@kharahais.gov.za",
+        "emails": [
+          "customercare@kharahais.gov.za"
+        ],
+        "phones": [
+          "0543387181"
+        ],
+        "whatsapps": []
+      },
+      "generalEmails": [
+        "manager@kharahais.gov.za"
+      ],
+      "generalWhatsapps": []
+    },
+    {
+      "id": "1231",
+      "name": "Dihlabeng Local",
+      "category": "local",
+      "province": "Free State",
+      "parentDistrictId": "110",
+      "parentDistrictName": "Thabo Mofutsanyana District",
+      "sourceUrl": "https://municipalities.co.za/contacts/1231/dihlabeng-local-municipality",
+      "water": {
+        "raw": "n/a",
+        "emails": [],
+        "phones": [],
+        "whatsapps": []
+      },
+      "generalEmails": [
+        "records2@dihlabeng.co.za"
+      ],
+      "generalWhatsapps": []
+    },
+    {
+      "id": "1160",
+      "name": "Dikgatlong Local",
+      "category": "local",
+      "province": "Northern Cape",
+      "parentDistrictId": "134",
+      "parentDistrictName": "Frances Baard District",
+      "sourceUrl": "https://municipalities.co.za/contacts/1160/dikgatlong-local-municipality",
+      "water": {
+        "raw": "053 531 6572 \n \n abrahamnthoba@dikgatlong.co.za",
+        "emails": [
+          "abrahamnthoba@dikgatlong.co.za"
+        ],
+        "phones": [
+          "0535316572"
+        ],
+        "whatsapps": []
+      },
+      "generalEmails": [
+        "info@dikgatlong.gov.za"
+      ],
+      "generalWhatsapps": []
+    },
+    {
+      "id": "1148",
+      "name": "Dipaleseng Local",
+      "category": "local",
+      "province": "Mpumalanga",
+      "parentDistrictId": "132",
+      "parentDistrictName": "Gert Sibande District",
+      "sourceUrl": "https://municipalities.co.za/contacts/1148/dipaleseng-local-municipality",
+      "water": {
+        "raw": "071 683 7755 \n \n records@dipaleseng.gov.za",
+        "emails": [
+          "records@dipaleseng.gov.za"
+        ],
+        "phones": [
+          "0716837755"
+        ],
+        "whatsapps": []
+      },
+      "generalEmails": [
+        "mofokengp@dipaleseng.com"
+      ],
+      "generalWhatsapps": []
+    },
+    {
+      "id": "1202",
+      "name": "Ditsobotla Local",
+      "category": "local",
+      "province": "North West",
+      "parentDistrictId": "142",
+      "parentDistrictName": "Ngaka Modiri Molema District",
+      "sourceUrl": "https://municipalities.co.za/contacts/1202/ditsobotla-local-municipality",
+      "water": {
+        "raw": "018 633 3866",
+        "emails": [],
+        "phones": [
+          "0186333866"
+        ],
+        "whatsapps": []
+      },
+      "generalEmails": [
+        "info@ditsobotla.gov.za"
+      ],
+      "generalWhatsapps": []
+    },
+    {
+      "id": "1021",
+      "name": "Dr AB Xuma Local",
+      "category": "local",
+      "province": "Eastern Cape",
+      "parentDistrictId": "104",
+      "parentDistrictName": "Chris Hani District",
+      "sourceUrl": "https://municipalities.co.za/contacts/1021/dr-ab-xuma-local-municipality",
+      "water": {
+        "raw": "047 548 5657",
+        "emails": [],
+        "phones": [
+          "0475485657"
+        ],
+        "whatsapps": []
+      },
+      "generalEmails": [],
+      "generalWhatsapps": []
+    },
+    {
+      "id": "1013",
+      "name": "Dr Beyers Naudé Local",
+      "category": "local",
+      "province": "Eastern Cape",
+      "parentDistrictId": "103",
+      "parentDistrictName": "Sarah Baartman District",
+      "sourceUrl": "https://municipalities.co.za/contacts/1013/dr-beyers-naude-local-municipality",
+      "water": {
+        "raw": "049 807 5700 \n \n arendsa@bnlm.gov.za",
+        "emails": [
+          "arendsa@bnlm.gov.za"
+        ],
+        "phones": [
+          "0498075700"
+        ],
+        "whatsapps": []
+      },
+      "generalEmails": [],
+      "generalWhatsapps": []
+    },
+    {
+      "id": "1155",
+      "name": "Dr JS Moroka Local",
+      "category": "local",
+      "province": "Mpumalanga",
+      "parentDistrictId": "133",
+      "parentDistrictName": "Nkangala District",
+      "sourceUrl": "https://municipalities.co.za/contacts/1155/dr-js-moroka-local-municipality",
+      "water": {
+        "raw": "013 973 1101 \n \n masomukal@moroka.gov.za",
+        "emails": [
+          "masomukal@moroka.gov.za"
+        ],
+        "phones": [
+          "0139731101"
+        ],
+        "whatsapps": []
+      },
+      "generalEmails": [
+        "info@moroka.gov.za"
+      ],
+      "generalWhatsapps": []
+    },
+    {
+      "id": "1240",
+      "name": "Dr Nkosazana Dlamini Zuma Local",
+      "category": "local",
+      "province": "KwaZulu-Natal",
+      "parentDistrictId": "118",
+      "parentDistrictName": "Harry Gwala District",
+      "sourceUrl": "https://municipalities.co.za/contacts/1240/dr-nkosazana-dlamini-zuma-local-municipality",
+      "water": {
+        "raw": "n/a",
+        "emails": [],
+        "phones": [],
+        "whatsapps": []
+      },
+      "generalEmails": [
+        "mailbox@ndz.gov.za"
+      ],
+      "generalWhatsapps": []
+    },
+    {
+      "id": "1153",
+      "name": "Dr Pixley Ka Isaka Seme Local",
+      "category": "local",
+      "province": "Mpumalanga",
+      "parentDistrictId": "132",
+      "parentDistrictName": "Gert Sibande District",
+      "sourceUrl": "https://municipalities.co.za/contacts/1153/dr-pixley-ka-isaka-seme-local-municipality",
+      "water": {
+        "raw": "082 774 4906 \n \n shikwambana@pixleykaseme.gov.za",
+        "emails": [
+          "shikwambana@pixleykaseme.gov.za"
+        ],
+        "phones": [
+          "0827744906"
+        ],
+        "whatsapps": []
+      },
+      "generalEmails": [
+        "records@pixleykaseme.gov.za"
+      ],
+      "generalWhatsapps": []
+    },
+    {
+      "id": "1208",
+      "name": "Drakenstein Local",
+      "category": "local",
+      "province": "Western Cape",
+      "parentDistrictId": "143",
+      "parentDistrictName": "Cape Winelands District",
+      "sourceUrl": "https://municipalities.co.za/contacts/1208/drakenstein-local-municipality",
+      "water": {
+        "raw": "021 807 4715 \n \n Customercare@drakenstein.gov.za",
+        "emails": [
+          "customercare@drakenstein.gov.za"
+        ],
+        "phones": [
+          "0218074715"
+        ],
+        "whatsapps": []
+      },
+      "generalEmails": [
+        "customercare@drakenstein.gov.za"
+      ],
+      "generalWhatsapps": []
+    },
+    {
+      "id": "1113",
+      "name": "eDumbe Local",
+      "category": "local",
+      "province": "KwaZulu-Natal",
+      "parentDistrictId": "125",
+      "parentDistrictName": "Zululand District",
+      "sourceUrl": "https://municipalities.co.za/contacts/1113/edumbe-local-municipality",
+      "water": {
+        "raw": "034 995 1650 \n \n info@edumbe.gov.za",
+        "emails": [
+          "info@edumbe.gov.za"
+        ],
+        "phones": [
+          "0349951650"
+        ],
+        "whatsapps": []
+      },
+      "generalEmails": [
+        "info@edumbe.gov.za"
+      ],
+      "generalWhatsapps": []
+    },
+    {
+      "id": "1122",
+      "name": "Elias Motsoaledi Local",
+      "category": "local",
+      "province": "Limpopo",
+      "parentDistrictId": "127",
+      "parentDistrictName": "Sekhukhune District",
+      "sourceUrl": "https://municipalities.co.za/contacts/1122/elias-motsoaledi-local-municipality",
+      "water": {
+        "raw": "013 262 7330/072 277 8617 \n \n lmoropyane@sekhukhune.gov.za",
+        "emails": [
+          "lmoropyane@sekhukhune.gov.za"
+        ],
+        "phones": [
+          "0132627330",
+          "0722778617"
+        ],
+        "whatsapps": []
+      },
+      "generalEmails": [
+        "info@emlm.gov.za"
+      ],
+      "generalWhatsapps": []
+    },
+    {
+      "id": "1028",
+      "name": "Elundini Local",
+      "category": "local",
+      "province": "Eastern Cape",
+      "parentDistrictId": "105",
+      "parentDistrictName": "Joe Gqabi District",
+      "sourceUrl": "https://municipalities.co.za/contacts/1028/elundini-local-municipality",
+      "water": {
+        "raw": "045 932 8162",
+        "emails": [],
+        "phones": [
+          "0459328162"
+        ],
+        "whatsapps": []
+      },
+      "generalEmails": [],
+      "generalWhatsapps": []
+    },
+    {
+      "id": "1068",
+      "name": "eMadlangeni Local",
+      "category": "local",
+      "province": "KwaZulu-Natal",
+      "parentDistrictId": "116",
+      "parentDistrictName": "Amajuba District",
+      "sourceUrl": "https://municipalities.co.za/contacts/1068/emadlangeni-local-municipality",
+      "water": {
+        "raw": "034 329 7200",
+        "emails": [],
+        "phones": [
+          "0343297200"
+        ],
+        "whatsapps": []
+      },
+      "generalEmails": [
+        "info@emadlangeni.gov.za"
+      ],
+      "generalWhatsapps": []
+    },
+    {
+      "id": "1156",
+      "name": "Emakhazeni Local",
+      "category": "local",
+      "province": "Mpumalanga",
+      "parentDistrictId": "133",
+      "parentDistrictName": "Nkangala District",
+      "sourceUrl": "https://municipalities.co.za/contacts/1156/emakhazeni-local-municipality",
+      "water": {
+        "raw": "013 253 7600 \n \n chris@emakhazenilm.co.za",
+        "emails": [
+          "chris@emakhazenilm.co.za"
+        ],
+        "phones": [
+          "0132537600"
+        ],
+        "whatsapps": []
+      },
+      "generalEmails": [
+        "municipality@emakhazenilm.co.za"
+      ],
+      "generalWhatsapps": []
+    },
+    {
+      "id": "1157",
+      "name": "Emalahleni Local",
+      "category": "local",
+      "province": "Mpumalanga",
+      "parentDistrictId": "133",
+      "parentDistrictName": "Nkangala District",
+      "sourceUrl": "https://municipalities.co.za/contacts/1157/emalahleni-local-municipality",
+      "water": {
+        "raw": "013 690 6424/6423 \n \n technical@emalahleni.gov.za",
+        "emails": [
+          "technical@emalahleni.gov.za"
+        ],
+        "phones": [
+          "0136906424"
+        ],
+        "whatsapps": []
+      },
+      "generalEmails": [
+        "admin@emalahleni.gov.za"
+      ],
+      "generalWhatsapps": []
+    },
+    {
+      "id": "1020",
+      "name": "Emalahleni Local",
+      "category": "local",
+      "province": "Eastern Cape",
+      "parentDistrictId": "104",
+      "parentDistrictName": "Chris Hani District",
+      "sourceUrl": "https://municipalities.co.za/contacts/1020/emalahleni-local-municipality",
+      "water": {
+        "raw": "087 808 0905",
+        "emails": [],
+        "phones": [
+          "0878080905"
+        ],
+        "whatsapps": []
+      },
+      "generalEmails": [
+        "admin@emalahlenilm.gov.za"
+      ],
+      "generalWhatsapps": []
+    },
+    {
+      "id": "1060",
+      "name": "Emfuleni Local",
+      "category": "local",
+      "province": "Gauteng",
+      "parentDistrictId": "114",
+      "parentDistrictName": "Sedibeng District",
+      "sourceUrl": "https://municipalities.co.za/contacts/1060/emfuleni-local-municipality",
+      "water": {
+        "raw": "016 986 8300/61/66/68/75",
+        "emails": [],
+        "phones": [
+          "0169868300"
+        ],
+        "whatsapps": []
+      },
+      "generalEmails": [],
+      "generalWhatsapps": []
+    },
+    {
+      "id": "1173",
+      "name": "Emthanjeni Local",
+      "category": "local",
+      "province": "Northern Cape",
+      "parentDistrictId": "137",
+      "parentDistrictName": "Pixley Ka Seme District",
+      "sourceUrl": "https://municipalities.co.za/contacts/1173/emthanjeni-local-municipality",
+      "water": {
+        "raw": "071 476 7173",
+        "emails": [],
+        "phones": [
+          "0714767173"
+        ],
+        "whatsapps": []
+      },
+      "generalEmails": [
+        "info@emthanjeni.co.za"
+      ],
+      "generalWhatsapps": []
+    },
+    {
+      "id": "1097",
+      "name": "Endumeni Local",
+      "category": "local",
+      "province": "KwaZulu-Natal",
+      "parentDistrictId": "122",
+      "parentDistrictName": "uMzinyathi District",
+      "sourceUrl": "https://municipalities.co.za/contacts/1097/endumeni-local-municipality",
+      "water": {
+        "raw": "034 219 1500 \n \n mm@umzinyathi.gov.za",
+        "emails": [
+          "mm@umzinyathi.gov.za"
+        ],
+        "phones": [
+          "0342191500"
+        ],
+        "whatsapps": []
+      },
+      "generalEmails": [
+        "registry@endumeni.gov.za"
+      ],
+      "generalWhatsapps": []
+    },
+    {
+      "id": "1234",
+      "name": "Enoch Mgijima Local",
+      "category": "local",
+      "province": "Eastern Cape",
+      "parentDistrictId": "104",
+      "parentDistrictName": "Chris Hani District",
+      "sourceUrl": "https://municipalities.co.za/contacts/1234/enoch-mgijima-local-municipality",
+      "water": {
+        "raw": "0800 100 100",
+        "emails": [],
+        "phones": [
+          "0800100100"
+        ],
+        "whatsapps": []
+      },
+      "generalEmails": [
+        "communications@enochmgijima.gov.za"
+      ],
+      "generalWhatsapps": []
+    },
+    {
+      "id": "1123",
+      "name": "Ephraim Mogale Local",
+      "category": "local",
+      "province": "Limpopo",
+      "parentDistrictId": "127",
+      "parentDistrictName": "Sekhukhune District",
+      "sourceUrl": "https://municipalities.co.za/contacts/1123/ephraim-mogale-local-municipality",
+      "water": {
+        "raw": "n/a",
+        "emails": [],
+        "phones": [],
+        "whatsapps": []
+      },
+      "generalEmails": [],
+      "generalWhatsapps": []
+    },
+    {
+      "id": "1243",
+      "name": "Fetakgomo Tubatse Local",
+      "category": "local",
+      "province": "Limpopo",
+      "parentDistrictId": "127",
+      "parentDistrictName": "Sekhukhune District",
+      "sourceUrl": "https://municipalities.co.za/contacts/1243/fetakgomo-tubatse-local-municipality",
+      "water": {
+        "raw": "n/a",
+        "emails": [],
+        "phones": [],
+        "whatsapps": []
+      },
+      "generalEmails": [
+        "info@tubatse.gov.za"
+      ],
+      "generalWhatsapps": []
+    },
+    {
+      "id": "1165",
+      "name": "Ga-Segonyana Local",
+      "category": "local",
+      "province": "Northern Cape",
+      "parentDistrictId": "135",
+      "parentDistrictName": "John Taolo Gaetsewe District",
+      "sourceUrl": "https://municipalities.co.za/contacts/1165/ga-segonyana-local-municipality",
+      "water": {
+        "raw": "n/a",
+        "emails": [],
+        "phones": [],
+        "whatsapps": []
+      },
+      "generalEmails": [
+        "registry@ga-segonyana.gov.za"
+      ],
+      "generalWhatsapps": []
+    },
+    {
+      "id": "1164",
+      "name": "Gamagara Local",
+      "category": "local",
+      "province": "Northern Cape",
+      "parentDistrictId": "135",
+      "parentDistrictName": "John Taolo Gaetsewe District",
+      "sourceUrl": "https://municipalities.co.za/contacts/1164/gamagara-local-municipality",
+      "water": {
+        "raw": "053 004 0242 \n \n siokok@gamagara.co.za",
+        "emails": [
+          "siokok@gamagara.co.za"
+        ],
+        "phones": [
+          "0530040242"
+        ],
+        "whatsapps": []
+      },
+      "generalEmails": [],
+      "generalWhatsapps": []
+    },
+    {
+      "id": "1216",
+      "name": "George Local",
+      "category": "local",
+      "province": "Western Cape",
+      "parentDistrictId": "145",
+      "parentDistrictName": "Garden Route District",
+      "sourceUrl": "https://municipalities.co.za/contacts/1216/george-local-municipality",
+      "water": {
+        "raw": "044 801 9262 \n \n gmun@george.gov.za",
+        "emails": [
+          "gmun@george.gov.za"
+        ],
+        "phones": [
+          "0448019262"
+        ],
+        "whatsapps": []
+      },
+      "generalEmails": [
+        "gmun@george.gov.za"
+      ],
+      "generalWhatsapps": []
+    },
+    {
+      "id": "1149",
+      "name": "Govan Mbeki Local",
+      "category": "local",
+      "province": "Mpumalanga",
+      "parentDistrictId": "132",
+      "parentDistrictName": "Gert Sibande District",
+      "sourceUrl": "https://municipalities.co.za/contacts/1149/govan-mbeki-local-municipality",
+      "water": {
+        "raw": "0800 600 001/4 \n \n callcentre@govanmbeki.gov.za",
+        "emails": [
+          "callcentre@govanmbeki.gov.za"
+        ],
+        "phones": [
+          "0800600001"
+        ],
+        "whatsapps": []
+      },
+      "generalEmails": [
+        "callcentre@govanmbeki.gov.za"
+      ],
+      "generalWhatsapps": []
+    },
+    {
+      "id": "1005",
+      "name": "Great Kei Local",
+      "category": "local",
+      "province": "Eastern Cape",
+      "parentDistrictId": "102",
+      "parentDistrictName": "Amathole District",
+      "sourceUrl": "https://municipalities.co.za/contacts/1005/great-kei-local-municipality",
+      "water": {
+        "raw": "043 831 5700",
+        "emails": [],
+        "phones": [
+          "0438315700"
+        ],
+        "whatsapps": []
+      },
+      "generalEmails": [
+        "info@greatkeilm.gov.za"
+      ],
+      "generalWhatsapps": []
+    },
+    {
+      "id": "1128",
+      "name": "Greater Giyani Local",
+      "category": "local",
+      "province": "Limpopo",
+      "parentDistrictId": "128",
+      "parentDistrictName": "Mopani District",
+      "sourceUrl": "https://municipalities.co.za/contacts/1128/greater-giyani-local-municipality",
+      "water": {
+        "raw": "015 811 5500",
+        "emails": [],
+        "phones": [
+          "0158115500"
+        ],
+        "whatsapps": []
+      },
+      "generalEmails": [],
+      "generalWhatsapps": []
+    },
+    {
+      "id": "1074",
+      "name": "Greater Kokstad Local",
+      "category": "local",
+      "province": "KwaZulu-Natal",
+      "parentDistrictId": "118",
+      "parentDistrictName": "Harry Gwala District",
+      "sourceUrl": "https://municipalities.co.za/contacts/1074/greater-kokstad-local-municipality",
+      "water": {
+        "raw": "039 834 8700 \n \n Gqibad@harrygwaladm.gov.za",
+        "emails": [
+          "gqibad@harrygwaladm.gov.za"
+        ],
+        "phones": [
+          "0398348700"
+        ],
+        "whatsapps": []
+      },
+      "generalEmails": [
+        "gkmcommunications@kokstad.gov.za"
+      ],
+      "generalWhatsapps": []
+    },
+    {
+      "id": "1129",
+      "name": "Greater Letaba Local",
+      "category": "local",
+      "province": "Limpopo",
+      "parentDistrictId": "128",
+      "parentDistrictName": "Mopani District",
+      "sourceUrl": "https://municipalities.co.za/contacts/1129/greater-letaba-local-municipality",
+      "water": {
+        "raw": "015 309 9246",
+        "emails": [],
+        "phones": [
+          "0153099246"
+        ],
+        "whatsapps": []
+      },
+      "generalEmails": [],
+      "generalWhatsapps": []
+    },
+    {
+      "id": "1196",
+      "name": "Greater Taung Local",
+      "category": "local",
+      "province": "North West",
+      "parentDistrictId": "141",
+      "parentDistrictName": "Dr Ruth Segomotsi Mompati District",
+      "sourceUrl": "https://municipalities.co.za/contacts/1196/greater-taung-local-municipality",
+      "water": {
+        "raw": "052 994 9475 \n \n nakanal@taunglm.co.za",
+        "emails": [
+          "nakanal@taunglm.co.za"
+        ],
+        "phones": [
+          "0529949475"
+        ],
+        "whatsapps": []
+      },
+      "generalEmails": [
+        "info@gtlm.gov.za"
+      ],
+      "generalWhatsapps": []
+    },
+    {
+      "id": "1130",
+      "name": "Greater Tzaneen Local",
+      "category": "local",
+      "province": "Limpopo",
+      "parentDistrictId": "128",
+      "parentDistrictName": "Mopani District",
+      "sourceUrl": "https://municipalities.co.za/contacts/1130/greater-tzaneen-local-municipality",
+      "water": {
+        "raw": "0153078190 / 0826790794 \n \n Tedia.Molewa@tzaneen.gov.za",
+        "emails": [
+          "tedia.molewa@tzaneen.gov.za"
+        ],
+        "phones": [
+          "0153078190",
+          "0826790794"
+        ],
+        "whatsapps": []
+      },
+      "generalEmails": [
+        "info@tzaneen.gov.za"
+      ],
+      "generalWhatsapps": []
+    },
+    {
+      "id": "1167",
+      "name": "Hantam Local",
+      "category": "local",
+      "province": "Northern Cape",
+      "parentDistrictId": "136",
+      "parentDistrictName": "Namakwa District",
+      "sourceUrl": "https://municipalities.co.za/contacts/1167/hantam-local-municipality",
+      "water": {
+        "raw": "027 341 8550 \n \n vanwykrc@hantam.gov.za",
+        "emails": [
+          "vanwykrc@hantam.gov.za"
+        ],
+        "phones": [
+          "0273418550"
+        ],
+        "whatsapps": []
+      },
+      "generalEmails": [
+        "info@hantam.gov.za"
+      ],
+      "generalWhatsapps": []
+    },
+    {
+      "id": "1217",
+      "name": "Hessequa Local",
+      "category": "local",
+      "province": "Western Cape",
+      "parentDistrictId": "145",
+      "parentDistrictName": "Garden Route District",
+      "sourceUrl": "https://municipalities.co.za/contacts/1217/hessequa-local-municipality",
+      "water": {
+        "raw": "028 713 8000 \n \n info@hessequa.gov.za",
+        "emails": [
+          "info@hessequa.gov.za"
+        ],
+        "phones": [
+          "0287138000"
+        ],
+        "whatsapps": []
+      },
+      "generalEmails": [
+        "info@hessequa.gov.za"
+      ],
+      "generalWhatsapps": []
+    },
+    {
+      "id": "1085",
+      "name": "Impendle Local",
+      "category": "local",
+      "province": "KwaZulu-Natal",
+      "parentDistrictId": "120",
+      "parentDistrictName": "uMgungundlovu District",
+      "sourceUrl": "https://municipalities.co.za/contacts/1085/impendle-local-municipality",
+      "water": {
+        "raw": "n/a",
+        "emails": [],
+        "phones": [],
+        "whatsapps": []
+      },
+      "generalEmails": [
+        "info@impendle.gov.za"
+      ],
+      "generalWhatsapps": []
+    },
+    {
+      "id": "1035",
+      "name": "Ingquza Hill Local",
+      "category": "local",
+      "province": "Eastern Cape",
+      "parentDistrictId": "106",
+      "parentDistrictName": "OR Tambo District",
+      "sourceUrl": "https://municipalities.co.za/contacts/1035/ingquza-hill-local-municipality",
+      "water": {
+        "raw": "n/a",
+        "emails": [],
+        "phones": [],
+        "whatsapps": []
+      },
+      "generalEmails": [
+        "info@ihlm.gov.za"
+      ],
+      "generalWhatsapps": []
+    },
+    {
+      "id": "1237",
+      "name": "Inkosi Langalibalele Local",
+      "category": "local",
+      "province": "KwaZulu-Natal",
+      "parentDistrictId": "123",
+      "parentDistrictName": "uThukela District",
+      "sourceUrl": "https://municipalities.co.za/contacts/1237/inkosi-langalibalele-local-municipality",
+      "water": {
+        "raw": "036 638 5100 \n \n Callcenter@uthukela.gov.za",
+        "emails": [
+          "callcenter@uthukela.gov.za"
+        ],
+        "phones": [
+          "0366385100"
+        ],
+        "whatsapps": []
+      },
+      "generalEmails": [
+        "speaker@ilm.gov.za"
+      ],
+      "generalWhatsapps": []
+    },
+    {
+      "id": "1094",
+      "name": "Inkosi uMtubatuba Local",
+      "category": "local",
+      "province": "KwaZulu-Natal",
+      "parentDistrictId": "121",
+      "parentDistrictName": "uMkhanyakude District",
+      "sourceUrl": "https://municipalities.co.za/contacts/1094/inkosi-umtubatuba-local-municipality",
+      "water": {
+        "raw": "n/a",
+        "emails": [],
+        "phones": [],
+        "whatsapps": []
+      },
+      "generalEmails": [
+        "info@mtubatuba.gov.za"
+      ],
+      "generalWhatsapps": []
+    },
+    {
+      "id": "1023",
+      "name": "Intsika Yethu Local",
+      "category": "local",
+      "province": "Eastern Cape",
+      "parentDistrictId": "104",
+      "parentDistrictName": "Chris Hani District",
+      "sourceUrl": "https://municipalities.co.za/contacts/1023/intsika-yethu-local-municipality",
+      "water": {
+        "raw": "478 748 779 \n \n nkwenkweziw@intsikayethu.gov.za",
+        "emails": [
+          "nkwenkweziw@intsikayethu.gov.za"
+        ],
+        "phones": [],
+        "whatsapps": []
+      },
+      "generalEmails": [
+        "info@intsikayethu.gov.za"
+      ],
+      "generalWhatsapps": []
+    },
+    {
+      "id": "1024",
+      "name": "Inxuba Yethemba Local",
+      "category": "local",
+      "province": "Eastern Cape",
+      "parentDistrictId": "104",
+      "parentDistrictName": "Chris Hani District",
+      "sourceUrl": "https://municipalities.co.za/contacts/1024/inxuba-yethemba-local-municipality",
+      "water": {
+        "raw": "n/a",
+        "emails": [],
+        "phones": [],
+        "whatsapps": []
+      },
+      "generalEmails": [],
+      "generalWhatsapps": []
+    },
+    {
+      "id": "1246",
+      "name": "JB Marks Local",
+      "category": "local",
+      "province": "North West",
+      "parentDistrictId": "140",
+      "parentDistrictName": "Dr Kenneth Kaunda District",
+      "sourceUrl": "https://municipalities.co.za/contacts/1246/jb-marks-local-municipality",
+      "water": {
+        "raw": "018 299 5408 / 5347 (a/h) \n \n pmetswamere@jbmarks.gov.za",
+        "emails": [
+          "pmetswamere@jbmarks.gov.za"
+        ],
+        "phones": [
+          "0182995408"
+        ],
+        "whatsapps": []
+      },
+      "generalEmails": [
+        "bhlongwa@jbmarks.gov.za"
+      ],
+      "generalWhatsapps": []
+    },
+    {
+      "id": "1166",
+      "name": "Joe Morolong Local",
+      "category": "local",
+      "province": "Northern Cape",
+      "parentDistrictId": "135",
+      "parentDistrictName": "John Taolo Gaetsewe District",
+      "sourceUrl": "https://municipalities.co.za/contacts/1166/joe-morolong-local-municipality",
+      "water": {
+        "raw": "0800 773 930 \n \n registry@joemorolong.gov.za",
+        "emails": [
+          "registry@joemorolong.gov.za"
+        ],
+        "phones": [
+          "0800773930"
+        ],
+        "whatsapps": []
+      },
+      "generalEmails": [
+        "registry@joemorolong.gov.za"
+      ],
+      "generalWhatsapps": []
+    },
+    {
+      "id": "1077",
+      "name": "Johannes Phumani Phungula Local",
+      "category": "local",
+      "province": "KwaZulu-Natal",
+      "parentDistrictId": "118",
+      "parentDistrictName": "Harry Gwala District",
+      "sourceUrl": "https://municipalities.co.za/contacts/1077/johannes-phumani-phungula-local-municipality",
+      "water": {
+        "raw": "n/a",
+        "emails": [],
+        "phones": [],
+        "whatsapps": []
+      },
+      "generalEmails": [
+        "admin@jppmunicipality.gov.za"
+      ],
+      "generalWhatsapps": []
+    },
+    {
+      "id": "1093",
+      "name": "Jozini Local",
+      "category": "local",
+      "province": "KwaZulu-Natal",
+      "parentDistrictId": "121",
+      "parentDistrictName": "uMkhanyakude District",
+      "sourceUrl": "https://municipalities.co.za/contacts/1093/jozini-local-municipality",
+      "water": {
+        "raw": "n/a",
+        "emails": [],
+        "phones": [],
+        "whatsapps": []
+      },
+      "generalEmails": [
+        "info@jozini.gov.za"
+      ],
+      "generalWhatsapps": []
+    },
+    {
+      "id": "1232",
+      "name": "Kagisano-Molopo Local",
+      "category": "local",
+      "province": "North West",
+      "parentDistrictId": "141",
+      "parentDistrictName": "Dr Ruth Segomotsi Mompati District",
+      "sourceUrl": "https://municipalities.co.za/contacts/1232/kagisano-molopo-local-municipality",
+      "water": {
+        "raw": "n/a",
+        "emails": [],
+        "phones": [],
+        "whatsapps": []
+      },
+      "generalEmails": [
+        "info@kagisanomolopolm.gov.za"
+      ],
+      "generalWhatsapps": []
+    },
+    {
+      "id": "1183",
+      "name": "Kai !Garib Local",
+      "category": "local",
+      "province": "Northern Cape",
+      "parentDistrictId": "138",
+      "parentDistrictName": "ZF Mgcawu District",
+      "sourceUrl": "https://municipalities.co.za/contacts/1183/kai-garib-local-municipality",
+      "water": {
+        "raw": "054 461 6700 \n \n tegnies@kaigarib.gov.za",
+        "emails": [
+          "tegnies@kaigarib.gov.za"
+        ],
+        "phones": [
+          "0544616700"
+        ],
+        "whatsapps": []
+      },
+      "generalEmails": [
+        "admin@kaigarib.gov.za"
+      ],
+      "generalWhatsapps": []
+    },
+    {
+      "id": "1168",
+      "name": "Kamiesberg Local",
+      "category": "local",
+      "province": "Northern Cape",
+      "parentDistrictId": "136",
+      "parentDistrictName": "Namakwa District",
+      "sourceUrl": "https://municipalities.co.za/contacts/1168/kamiesberg-local-municipality",
+      "water": {
+        "raw": "027 652 8031 \n \n theunis@kamiesberg.gov.za",
+        "emails": [
+          "theunis@kamiesberg.gov.za"
+        ],
+        "phones": [
+          "0276528031"
+        ],
+        "whatsapps": []
+      },
+      "generalEmails": [],
+      "generalWhatsapps": []
+    },
+    {
+      "id": "1218",
+      "name": "Kannaland Local",
+      "category": "local",
+      "province": "Western Cape",
+      "parentDistrictId": "145",
+      "parentDistrictName": "Garden Route District",
+      "sourceUrl": "https://municipalities.co.za/contacts/1218/kannaland-local-municipality",
+      "water": {
+        "raw": "028 492 0111 \n \n dido@kannaland.gov.za",
+        "emails": [
+          "dido@kannaland.gov.za"
+        ],
+        "phones": [
+          "0284920111"
+        ],
+        "whatsapps": []
+      },
+      "generalEmails": [
+        "argiewe@kannaland.gov.za"
+      ],
+      "generalWhatsapps": []
+    },
+    {
+      "id": "1174",
+      "name": "Kareeberg Local",
+      "category": "local",
+      "province": "Northern Cape",
+      "parentDistrictId": "137",
+      "parentDistrictName": "Pixley Ka Seme District",
+      "sourceUrl": "https://municipalities.co.za/contacts/1174/kareeberg-local-municipality",
+      "water": {
+        "raw": "053 382 3012 \n \n kareeberg@xsinet.co.za",
+        "emails": [
+          "kareeberg@xsinet.co.za"
+        ],
+        "phones": [
+          "0533823012"
+        ],
+        "whatsapps": []
+      },
+      "generalEmails": [
+        "kareeberg@xsinet.co.za"
+      ],
+      "generalWhatsapps": []
+    },
+    {
+      "id": "1169",
+      "name": "Karoo Hoogland Local",
+      "category": "local",
+      "province": "Northern Cape",
+      "parentDistrictId": "136",
+      "parentDistrictName": "Namakwa District",
+      "sourceUrl": "https://municipalities.co.za/contacts/1169/karoo-hoogland-local-municipality",
+      "water": {
+        "raw": "n/a \n \n f.lotter@karoohoogland.gov.za",
+        "emails": [
+          "f.lotter@karoohoogland.gov.za"
+        ],
+        "phones": [],
+        "whatsapps": []
+      },
+      "generalEmails": [
+        "info@karoohoogland.gov.za"
+      ],
+      "generalWhatsapps": []
+    },
+    {
+      "id": "1184",
+      "name": "Kgatelopele Local",
+      "category": "local",
+      "province": "Northern Cape",
+      "parentDistrictId": "138",
+      "parentDistrictName": "ZF Mgcawu District",
+      "sourceUrl": "https://municipalities.co.za/contacts/1184/kgatelopele-local-municipality",
+      "water": {
+        "raw": "053 384 8600 \n \n foreman1@kgatelopele.gov.za",
+        "emails": [
+          "foreman1@kgatelopele.gov.za"
+        ],
+        "phones": [
+          "0533848600"
+        ],
+        "whatsapps": []
+      },
+      "generalEmails": [
+        "customercare@kgatelopele.gov.za"
+      ],
+      "generalWhatsapps": []
+    },
+    {
+      "id": "1187",
+      "name": "Kgetlengrivier Local",
+      "category": "local",
+      "province": "North West",
+      "parentDistrictId": "139",
+      "parentDistrictName": "Bojanala Platinum District",
+      "sourceUrl": "https://municipalities.co.za/contacts/1187/kgetlengrivier-local-municipality",
+      "water": {
+        "raw": "014 543 2004/5/6",
+        "emails": [],
+        "phones": [
+          "0145432004"
+        ],
+        "whatsapps": []
+      },
+      "generalEmails": [],
+      "generalWhatsapps": []
+    },
+    {
+      "id": "1170",
+      "name": "Khai-Ma Local",
+      "category": "local",
+      "province": "Northern Cape",
+      "parentDistrictId": "136",
+      "parentDistrictName": "Namakwa District",
+      "sourceUrl": "https://municipalities.co.za/contacts/1170/khai-ma-local-municipality",
+      "water": {
+        "raw": "054 933 1000 \n \n hendry@khaima.gov.za",
+        "emails": [
+          "hendry@khaima.gov.za"
+        ],
+        "phones": [
+          "0549331000"
+        ],
+        "whatsapps": []
+      },
+      "generalEmails": [
+        "mmsecretary@khaima.gov.za"
+      ],
+      "generalWhatsapps": []
+    },
+    {
+      "id": "1032",
+      "name": "King Sabata Dalindyebo Local",
+      "category": "local",
+      "province": "Eastern Cape",
+      "parentDistrictId": "106",
+      "parentDistrictName": "OR Tambo District",
+      "sourceUrl": "https://municipalities.co.za/contacts/1032/king-sabata-dalindyebo-local-municipality",
+      "water": {
+        "raw": "047 501 6400 \n \n ortambo@ortambodm.gov.za",
+        "emails": [
+          "ortambo@ortambodm.gov.za"
+        ],
+        "phones": [
+          "0475016400"
+        ],
+        "whatsapps": []
+      },
+      "generalEmails": [
+        "ksdcommunications@ksd.gov.za"
+      ],
+      "generalWhatsapps": []
+    },
+    {
+      "id": "1219",
+      "name": "Knysna Local",
+      "category": "local",
+      "province": "Western Cape",
+      "parentDistrictId": "145",
+      "parentDistrictName": "Garden Route District",
+      "sourceUrl": "https://municipalities.co.za/contacts/1219/knysna-local-municipality",
+      "water": {
+        "raw": "044 302 6331 \n \n knysna@knysna.gov.za",
+        "emails": [
+          "knysna@knysna.gov.za"
+        ],
+        "phones": [
+          "0443026331"
+        ],
+        "whatsapps": []
+      },
+      "generalEmails": [
+        "knysna@knysna.gov.za"
+      ],
+      "generalWhatsapps": []
+    },
+    {
+      "id": "1055",
+      "name": "Kopanong Local",
+      "category": "local",
+      "province": "Free State",
+      "parentDistrictId": "111",
+      "parentDistrictName": "Xhariep District",
+      "sourceUrl": "https://municipalities.co.za/contacts/1055/kopanong-local-municipality",
+      "water": {
+        "raw": "078 800 9047 \n \n marshall.mmm@gmail.com",
+        "emails": [
+          "marshall.mmm@gmail.com"
+        ],
+        "phones": [
+          "0788009047"
+        ],
+        "whatsapps": []
+      },
+      "generalEmails": [
+        "commoff@kopanong.gov.za"
+      ],
+      "generalWhatsapps": []
+    },
+    {
+      "id": "1015",
+      "name": "Kouga Local",
+      "category": "local",
+      "province": "Eastern Cape",
+      "parentDistrictId": "103",
+      "parentDistrictName": "Sarah Baartman District",
+      "sourceUrl": "https://municipalities.co.za/contacts/1015/kouga-local-municipality",
+      "water": {
+        "raw": "042 200 2200 \n \n pacivil@kouga.gov.za",
+        "emails": [
+          "pacivil@kouga.gov.za"
+        ],
+        "phones": [
+          "0422002200"
+        ],
+        "whatsapps": []
+      },
+      "generalEmails": [
+        "registry@kouga.gov.za"
+      ],
+      "generalWhatsapps": []
+    },
+    {
+      "id": "1016",
+      "name": "Koukamma Local",
+      "category": "local",
+      "province": "Eastern Cape",
+      "parentDistrictId": "103",
+      "parentDistrictName": "Sarah Baartman District",
+      "sourceUrl": "https://municipalities.co.za/contacts/1016/koukamma-local-municipality",
+      "water": {
+        "raw": "042 288 7218 \n \n mzi.qalaba@koukamma.gov.za",
+        "emails": [
+          "mzi.qalaba@koukamma.gov.za"
+        ],
+        "phones": [
+          "0422887218"
+        ],
+        "whatsapps": []
+      },
+      "generalEmails": [
+        "koukamma@koukamma.gov.za"
+      ],
+      "generalWhatsapps": []
+    },
+    {
+      "id": "1070",
+      "name": "KwaDukuza Local",
+      "category": "local",
+      "province": "KwaZulu-Natal",
+      "parentDistrictId": "117",
+      "parentDistrictName": "iLembe District",
+      "sourceUrl": "https://municipalities.co.za/contacts/1070/kwadukuza-local-municipality",
+      "water": {
+        "raw": "032 437 9300 \n \n thanda.mayise@ilembe.gov.za",
+        "emails": [
+          "thanda.mayise@ilembe.gov.za"
+        ],
+        "phones": [
+          "0324379300"
+        ],
+        "whatsapps": []
+      },
+      "generalEmails": [
+        "communications@kwadukuza.gov.za"
+      ],
+      "generalWhatsapps": []
+    },
+    {
+      "id": "1213",
+      "name": "Laingsburg Local",
+      "category": "local",
+      "province": "Western Cape",
+      "parentDistrictId": "144",
+      "parentDistrictName": "Central Karoo District",
+      "sourceUrl": "https://municipalities.co.za/contacts/1213/laingsburg-local-municipality",
+      "water": {
+        "raw": "023 551 1019 \n \n john@laingsburg.gov.za",
+        "emails": [
+          "john@laingsburg.gov.za"
+        ],
+        "phones": [
+          "0235511019"
+        ],
+        "whatsapps": []
+      },
+      "generalEmails": [
+        "info@laingsburg.gov.za"
+      ],
+      "generalWhatsapps": []
+    },
+    {
+      "id": "1209",
+      "name": "Langeberg Local",
+      "category": "local",
+      "province": "Western Cape",
+      "parentDistrictId": "143",
+      "parentDistrictName": "Cape Winelands District",
+      "sourceUrl": "https://municipalities.co.za/contacts/1209/langeberg-local-municipality",
+      "water": {
+        "raw": "086 088 1111 \n \n info@langeberg.gov.za",
+        "emails": [
+          "info@langeberg.gov.za"
+        ],
+        "phones": [
+          "0860881111"
+        ],
+        "whatsapps": []
+      },
+      "generalEmails": [
+        "admin@langeberg.gov.za"
+      ],
+      "generalWhatsapps": []
+    },
+    {
+      "id": "1150",
+      "name": "Lekwa Local",
+      "category": "local",
+      "province": "Mpumalanga",
+      "parentDistrictId": "132",
+      "parentDistrictName": "Gert Sibande District",
+      "sourceUrl": "https://municipalities.co.za/contacts/1150/lekwa-local-municipality",
+      "water": {
+        "raw": "017 712 1065 \n \n khanthi@webmail.co.za",
+        "emails": [
+          "khanthi@webmail.co.za"
+        ],
+        "phones": [
+          "0177121065"
+        ],
+        "whatsapps": []
+      },
+      "generalEmails": [
+        "admin@lekwalm.gov.za"
+      ],
+      "generalWhatsapps": []
+    },
+    {
+      "id": "1198",
+      "name": "Lekwa-Teemane Local",
+      "category": "local",
+      "province": "North West",
+      "parentDistrictId": "141",
+      "parentDistrictName": "Dr Ruth Segomotsi Mompati District",
+      "sourceUrl": "https://municipalities.co.za/contacts/1198/lekwa-teemane-local-municipality",
+      "water": {
+        "raw": "083 3063394 / 072 6476106 \n \n registry@lekwa-teemane.co.za",
+        "emails": [
+          "registry@lekwa-teemane.co.za"
+        ],
+        "phones": [
+          "0833063394",
+          "0726476106"
+        ],
+        "whatsapps": []
+      },
+      "generalEmails": [
+        "contact@lekwa-teemane.co.za"
+      ],
+      "generalWhatsapps": []
+    },
+    {
+      "id": "1119",
+      "name": "Lepelle-Nkumpi Local",
+      "category": "local",
+      "province": "Limpopo",
+      "parentDistrictId": "126",
+      "parentDistrictName": "Capricorn District",
+      "sourceUrl": "https://municipalities.co.za/contacts/1119/lepelle-nkumpi-local-municipality",
+      "water": {
+        "raw": "015 633 4596",
+        "emails": [],
+        "phones": [
+          "0156334596"
+        ],
+        "whatsapps": []
+      },
+      "generalEmails": [],
+      "generalWhatsapps": []
+    },
+    {
+      "id": "1137",
+      "name": "Lephalale Local",
+      "category": "local",
+      "province": "Limpopo",
+      "parentDistrictId": "130",
+      "parentDistrictName": "Waterberg District",
+      "sourceUrl": "https://municipalities.co.za/contacts/1137/lephalale-local-municipality",
+      "water": {
+        "raw": "014 762 1474 \n \n april.shiko@lephalale.gov.za",
+        "emails": [
+          "april.shiko@lephalale.gov.za"
+        ],
+        "phones": [
+          "0147621474"
+        ],
+        "whatsapps": []
+      },
+      "generalEmails": [
+        "munic@lephalale.gov.za"
+      ],
+      "generalWhatsapps": []
+    },
+    {
+      "id": "1061",
+      "name": "Lesedi Local",
+      "category": "local",
+      "province": "Gauteng",
+      "parentDistrictId": "114",
+      "parentDistrictName": "Sedibeng District",
+      "sourceUrl": "https://municipalities.co.za/contacts/1061/lesedi-local-municipality",
+      "water": {
+        "raw": "016 466 1965 \n \n starm@lesedi.gov.za",
+        "emails": [
+          "starm@lesedi.gov.za"
+        ],
+        "phones": [
+          "0164661965"
+        ],
+        "whatsapps": []
+      },
+      "generalEmails": [],
+      "generalWhatsapps": []
+    },
+    {
+      "id": "1056",
+      "name": "Letsemeng Local",
+      "category": "local",
+      "province": "Free State",
+      "parentDistrictId": "111",
+      "parentDistrictName": "Xhariep District",
+      "sourceUrl": "https://municipalities.co.za/contacts/1056/letsemeng-local-municipality",
+      "water": {
+        "raw": "053 330 0200/233 \n \n keitseng@letsemeng.gov.za",
+        "emails": [
+          "keitseng@letsemeng.gov.za"
+        ],
+        "phones": [
+          "0533300200"
+        ],
+        "whatsapps": []
+      },
+      "generalEmails": [
+        "letse@letsemeng.gov.za"
+      ],
+      "generalWhatsapps": []
+    },
+    {
+      "id": "1188",
+      "name": "Madibeng Local",
+      "category": "local",
+      "province": "North West",
+      "parentDistrictId": "139",
+      "parentDistrictName": "Bojanala Platinum District",
+      "sourceUrl": "https://municipalities.co.za/contacts/1188/madibeng-local-municipality",
+      "water": {
+        "raw": "012 318 9665 \n \n customercare@madibeng.gov.za",
+        "emails": [
+          "customercare@madibeng.gov.za"
+        ],
+        "phones": [
+          "0123189665"
+        ],
+        "whatsapps": []
+      },
+      "generalEmails": [
+        "customercare@madibeng.gov.za"
+      ],
+      "generalWhatsapps": []
+    },
+    {
+      "id": "1039",
+      "name": "Mafube Local",
+      "category": "local",
+      "province": "Free State",
+      "parentDistrictId": "107",
+      "parentDistrictName": "Fezile Dabi District",
+      "sourceUrl": "https://municipalities.co.za/contacts/1039/mafube-local-municipality",
+      "water": {
+        "raw": "073 850 0805",
+        "emails": [],
+        "phones": [
+          "0738500805"
+        ],
+        "whatsapps": []
+      },
+      "generalEmails": [
+        "info@mafubemunicipality.gov.za"
+      ],
+      "generalWhatsapps": []
+    },
+    {
+      "id": "1161",
+      "name": "Magareng Local",
+      "category": "local",
+      "province": "Northern Cape",
+      "parentDistrictId": "134",
+      "parentDistrictName": "Frances Baard District",
+      "sourceUrl": "https://municipalities.co.za/contacts/1161/magareng-local-municipality",
+      "water": {
+        "raw": "n/a",
+        "emails": [],
+        "phones": [],
+        "whatsapps": []
+      },
+      "generalEmails": [
+        "info@magareng.gov.za"
+      ],
+      "generalWhatsapps": []
+    },
+    {
+      "id": "1203",
+      "name": "Mahikeng Local",
+      "category": "local",
+      "province": "North West",
+      "parentDistrictId": "142",
+      "parentDistrictName": "Ngaka Modiri Molema District",
+      "sourceUrl": "https://municipalities.co.za/contacts/1203/mahikeng-local-municipality",
+      "water": {
+        "raw": "018 389 0381/0 \n \n irene.monaisa@mafikeng.gov.za",
+        "emails": [
+          "irene.monaisa@mafikeng.gov.za"
+        ],
+        "phones": [
+          "0183890381"
+        ],
+        "whatsapps": []
+      },
+      "generalEmails": [
+        "communications@mafikeng.gov.za"
+      ],
+      "generalWhatsapps": []
+    },
+    {
+      "id": "1017",
+      "name": "Makana Local",
+      "category": "local",
+      "province": "Eastern Cape",
+      "parentDistrictId": "103",
+      "parentDistrictName": "Sarah Baartman District",
+      "sourceUrl": "https://municipalities.co.za/contacts/1017/makana-local-municipality",
+      "water": {
+        "raw": "046 603 6069 \n \n mqwane@makana.gov.za",
+        "emails": [
+          "mqwane@makana.gov.za"
+        ],
+        "phones": [
+          "0466036069"
+        ],
+        "whatsapps": []
+      },
+      "generalEmails": [
+        "info@makana.gov.za"
+      ],
+      "generalWhatsapps": []
+    },
+    {
+      "id": "1132",
+      "name": "Makhado Local",
+      "category": "local",
+      "province": "Limpopo",
+      "parentDistrictId": "129",
+      "parentDistrictName": "Vhembe District",
+      "sourceUrl": "https://municipalities.co.za/contacts/1132/makhado-local-municipality",
+      "water": {
+        "raw": "n/a",
+        "emails": [],
+        "phones": [],
+        "whatsapps": []
+      },
+      "generalEmails": [
+        "municipal.manager@makhado.gov.za"
+      ],
+      "generalWhatsapps": []
+    },
+    {
+      "id": "1126",
+      "name": "Makhuduthamaga Local",
+      "category": "local",
+      "province": "Limpopo",
+      "parentDistrictId": "127",
+      "parentDistrictName": "Sekhukhune District",
+      "sourceUrl": "https://municipalities.co.za/contacts/1126/makhuduthamaga-local-municipality",
+      "water": {
+        "raw": "n/a",
+        "emails": [],
+        "phones": [],
+        "whatsapps": []
+      },
+      "generalEmails": [
+        "info@makhuduthamaga.gov.za"
+      ],
+      "generalWhatsapps": []
+    },
+    {
+      "id": "1051",
+      "name": "Maluti-A-Phofung Local",
+      "category": "local",
+      "province": "Free State",
+      "parentDistrictId": "110",
+      "parentDistrictName": "Thabo Mofutsanyana District",
+      "sourceUrl": "https://municipalities.co.za/contacts/1051/maluti-a-phofung-local-municipality",
+      "water": {
+        "raw": "n/a",
+        "emails": [],
+        "phones": [],
+        "whatsapps": []
+      },
+      "generalEmails": [
+        "info@map.gov.za"
+      ],
+      "generalWhatsapps": []
+    },
+    {
+      "id": "1199",
+      "name": "Mamusa Local",
+      "category": "local",
+      "province": "North West",
+      "parentDistrictId": "141",
+      "parentDistrictName": "Dr Ruth Segomotsi Mompati District",
+      "sourceUrl": "https://municipalities.co.za/contacts/1199/mamusa-local-municipality",
+      "water": {
+        "raw": "060 461 6493 \n \n kvvmasire@gmail.com",
+        "emails": [
+          "kvvmasire@gmail.com"
+        ],
+        "phones": [
+          "0604616493"
+        ],
+        "whatsapps": []
+      },
+      "generalEmails": [
+        "mainej65@gmail.com"
+      ],
+      "generalWhatsapps": []
+    },
+    {
+      "id": "1071",
+      "name": "Mandeni Local",
+      "category": "local",
+      "province": "KwaZulu-Natal",
+      "parentDistrictId": "117",
+      "parentDistrictName": "iLembe District",
+      "sourceUrl": "https://municipalities.co.za/contacts/1071/mandeni-local-municipality",
+      "water": {
+        "raw": "032 456 6171",
+        "emails": [],
+        "phones": [
+          "0324566171"
+        ],
+        "whatsapps": []
+      },
+      "generalEmails": [
+        "queries@mandeni.gov.za"
+      ],
+      "generalWhatsapps": []
+    },
+    {
+      "id": "1049",
+      "name": "Mantsopa Local",
+      "category": "local",
+      "province": "Free State",
+      "parentDistrictId": "110",
+      "parentDistrictName": "Thabo Mofutsanyana District",
+      "sourceUrl": "https://municipalities.co.za/contacts/1049/mantsopa-local-municipality",
+      "water": {
+        "raw": "051 924 0654 \n \n wsam@mantsopa.co.za",
+        "emails": [
+          "wsam@mantsopa.co.za"
+        ],
+        "phones": [
+          "0519240654"
+        ],
+        "whatsapps": []
+      },
+      "generalEmails": [],
+      "generalWhatsapps": []
+    },
+    {
+      "id": "1072",
+      "name": "Maphumulo Local",
+      "category": "local",
+      "province": "KwaZulu-Natal",
+      "parentDistrictId": "117",
+      "parentDistrictName": "iLembe District",
+      "sourceUrl": "https://municipalities.co.za/contacts/1072/maphumulo-local-municipality",
+      "water": {
+        "raw": "n/a",
+        "emails": [],
+        "phones": [],
+        "whatsapps": []
+      },
+      "generalEmails": [
+        "info@maphumulo.gov.za"
+      ],
+      "generalWhatsapps": []
+    },
+    {
+      "id": "1192",
+      "name": "Maquassi Hills Local",
+      "category": "local",
+      "province": "North West",
+      "parentDistrictId": "140",
+      "parentDistrictName": "Dr Kenneth Kaunda District",
+      "sourceUrl": "https://municipalities.co.za/contacts/1192/maquassi-hills-local-municipality",
+      "water": {
+        "raw": "073 465 5486",
+        "emails": [],
+        "phones": [
+          "0734655486"
+        ],
+        "whatsapps": []
+      },
+      "generalEmails": [],
+      "generalWhatsapps": []
+    },
+    {
+      "id": "1131",
+      "name": "Maruleng Local",
+      "category": "local",
+      "province": "Limpopo",
+      "parentDistrictId": "128",
+      "parentDistrictName": "Mopani District",
+      "sourceUrl": "https://municipalities.co.za/contacts/1131/maruleng-local-municipality",
+      "water": {
+        "raw": "n/a",
+        "emails": [],
+        "phones": [],
+        "whatsapps": []
+      },
+      "generalEmails": [
+        "info@maruleng.gov.za"
+      ],
+      "generalWhatsapps": []
+    },
+    {
+      "id": "1043",
+      "name": "Masilonyana Local",
+      "category": "local",
+      "province": "Free State",
+      "parentDistrictId": "108",
+      "parentDistrictName": "Lejweleputswa District",
+      "sourceUrl": "https://municipalities.co.za/contacts/1043/masilonyana-local-municipality",
+      "water": {
+        "raw": "n/a",
+        "emails": [],
+        "phones": [],
+        "whatsapps": []
+      },
+      "generalEmails": [
+        "info@masilonyana.co.za"
+      ],
+      "generalWhatsapps": []
+    },
+    {
+      "id": "1001",
+      "name": "Matatiele Local",
+      "category": "local",
+      "province": "Eastern Cape",
+      "parentDistrictId": "101",
+      "parentDistrictName": "Alfred Nzo District",
+      "sourceUrl": "https://municipalities.co.za/contacts/1001/matatiele-local-municipality",
+      "water": {
+        "raw": "039 254 5000 \n \n customercare@andm.gov.za",
+        "emails": [
+          "customercare@andm.gov.za"
+        ],
+        "phones": [
+          "0392545000"
+        ],
+        "whatsapps": []
+      },
+      "generalEmails": [
+        "info@www.matatiele.gov.za"
+      ],
+      "generalWhatsapps": []
+    },
+    {
+      "id": "1044",
+      "name": "Matjhabeng Local",
+      "category": "local",
+      "province": "Free State",
+      "parentDistrictId": "108",
+      "parentDistrictName": "Lejweleputswa District",
+      "sourceUrl": "https://municipalities.co.za/contacts/1044/matjhabeng-local-municipality",
+      "water": {
+        "raw": "057 391 3911 \n \n bafanam@matjhabeng.co.za",
+        "emails": [
+          "bafanam@matjhabeng.co.za"
+        ],
+        "phones": [
+          "0573913911"
+        ],
+        "whatsapps": []
+      },
+      "generalEmails": [
+        "info@matjhabeng.co.za"
+      ],
+      "generalWhatsapps": []
+    },
+    {
+      "id": "1228",
+      "name": "Matzikama Local",
+      "category": "local",
+      "province": "Western Cape",
+      "parentDistrictId": "147",
+      "parentDistrictName": "West Coast District",
+      "sourceUrl": "https://municipalities.co.za/contacts/1228/matzikama-local-municipality",
+      "water": {
+        "raw": "027 201 3403 \n \n dudleym@matzikama.gov.za",
+        "emails": [
+          "dudleym@matzikama.gov.za"
+        ],
+        "phones": [
+          "0272013403"
+        ],
+        "whatsapps": []
+      },
+      "generalEmails": [
+        "headoff@matzikama.gov.za"
+      ],
+      "generalWhatsapps": []
+    },
+    {
+      "id": "1006",
+      "name": "Mbhashe Local",
+      "category": "local",
+      "province": "Eastern Cape",
+      "parentDistrictId": "102",
+      "parentDistrictName": "Amathole District",
+      "sourceUrl": "https://municipalities.co.za/contacts/1006/mbhashe-local-municipality",
+      "water": {
+        "raw": "043 701 4139 \n \n adminfo@amathole.gov.za",
+        "emails": [
+          "adminfo@amathole.gov.za"
+        ],
+        "phones": [
+          "0437014139"
+        ],
+        "whatsapps": []
+      },
+      "generalEmails": [
+        "info@mbhashemun.gov.za"
+      ],
+      "generalWhatsapps": []
+    },
+    {
+      "id": "1063",
+      "name": "Merafong City Local",
+      "category": "local",
+      "province": "Gauteng",
+      "parentDistrictId": "115",
+      "parentDistrictName": "West Rand District",
+      "sourceUrl": "https://municipalities.co.za/contacts/1063/merafong-city-local-municipality",
+      "water": {
+        "raw": "018 788 9782",
+        "emails": [],
+        "phones": [
+          "0187889782"
+        ],
+        "whatsapps": []
+      },
+      "generalEmails": [
+        "info@merafong.gov.za"
+      ],
+      "generalWhatsapps": []
+    },
+    {
+      "id": "1040",
+      "name": "Metsimaholo Local",
+      "category": "local",
+      "province": "Free State",
+      "parentDistrictId": "107",
+      "parentDistrictName": "Fezile Dabi District",
+      "sourceUrl": "https://municipalities.co.za/contacts/1040/metsimaholo-local-municipality",
+      "water": {
+        "raw": "016 976 0945/016 973 8765 \n \n joseph.mabe@metsimaholo.gov.za",
+        "emails": [
+          "joseph.mabe@metsimaholo.gov.za"
+        ],
+        "phones": [
+          "0169760945",
+          "0169738765"
+        ],
+        "whatsapps": []
+      },
+      "generalEmails": [
+        "enquiries1@metsimaholo.gov.za"
+      ],
+      "generalWhatsapps": []
+    },
+    {
+      "id": "1034",
+      "name": "Mhlontlo Local",
+      "category": "local",
+      "province": "Eastern Cape",
+      "parentDistrictId": "106",
+      "parentDistrictName": "OR Tambo District",
+      "sourceUrl": "https://municipalities.co.za/contacts/1034/mhlontlo-local-municipality",
+      "water": {
+        "raw": "082 955 9991 \n \n tmase@mhlontlolm.gov.za",
+        "emails": [
+          "tmase@mhlontlolm.gov.za"
+        ],
+        "phones": [
+          "0829559991"
+        ],
+        "whatsapps": []
+      },
+      "generalEmails": [
+        "info@mhlontlolm.gov.za"
+      ],
+      "generalWhatsapps": []
+    },
+    {
+      "id": "1062",
+      "name": "Midvaal Local",
+      "category": "local",
+      "province": "Gauteng",
+      "parentDistrictId": "114",
+      "parentDistrictName": "Sedibeng District",
+      "sourceUrl": "https://municipalities.co.za/contacts/1062/midvaal-local-municipality",
+      "water": {
+        "raw": "087 106 2471 \n \n complaints@midvaal.gov.za",
+        "emails": [
+          "complaints@midvaal.gov.za"
+        ],
+        "phones": [
+          "0871062471"
+        ],
+        "whatsapps": []
+      },
+      "generalEmails": [
+        "complaints@midvaal.gov.za"
+      ],
+      "generalWhatsapps": []
+    },
+    {
+      "id": "1086",
+      "name": "Mkhambathini Local",
+      "category": "local",
+      "province": "KwaZulu-Natal",
+      "parentDistrictId": "120",
+      "parentDistrictName": "uMgungundlovu District",
+      "sourceUrl": "https://municipalities.co.za/contacts/1086/mkhambathini-local-municipality",
+      "water": {
+        "raw": "031 785 1633/0800 864 911 \n \n jerome.xele@umdm.gov.za",
+        "emails": [
+          "jerome.xele@umdm.gov.za"
+        ],
+        "phones": [
+          "0317851633",
+          "0800864911"
+        ],
+        "whatsapps": []
+      },
+      "generalEmails": [
+        "info@mkhambathini.gov.za"
+      ],
+      "generalWhatsapps": []
+    },
+    {
+      "id": "1151",
+      "name": "Mkhondo Local",
+      "category": "local",
+      "province": "Mpumalanga",
+      "parentDistrictId": "132",
+      "parentDistrictName": "Gert Sibande District",
+      "sourceUrl": "https://municipalities.co.za/contacts/1151/mkhondo-local-municipality",
+      "water": {
+        "raw": "017 004 0197 \n \n TMazibuko@mkhondo.gov.za",
+        "emails": [
+          "tmazibuko@mkhondo.gov.za"
+        ],
+        "phones": [
+          "0170040197"
+        ],
+        "whatsapps": []
+      },
+      "generalEmails": [
+        "info@mkhondo.gov.za"
+      ],
+      "generalWhatsapps": []
+    },
+    {
+      "id": "1007",
+      "name": "Mnquma Local",
+      "category": "local",
+      "province": "Eastern Cape",
+      "parentDistrictId": "102",
+      "parentDistrictName": "Amathole District",
+      "sourceUrl": "https://municipalities.co.za/contacts/1007/mnquma-local-municipality",
+      "water": {
+        "raw": "071 215 8257 \n \n sisa.msiwa@outlook.com",
+        "emails": [
+          "sisa.msiwa@outlook.com"
+        ],
+        "phones": [
+          "0712158257"
+        ],
+        "whatsapps": []
+      },
+      "generalEmails": [
+        "info@mnquma.gov.za",
+        "customercare@mnquma.gov.za"
+      ],
+      "generalWhatsapps": []
+    },
+    {
+      "id": "1242",
+      "name": "Modimolle-Mookgophong Local",
+      "category": "local",
+      "province": "Limpopo",
+      "parentDistrictId": "130",
+      "parentDistrictName": "Waterberg District",
+      "sourceUrl": "https://municipalities.co.za/contacts/1242/modimolle-mookgophong-local-municipality",
+      "water": {
+        "raw": "014 717 5798 \n \n selemelat@modimolle.gov.za",
+        "emails": [
+          "selemelat@modimolle.gov.za"
+        ],
+        "phones": [
+          "0147175798"
+        ],
+        "whatsapps": []
+      },
+      "generalEmails": [
+        "records@modimolle.gov.za"
+      ],
+      "generalWhatsapps": []
+    },
+    {
+      "id": "1139",
+      "name": "Mogalakwena Local",
+      "category": "local",
+      "province": "Limpopo",
+      "parentDistrictId": "130",
+      "parentDistrictName": "Waterberg District",
+      "sourceUrl": "https://municipalities.co.za/contacts/1139/mogalakwena-local-municipality",
+      "water": {
+        "raw": "015 491 9617/9618/9669 \n \n ledwabaj@mogalakwena.gov.za",
+        "emails": [
+          "ledwabaj@mogalakwena.gov.za"
+        ],
+        "phones": [
+          "0154919617"
+        ],
+        "whatsapps": []
+      },
+      "generalEmails": [
+        "callcentre@mogalakwena.gov.za"
+      ],
+      "generalWhatsapps": []
+    },
+    {
+      "id": "1064",
+      "name": "Mogale City Local",
+      "category": "local",
+      "province": "Gauteng",
+      "parentDistrictId": "115",
+      "parentDistrictName": "West Rand District",
+      "sourceUrl": "https://municipalities.co.za/contacts/1064/mogale-city-local-municipality",
+      "water": {
+        "raw": "0861 664 253 \n \n customerservices@mogalecity.gov.za",
+        "emails": [
+          "customerservices@mogalecity.gov.za"
+        ],
+        "phones": [
+          "0861664253"
+        ],
+        "whatsapps": []
+      },
+      "generalEmails": [
+        "customerservices@mogalecity.gov.za"
+      ],
+      "generalWhatsapps": []
+    },
+    {
+      "id": "1057",
+      "name": "Mohokare Local",
+      "category": "local",
+      "province": "Free State",
+      "parentDistrictId": "111",
+      "parentDistrictName": "Xhariep District",
+      "sourceUrl": "https://municipalities.co.za/contacts/1057/mohokare-local-municipality",
+      "water": {
+        "raw": "051 673 9600 \n \n moshe.mohokare@gmail.com",
+        "emails": [
+          "moshe.mohokare@gmail.com"
+        ],
+        "phones": [
+          "0516739600"
+        ],
+        "whatsapps": []
+      },
+      "generalEmails": [
+        "info@mohokare.gov.za"
+      ],
+      "generalWhatsapps": []
+    },
+    {
+      "id": "1120",
+      "name": "Molemole Local",
+      "category": "local",
+      "province": "Limpopo",
+      "parentDistrictId": "126",
+      "parentDistrictName": "Capricorn District",
+      "sourceUrl": "https://municipalities.co.za/contacts/1120/molemole-local-municipality",
+      "water": {
+        "raw": "015 501 0243 \n \n ngoetjanabp@molemole.gov.za",
+        "emails": [
+          "ngoetjanabp@molemole.gov.za"
+        ],
+        "phones": [
+          "0155010243"
+        ],
+        "whatsapps": []
+      },
+      "generalEmails": [],
+      "generalWhatsapps": []
+    },
+    {
+      "id": "1041",
+      "name": "Moqhaka Local",
+      "category": "local",
+      "province": "Free State",
+      "parentDistrictId": "107",
+      "parentDistrictName": "Fezile Dabi District",
+      "sourceUrl": "https://municipalities.co.za/contacts/1041/moqhaka-local-municipality",
+      "water": {
+        "raw": "056 216 9229 \n \n emily@moqhaka.gov.za / lerator@moqhaka.gov.za",
+        "emails": [
+          "emily@moqhaka.gov.za",
+          "lerator@moqhaka.gov.za"
+        ],
+        "phones": [
+          "0562169229"
+        ],
+        "whatsapps": []
+      },
+      "generalEmails": [],
+      "generalWhatsapps": []
+    },
+    {
+      "id": "1189",
+      "name": "Moretele Local",
+      "category": "local",
+      "province": "North West",
+      "parentDistrictId": "139",
+      "parentDistrictName": "Bojanala Platinum District",
+      "sourceUrl": "https://municipalities.co.za/contacts/1189/moretele-local-municipality",
+      "water": {
+        "raw": "n/a",
+        "emails": [],
+        "phones": [],
+        "whatsapps": []
+      },
+      "generalEmails": [
+        "info@moretele.org.za"
+      ],
+      "generalWhatsapps": []
+    },
+    {
+      "id": "1190",
+      "name": "Moses Kotane Local",
+      "category": "local",
+      "province": "North West",
+      "parentDistrictId": "139",
+      "parentDistrictName": "Bojanala Platinum District",
+      "sourceUrl": "https://municipalities.co.za/contacts/1190/moses-kotane-local-municipality",
+      "water": {
+        "raw": "014 555 1501/014 553 2960 \n \n LNgobeni@moseskotane.gov.za",
+        "emails": [
+          "lngobeni@moseskotane.gov.za"
+        ],
+        "phones": [
+          "0145551501",
+          "0145532960"
+        ],
+        "whatsapps": []
+      },
+      "generalEmails": [
+        "customercare@moseskotane.gov.za"
+      ],
+      "generalWhatsapps": []
+    },
+    {
+      "id": "1220",
+      "name": "Mossel Bay Local",
+      "category": "local",
+      "province": "Western Cape",
+      "parentDistrictId": "145",
+      "parentDistrictName": "Garden Route District",
+      "sourceUrl": "https://municipalities.co.za/contacts/1220/mossel-bay-local-municipality",
+      "water": {
+        "raw": "044 606 5000 \n \n admin@mosselbay.gov.za",
+        "emails": [
+          "admin@mosselbay.gov.za"
+        ],
+        "phones": [
+          "0446065000"
+        ],
+        "whatsapps": []
+      },
+      "generalEmails": [
+        "admin@mosselbay.gov.za"
+      ],
+      "generalWhatsapps": []
+    },
+    {
+      "id": "1087",
+      "name": "Mpofana Local",
+      "category": "local",
+      "province": "KwaZulu-Natal",
+      "parentDistrictId": "120",
+      "parentDistrictName": "uMgungundlovu District",
+      "sourceUrl": "https://municipalities.co.za/contacts/1087/mpofana-local-municipality",
+      "water": {
+        "raw": "033 263 1221",
+        "emails": [],
+        "phones": [
+          "0332631221"
+        ],
+        "whatsapps": []
+      },
+      "generalEmails": [],
+      "generalWhatsapps": []
+    },
+    {
+      "id": "1152",
+      "name": "Msukaligwa Local",
+      "category": "local",
+      "province": "Mpumalanga",
+      "parentDistrictId": "132",
+      "parentDistrictName": "Gert Sibande District",
+      "sourceUrl": "https://municipalities.co.za/contacts/1152/msukaligwa-local-municipality",
+      "water": {
+        "raw": "017 801 3500/3750 \n \n complaints.eng@msukaligwa.gov.za",
+        "emails": [
+          "complaints.eng@msukaligwa.gov.za"
+        ],
+        "phones": [
+          "0178013500"
+        ],
+        "whatsapps": []
+      },
+      "generalEmails": [],
+      "generalWhatsapps": []
+    },
+    {
+      "id": "1088",
+      "name": "Msunduzi Local",
+      "category": "local",
+      "province": "KwaZulu-Natal",
+      "parentDistrictId": "120",
+      "parentDistrictName": "uMgungundlovu District",
+      "sourceUrl": "https://municipalities.co.za/contacts/1088/msunduzi-local-municipality",
+      "water": {
+        "raw": "033 348 2106/087 655 5778 \n \n Brendan.Sivparsad@msunduzi.gov.za",
+        "emails": [
+          "brendan.sivparsad@msunduzi.gov.za"
+        ],
+        "phones": [
+          "0333482106",
+          "0876555778"
+        ],
+        "whatsapps": []
+      },
+      "generalEmails": [
+        "municipal.manager@msunduzi.gov.za"
+      ],
+      "generalWhatsapps": []
+    },
+    {
+      "id": "1107",
+      "name": "Mthonjaneni Local",
+      "category": "local",
+      "province": "KwaZulu-Natal",
+      "parentDistrictId": "124",
+      "parentDistrictName": "King Cetshwayo District",
+      "sourceUrl": "https://municipalities.co.za/contacts/1107/mthonjaneni-local-municipality",
+      "water": {
+        "raw": "035 450 2082",
+        "emails": [],
+        "phones": [
+          "0354502082"
+        ],
+        "whatsapps": []
+      },
+      "generalEmails": [
+        "admin@mthonjaneni.org.za"
+      ],
+      "generalWhatsapps": []
+    },
+    {
+      "id": "1133",
+      "name": "Musina Local",
+      "category": "local",
+      "province": "Limpopo",
+      "parentDistrictId": "129",
+      "parentDistrictName": "Vhembe District",
+      "sourceUrl": "https://municipalities.co.za/contacts/1133/musina-local-municipality",
+      "water": {
+        "raw": "072 391 9965",
+        "emails": [],
+        "phones": [
+          "0723919965"
+        ],
+        "whatsapps": []
+      },
+      "generalEmails": [
+        "info@musina.gov.za"
+      ],
+      "generalWhatsapps": []
+    },
+    {
+      "id": "1045",
+      "name": "Nala Local",
+      "category": "local",
+      "province": "Free State",
+      "parentDistrictId": "108",
+      "parentDistrictName": "Lejweleputswa District",
+      "sourceUrl": "https://municipalities.co.za/contacts/1045/nala-local-municipality",
+      "water": {
+        "raw": "n/a",
+        "emails": [],
+        "phones": [],
+        "whatsapps": []
+      },
+      "generalEmails": [
+        "administrator@nala.org.za"
+      ],
+      "generalWhatsapps": []
+    },
+    {
+      "id": "1201",
+      "name": "Naledi Local",
+      "category": "local",
+      "province": "North West",
+      "parentDistrictId": "141",
+      "parentDistrictName": "Dr Ruth Segomotsi Mompati District",
+      "sourceUrl": "https://municipalities.co.za/contacts/1201/naledi-local-municipality",
+      "water": {
+        "raw": "053 928 2254 \n \n pretoriusl@naledi.local.gov.za",
+        "emails": [
+          "pretoriusl@naledi.local.gov.za"
+        ],
+        "phones": [
+          "0539282254"
+        ],
+        "whatsapps": []
+      },
+      "generalEmails": [
+        "info.naledilm@gmail.com"
+      ],
+      "generalWhatsapps": []
+    },
+    {
+      "id": "1171",
+      "name": "Nama Khoi Local",
+      "category": "local",
+      "province": "Northern Cape",
+      "parentDistrictId": "136",
+      "parentDistrictName": "Namakwa District",
+      "sourceUrl": "https://municipalities.co.za/contacts/1171/nama-khoi-local-municipality",
+      "water": {
+        "raw": "027 718 8155 \n \n christo.bonn@namakhoi.gov.za",
+        "emails": [
+          "christo.bonn@namakhoi.gov.za"
+        ],
+        "phones": [
+          "0277188155"
+        ],
+        "whatsapps": []
+      },
+      "generalEmails": [
+        "info@namakhoi.gov.za"
+      ],
+      "generalWhatsapps": []
+    },
+    {
+      "id": "1018",
+      "name": "Ndlambe Local",
+      "category": "local",
+      "province": "Eastern Cape",
+      "parentDistrictId": "103",
+      "parentDistrictName": "Sarah Baartman District",
+      "sourceUrl": "https://municipalities.co.za/contacts/1018/ndlambe-local-municipality",
+      "water": {
+        "raw": "046 604 5501 \n \n aklaas@ndlambe.gov.za",
+        "emails": [
+          "aklaas@ndlambe.gov.za"
+        ],
+        "phones": [
+          "0466045501"
+        ],
+        "whatsapps": []
+      },
+      "generalEmails": [
+        "gnkombisa@ndlambe.gov.za"
+      ],
+      "generalWhatsapps": []
+    },
+    {
+      "id": "1073",
+      "name": "Ndwedwe Local",
+      "category": "local",
+      "province": "KwaZulu-Natal",
+      "parentDistrictId": "117",
+      "parentDistrictName": "iLembe District",
+      "sourceUrl": "https://municipalities.co.za/contacts/1073/ndwedwe-local-municipality",
+      "water": {
+        "raw": "n/a",
+        "emails": [],
+        "phones": [],
+        "whatsapps": []
+      },
+      "generalEmails": [
+        "mm@ndwedwe.gov.za"
+      ],
+      "generalWhatsapps": []
+    },
+    {
+      "id": "1069",
+      "name": "Newcastle Local",
+      "category": "local",
+      "province": "KwaZulu-Natal",
+      "parentDistrictId": "116",
+      "parentDistrictName": "Amajuba District",
+      "sourceUrl": "https://municipalities.co.za/contacts/1069/newcastle-local-municipality",
+      "water": {
+        "raw": "0860 144 144 \n \n dumisani.thabethe@newcastle.gov.za",
+        "emails": [
+          "dumisani.thabethe@newcastle.gov.za"
+        ],
+        "phones": [
+          "0860144144"
+        ],
+        "whatsapps": []
+      },
+      "generalEmails": [
+        "mm@newcastle.gov.za"
+      ],
+      "generalWhatsapps": []
+    },
+    {
+      "id": "1008",
+      "name": "Ngqushwa Local",
+      "category": "local",
+      "province": "Eastern Cape",
+      "parentDistrictId": "102",
+      "parentDistrictName": "Amathole District",
+      "sourceUrl": "https://municipalities.co.za/contacts/1008/ngqushwa-local-municipality",
+      "water": {
+        "raw": "043 701 4143 \n \n mlamlib@amathole.gov.za",
+        "emails": [
+          "mlamlib@amathole.gov.za"
+        ],
+        "phones": [
+          "0437014143"
+        ],
+        "whatsapps": []
+      },
+      "generalEmails": [
+        "info@ngqushwamun.gov.za"
+      ],
+      "generalWhatsapps": []
+    },
+    {
+      "id": "1042",
+      "name": "Ngwathe Local",
+      "category": "local",
+      "province": "Free State",
+      "parentDistrictId": "107",
+      "parentDistrictName": "Fezile Dabi District",
+      "sourceUrl": "https://municipalities.co.za/contacts/1042/ngwathe-local-municipality",
+      "water": {
+        "raw": "n/a",
+        "emails": [],
+        "phones": [],
+        "whatsapps": []
+      },
+      "generalEmails": [
+        "mmadmin@ngwathe.co.za"
+      ],
+      "generalWhatsapps": []
+    },
+    {
+      "id": "1108",
+      "name": "Nkandla Local",
+      "category": "local",
+      "province": "KwaZulu-Natal",
+      "parentDistrictId": "124",
+      "parentDistrictName": "King Cetshwayo District",
+      "sourceUrl": "https://municipalities.co.za/contacts/1108/nkandla-local-municipality",
+      "water": {
+        "raw": "n/a",
+        "emails": [],
+        "phones": [],
+        "whatsapps": []
+      },
+      "generalEmails": [
+        "info@nkandla.gov.za"
+      ],
+      "generalWhatsapps": []
+    },
+    {
+      "id": "1052",
+      "name": "Nketoana Local",
+      "category": "local",
+      "province": "Free State",
+      "parentDistrictId": "110",
+      "parentDistrictName": "Thabo Mofutsanyana District",
+      "sourceUrl": "https://municipalities.co.za/contacts/1052/nketoana-local-municipality",
+      "water": {
+        "raw": "058 863 2811 \n \n Kagiso.Molelekwa@nketoanafs.co.za",
+        "emails": [
+          "kagiso.molelekwa@nketoanafs.co.za"
+        ],
+        "phones": [
+          "0588632811"
+        ],
+        "whatsapps": []
+      },
+      "generalEmails": [],
+      "generalWhatsapps": []
+    },
+    {
+      "id": "1144",
+      "name": "Nkomazi Local",
+      "category": "local",
+      "province": "Mpumalanga",
+      "parentDistrictId": "131",
+      "parentDistrictName": "Ehlanzeni District",
+      "sourceUrl": "https://municipalities.co.za/contacts/1144/nkomazi-local-municipality",
+      "water": {
+        "raw": "137 900 990 \n \n weekend.nhlambo@nkomazi.gov.za",
+        "emails": [
+          "weekend.nhlambo@nkomazi.gov.za"
+        ],
+        "phones": [],
+        "whatsapps": []
+      },
+      "generalEmails": [
+        "call.center@nkomazi.gov.za"
+      ],
+      "generalWhatsapps": []
+    },
+    {
+      "id": "1114",
+      "name": "Nongoma Local",
+      "category": "local",
+      "province": "KwaZulu-Natal",
+      "parentDistrictId": "125",
+      "parentDistrictName": "Zululand District",
+      "sourceUrl": "https://municipalities.co.za/contacts/1114/nongoma-local-municipality",
+      "water": {
+        "raw": "n/a",
+        "emails": [],
+        "phones": [],
+        "whatsapps": []
+      },
+      "generalEmails": [
+        "info@nongoma.gov.za"
+      ],
+      "generalWhatsapps": []
+    },
+    {
+      "id": "1099",
+      "name": "Nquthu Local",
+      "category": "local",
+      "province": "KwaZulu-Natal",
+      "parentDistrictId": "122",
+      "parentDistrictName": "uMzinyathi District",
+      "sourceUrl": "https://municipalities.co.za/contacts/1099/nquthu-local-municipality",
+      "water": {
+        "raw": "034 212 1500",
+        "emails": [],
+        "phones": [
+          "0342121500"
+        ],
+        "whatsapps": []
+      },
+      "generalEmails": [
+        "info@nquthu.gov.za"
+      ],
+      "generalWhatsapps": []
+    },
+    {
+      "id": "1036",
+      "name": "Ntabankulu Local",
+      "category": "local",
+      "province": "Eastern Cape",
+      "parentDistrictId": "101",
+      "parentDistrictName": "Alfred Nzo District",
+      "sourceUrl": "https://municipalities.co.za/contacts/1036/ntabankulu-local-municipality",
+      "water": {
+        "raw": "n/a",
+        "emails": [],
+        "phones": [],
+        "whatsapps": []
+      },
+      "generalEmails": [
+        "customercare@ntabankulu.gov.za"
+      ],
+      "generalWhatsapps": []
+    },
+    {
+      "id": "1037",
+      "name": "Nyandeni Local",
+      "category": "local",
+      "province": "Eastern Cape",
+      "parentDistrictId": "106",
+      "parentDistrictName": "OR Tambo District",
+      "sourceUrl": "https://municipalities.co.za/contacts/1037/nyandeni-local-municipality",
+      "water": {
+        "raw": "n/a",
+        "emails": [],
+        "phones": [],
+        "whatsapps": []
+      },
+      "generalEmails": [
+        "nyandeni@nyandenilm.gov.za"
+      ],
+      "generalWhatsapps": []
+    },
+    {
+      "id": "1104",
+      "name": "Okhahlamba Local",
+      "category": "local",
+      "province": "KwaZulu-Natal",
+      "parentDistrictId": "123",
+      "parentDistrictName": "uThukela District",
+      "sourceUrl": "https://municipalities.co.za/contacts/1104/okhahlamba-local-municipality",
+      "water": {
+        "raw": "036 638 5100 \n \n municipalmanager@uthukeladm.co.za",
+        "emails": [
+          "municipalmanager@uthukeladm.co.za"
+        ],
+        "phones": [
+          "0366385100"
+        ],
+        "whatsapps": []
+      },
+      "generalEmails": [],
+      "generalWhatsapps": []
+    },
+    {
+      "id": "1221",
+      "name": "Oudtshoorn Local",
+      "category": "local",
+      "province": "Western Cape",
+      "parentDistrictId": "145",
+      "parentDistrictName": "Garden Route District",
+      "sourceUrl": "https://municipalities.co.za/contacts/1221/oudtshoorn-local-municipality",
+      "water": {
+        "raw": "044 203 3096 \n \n edwina@oudtmun.gov.za",
+        "emails": [
+          "edwina@oudtmun.gov.za"
+        ],
+        "phones": [
+          "0442033096"
+        ],
+        "whatsapps": []
+      },
+      "generalEmails": [
+        "post@oudtmun.gov.za"
+      ],
+      "generalWhatsapps": []
+    },
+    {
+      "id": "1223",
+      "name": "Overstrand Local",
+      "category": "local",
+      "province": "Western Cape",
+      "parentDistrictId": "146",
+      "parentDistrictName": "Overberg District",
+      "sourceUrl": "https://municipalities.co.za/contacts/1223/overstrand-local-municipality",
+      "water": {
+        "raw": "028 313 5047/8982 \n \n hblignaut@overstrand.gov.za",
+        "emails": [
+          "hblignaut@overstrand.gov.za"
+        ],
+        "phones": [
+          "0283135047"
+        ],
+        "whatsapps": []
+      },
+      "generalEmails": [
+        "enquiries@overstrand.gov.za"
+      ],
+      "generalWhatsapps": []
+    },
+    {
+      "id": "1162",
+      "name": "Phokwane Local",
+      "category": "local",
+      "province": "Northern Cape",
+      "parentDistrictId": "134",
+      "parentDistrictName": "Frances Baard District",
+      "sourceUrl": "https://municipalities.co.za/contacts/1162/phokwane-local-municipality",
+      "water": {
+        "raw": "n/a",
+        "emails": [],
+        "phones": [],
+        "whatsapps": []
+      },
+      "generalEmails": [
+        "info@phokwane.gov.za"
+      ],
+      "generalWhatsapps": []
+    },
+    {
+      "id": "1053",
+      "name": "Phumelela Local",
+      "category": "local",
+      "province": "Free State",
+      "parentDistrictId": "110",
+      "parentDistrictName": "Thabo Mofutsanyana District",
+      "sourceUrl": "https://municipalities.co.za/contacts/1053/phumelela-local-municipality",
+      "water": {
+        "raw": "083 289 4487 \n \n koena707@gmail.com",
+        "emails": [
+          "koena707@gmail.com"
+        ],
+        "phones": [
+          "0832894487"
+        ],
+        "whatsapps": []
+      },
+      "generalEmails": [
+        "info@phumelela.gov.za"
+      ],
+      "generalWhatsapps": []
+    },
+    {
+      "id": "1121",
+      "name": "Polokwane Local",
+      "category": "local",
+      "province": "Limpopo",
+      "parentDistrictId": "126",
+      "parentDistrictName": "Capricorn District",
+      "sourceUrl": "https://municipalities.co.za/contacts/1121/polokwane-local-municipality",
+      "water": {
+        "raw": "015 290 2376/2629",
+        "emails": [],
+        "phones": [
+          "0152902376"
+        ],
+        "whatsapps": []
+      },
+      "generalEmails": [],
+      "generalWhatsapps": []
+    },
+    {
+      "id": "1038",
+      "name": "Port St Johns Local",
+      "category": "local",
+      "province": "Eastern Cape",
+      "parentDistrictId": "106",
+      "parentDistrictName": "OR Tambo District",
+      "sourceUrl": "https://municipalities.co.za/contacts/1038/port-st-johns-local-municipality",
+      "water": {
+        "raw": "047 606 4052 \n \n ortambodm@ortambodm.org.za",
+        "emails": [
+          "ortambodm@ortambodm.org.za"
+        ],
+        "phones": [
+          "0476064052"
+        ],
+        "whatsapps": []
+      },
+      "generalEmails": [
+        "info@psjmunicipality.gov.za"
+      ],
+      "generalWhatsapps": []
+    },
+    {
+      "id": "1214",
+      "name": "Prince Albert Local",
+      "category": "local",
+      "province": "Western Cape",
+      "parentDistrictId": "144",
+      "parentDistrictName": "Central Karoo District",
+      "sourceUrl": "https://municipalities.co.za/contacts/1214/prince-albert-local-municipality",
+      "water": {
+        "raw": "023 541 1014 \n \n rekords@pamun.gov.za",
+        "emails": [
+          "rekords@pamun.gov.za"
+        ],
+        "phones": [
+          "0235411014"
+        ],
+        "whatsapps": []
+      },
+      "generalEmails": [
+        "adminklerk@pamun.gov"
+      ],
+      "generalWhatsapps": []
+    },
+    {
+      "id": "1204",
+      "name": "Ramotshere Moiloa Local",
+      "category": "local",
+      "province": "North West",
+      "parentDistrictId": "142",
+      "parentDistrictName": "Ngaka Modiri Molema District",
+      "sourceUrl": "https://municipalities.co.za/contacts/1204/ramotshere-moiloa-local-municipality",
+      "water": {
+        "raw": "079 869 7667 \n \n mokgalagadid@gmail.com",
+        "emails": [
+          "mokgalagadid@gmail.com"
+        ],
+        "phones": [
+          "0798697667"
+        ],
+        "whatsapps": []
+      },
+      "generalEmails": [
+        "communications@ramotshere.gov.za",
+        "sec.admin@ramotshere.gov.za"
+      ],
+      "generalWhatsapps": []
+    },
+    {
+      "id": "1236",
+      "name": "Rand West City Local",
+      "category": "local",
+      "province": "Gauteng",
+      "parentDistrictId": "115",
+      "parentDistrictName": "West Rand District",
+      "sourceUrl": "https://municipalities.co.za/contacts/1236/rand-west-city-local-municipality",
+      "water": {
+        "raw": "010 496 7704 \n \n Thapelo.Motshoane@randwestcity.gov.za",
+        "emails": [
+          "thapelo.motshoane@randwestcity.gov.za"
+        ],
+        "phones": [
+          "0104967704"
+        ],
+        "whatsapps": []
+      },
+      "generalEmails": [],
+      "generalWhatsapps": []
+    },
+    {
+      "id": "1205",
+      "name": "Ratlou Local",
+      "category": "local",
+      "province": "North West",
+      "parentDistrictId": "142",
+      "parentDistrictName": "Ngaka Modiri Molema District",
+      "sourceUrl": "https://municipalities.co.za/contacts/1205/ratlou-local-municipality",
+      "water": {
+        "raw": "018 330 7000 \n \n kagiseleho@gmail.com",
+        "emails": [
+          "kagiseleho@gmail.com"
+        ],
+        "phones": [
+          "0183307000"
+        ],
+        "whatsapps": []
+      },
+      "generalEmails": [],
+      "generalWhatsapps": []
+    },
+    {
+      "id": "1080",
+      "name": "Ray Nkonyeni Local",
+      "category": "local",
+      "province": "KwaZulu-Natal",
+      "parentDistrictId": "119",
+      "parentDistrictName": "Ugu District",
+      "sourceUrl": "https://municipalities.co.za/contacts/1080/ray-nkonyeni-local-municipality",
+      "water": {
+        "raw": "039 688 5700 \n \n info@ugu.gov.za",
+        "emails": [
+          "info@ugu.gov.za"
+        ],
+        "phones": [
+          "0396885700"
+        ],
+        "whatsapps": []
+      },
+      "generalEmails": [
+        "info@rnm.gov.za"
+      ],
+      "generalWhatsapps": []
+    },
+    {
+      "id": "1233",
+      "name": "Raymond Mhlaba Local",
+      "category": "local",
+      "province": "Eastern Cape",
+      "parentDistrictId": "102",
+      "parentDistrictName": "Amathole District",
+      "sourceUrl": "https://municipalities.co.za/contacts/1233/raymond-mhlaba-local-municipality",
+      "water": {
+        "raw": "n/a",
+        "emails": [],
+        "phones": [],
+        "whatsapps": []
+      },
+      "generalEmails": [
+        "customercare@raymondmhlaba.gov.za"
+      ],
+      "generalWhatsapps": []
+    },
+    {
+      "id": "1175",
+      "name": "Renosterberg Local",
+      "category": "local",
+      "province": "Northern Cape",
+      "parentDistrictId": "137",
+      "parentDistrictName": "Pixley Ka Seme District",
+      "sourceUrl": "https://municipalities.co.za/contacts/1175/renosterberg-local-municipality",
+      "water": {
+        "raw": "n/a",
+        "emails": [],
+        "phones": [],
+        "whatsapps": []
+      },
+      "generalEmails": [],
+      "generalWhatsapps": []
+    },
+    {
+      "id": "1089",
+      "name": "Richmond Local",
+      "category": "local",
+      "province": "KwaZulu-Natal",
+      "parentDistrictId": "120",
+      "parentDistrictName": "uMgungundlovu District",
+      "sourceUrl": "https://municipalities.co.za/contacts/1089/richmond-local-municipality",
+      "water": {
+        "raw": "033 212 2155 \n \n mm@richmond.gov.za",
+        "emails": [
+          "mm@richmond.gov.za"
+        ],
+        "phones": [
+          "0332122155"
+        ],
+        "whatsapps": []
+      },
+      "generalEmails": [
+        "info@richmond.gov.za"
+      ],
+      "generalWhatsapps": []
+    },
+    {
+      "id": "1172",
+      "name": "Richtersveld Local",
+      "category": "local",
+      "province": "Northern Cape",
+      "parentDistrictId": "136",
+      "parentDistrictName": "Namakwa District",
+      "sourceUrl": "https://municipalities.co.za/contacts/1172/richtersveld-local-municipality",
+      "water": {
+        "raw": "078 411 9789",
+        "emails": [],
+        "phones": [
+          "0784119789"
+        ],
+        "whatsapps": []
+      },
+      "generalEmails": [
+        "postmaster@richtersveld.gov.za"
+      ],
+      "generalWhatsapps": []
+    },
+    {
+      "id": "1191",
+      "name": "Rustenburg Local",
+      "category": "local",
+      "province": "North West",
+      "parentDistrictId": "139",
+      "parentDistrictName": "Bojanala Platinum District",
+      "sourceUrl": "https://municipalities.co.za/contacts/1191/rustenburg-local-municipality",
+      "water": {
+        "raw": "014 590 3530 \n \n zmateta@rustenburg.gov.za",
+        "emails": [
+          "zmateta@rustenburg.gov.za"
+        ],
+        "phones": [
+          "0145903530"
+        ],
+        "whatsapps": []
+      },
+      "generalEmails": [],
+      "generalWhatsapps": []
+    },
+    {
+      "id": "1026",
+      "name": "Sakhisizwe Local",
+      "category": "local",
+      "province": "Eastern Cape",
+      "parentDistrictId": "104",
+      "parentDistrictName": "Chris Hani District",
+      "sourceUrl": "https://municipalities.co.za/contacts/1026/sakhisizwe-local-municipality",
+      "water": {
+        "raw": "047 877 5227",
+        "emails": [],
+        "phones": [
+          "0478775227"
+        ],
+        "whatsapps": []
+      },
+      "generalEmails": [
+        "info@sakhisizwe.gov.za"
+      ],
+      "generalWhatsapps": []
+    },
+    {
+      "id": "1229",
+      "name": "Saldanha Bay Local",
+      "category": "local",
+      "province": "Western Cape",
+      "parentDistrictId": "147",
+      "parentDistrictName": "West Coast District",
+      "sourceUrl": "https://municipalities.co.za/contacts/1229/saldanha-bay-local-municipality",
+      "water": {
+        "raw": "022 701 7113 / 7178 \n \n mun@sbm.gov.za",
+        "emails": [
+          "mun@sbm.gov.za"
+        ],
+        "phones": [
+          "0227017113"
+        ],
+        "whatsapps": []
+      },
+      "generalEmails": [
+        "mun@sbm.gov.za"
+      ],
+      "generalWhatsapps": []
+    },
+    {
+      "id": "1031",
+      "name": "Senqu Local",
+      "category": "local",
+      "province": "Eastern Cape",
+      "parentDistrictId": "105",
+      "parentDistrictName": "Joe Gqabi District",
+      "sourceUrl": "https://municipalities.co.za/contacts/1031/senqu-local-municipality",
+      "water": {
+        "raw": "n/a",
+        "emails": [],
+        "phones": [],
+        "whatsapps": []
+      },
+      "generalEmails": [
+        "info@senqu.gov.za"
+      ],
+      "generalWhatsapps": []
+    },
+    {
+      "id": "1054",
+      "name": "Setsoto Local",
+      "category": "local",
+      "province": "Free State",
+      "parentDistrictId": "110",
+      "parentDistrictName": "Thabo Mofutsanyana District",
+      "sourceUrl": "https://municipalities.co.za/contacts/1054/setsoto-local-municipality",
+      "water": {
+        "raw": "051 933 9304 \n \n technical@setsoto.co.za",
+        "emails": [
+          "technical@setsoto.co.za"
+        ],
+        "phones": [
+          "0519339304"
+        ],
+        "whatsapps": []
+      },
+      "generalEmails": [
+        "admin@setsoto.co.za"
+      ],
+      "generalWhatsapps": []
+    },
+    {
+      "id": "1176",
+      "name": "Siyancuma Local",
+      "category": "local",
+      "province": "Northern Cape",
+      "parentDistrictId": "137",
+      "parentDistrictName": "Pixley Ka Seme District",
+      "sourceUrl": "https://municipalities.co.za/contacts/1176/siyancuma-local-municipality",
+      "water": {
+        "raw": "n/a",
+        "emails": [],
+        "phones": [],
+        "whatsapps": []
+      },
+      "generalEmails": [
+        "info@siyancuma.gov.za"
+      ],
+      "generalWhatsapps": []
+    },
+    {
+      "id": "1177",
+      "name": "Siyathemba Local",
+      "category": "local",
+      "province": "Northern Cape",
+      "parentDistrictId": "137",
+      "parentDistrictName": "Pixley Ka Seme District",
+      "sourceUrl": "https://municipalities.co.za/contacts/1177/siyathemba-local-municipality",
+      "water": {
+        "raw": "053 492 3391 \n \n janine@siyathemba.gov.za",
+        "emails": [
+          "janine@siyathemba.gov.za"
+        ],
+        "phones": [
+          "0534923391"
+        ],
+        "whatsapps": []
+      },
+      "generalEmails": [
+        "info@siyathemba.gov.za"
+      ],
+      "generalWhatsapps": []
+    },
+    {
+      "id": "1163",
+      "name": "Sol Plaatje Local",
+      "category": "local",
+      "province": "Northern Cape",
+      "parentDistrictId": "134",
+      "parentDistrictName": "Frances Baard District",
+      "sourceUrl": "https://municipalities.co.za/contacts/1163/sol-plaatje-local-municipality",
+      "water": {
+        "raw": "053 830 6111 \n \n CRoom@solplaatje.org.za",
+        "emails": [
+          "croom@solplaatje.org.za"
+        ],
+        "phones": [
+          "0538306111"
+        ],
+        "whatsapps": []
+      },
+      "generalEmails": [],
+      "generalWhatsapps": []
+    },
+    {
+      "id": "1210",
+      "name": "Stellenbosch Local",
+      "category": "local",
+      "province": "Western Cape",
+      "parentDistrictId": "143",
+      "parentDistrictName": "Cape Winelands District",
+      "sourceUrl": "https://municipalities.co.za/contacts/1210/stellenbosch-local-municipality",
+      "water": {
+        "raw": "021 808 8215/8953/8343 \n \n Engineering.Services@stellenbosch.gov.za",
+        "emails": [
+          "engineering.services@stellenbosch.gov.za"
+        ],
+        "phones": [
+          "0218088215"
+        ],
+        "whatsapps": []
+      },
+      "generalEmails": [
+        "contact.stellenbosch@stellenbosch.gov.za"
+      ],
+      "generalWhatsapps": []
+    },
+    {
+      "id": "1158",
+      "name": "Steve Tshwete Local",
+      "category": "local",
+      "province": "Mpumalanga",
+      "parentDistrictId": "133",
+      "parentDistrictName": "Nkangala District",
+      "sourceUrl": "https://municipalities.co.za/contacts/1158/steve-tshwete-local-municipality",
+      "water": {
+        "raw": "013 249 7168/7075 \n \n stephinam@stlm.gov.za/mumsyn@stlm.gov.za",
+        "emails": [
+          "stephinam@stlm.gov.za",
+          "mumsyn@stlm.gov.za"
+        ],
+        "phones": [
+          "0132497168"
+        ],
+        "whatsapps": []
+      },
+      "generalEmails": [
+        "council@stlm.gov.za"
+      ],
+      "generalWhatsapps": []
+    },
+    {
+      "id": "1019",
+      "name": "Sundays River Valley Local",
+      "category": "local",
+      "province": "Eastern Cape",
+      "parentDistrictId": "103",
+      "parentDistrictName": "Sarah Baartman District",
+      "sourceUrl": "https://municipalities.co.za/contacts/1019/sundays-river-valley-local-municipality",
+      "water": {
+        "raw": "042 230 7700 \n \n 042 230 7767 / 7768",
+        "emails": [],
+        "phones": [
+          "0422307700",
+          "0422307767"
+        ],
+        "whatsapps": []
+      },
+      "generalEmails": [
+        "srvm@srvm.gov.za"
+      ],
+      "generalWhatsapps": []
+    },
+    {
+      "id": "1230",
+      "name": "Swartland Local",
+      "category": "local",
+      "province": "Western Cape",
+      "parentDistrictId": "147",
+      "parentDistrictName": "West Coast District",
+      "sourceUrl": "https://municipalities.co.za/contacts/1230/swartland-local-municipality",
+      "water": {
+        "raw": "022 487 9400 \n \n swartland.mun@swartland.org.za",
+        "emails": [
+          "swartland.mun@swartland.org.za"
+        ],
+        "phones": [
+          "0224879400"
+        ],
+        "whatsapps": []
+      },
+      "generalEmails": [
+        "swartlandmun@swartland.org.za"
+      ],
+      "generalWhatsapps": []
+    },
+    {
+      "id": "1224",
+      "name": "Swellendam Local",
+      "category": "local",
+      "province": "Western Cape",
+      "parentDistrictId": "146",
+      "parentDistrictName": "Overberg District",
+      "sourceUrl": "https://municipalities.co.za/contacts/1224/swellendam-local-municipality",
+      "water": {
+        "raw": "028 514 7420 \n \n wtreurnicht@swellendam.gov.za",
+        "emails": [
+          "wtreurnicht@swellendam.gov.za"
+        ],
+        "phones": [
+          "0285147420"
+        ],
+        "whatsapps": []
+      },
+      "generalEmails": [
+        "info@swellendam.gov.za"
+      ],
+      "generalWhatsapps": []
+    },
+    {
+      "id": "1145",
+      "name": "Thaba Chweu Local",
+      "category": "local",
+      "province": "Mpumalanga",
+      "parentDistrictId": "131",
+      "parentDistrictName": "Ehlanzeni District",
+      "sourceUrl": "https://municipalities.co.za/contacts/1145/thaba-chweu-local-municipality",
+      "water": {
+        "raw": "013 235 7389",
+        "emails": [],
+        "phones": [
+          "0132357389"
+        ],
+        "whatsapps": []
+      },
+      "generalEmails": [
+        "info@tclm.gov.za"
+      ],
+      "generalWhatsapps": []
+    },
+    {
+      "id": "1141",
+      "name": "Thabazimbi Local",
+      "category": "local",
+      "province": "Limpopo",
+      "parentDistrictId": "130",
+      "parentDistrictName": "Waterberg District",
+      "sourceUrl": "https://municipalities.co.za/contacts/1141/thabazimbi-local-municipality",
+      "water": {
+        "raw": "083 703 2805 \n \n billytlhaba@gmail.com",
+        "emails": [
+          "billytlhaba@gmail.com"
+        ],
+        "phones": [
+          "0837032805"
+        ],
+        "whatsapps": []
+      },
+      "generalEmails": [
+        "info@thabazimbi.gov.za"
+      ],
+      "generalWhatsapps": []
+    },
+    {
+      "id": "1225",
+      "name": "Theewaterskloof Local",
+      "category": "local",
+      "province": "Western Cape",
+      "parentDistrictId": "146",
+      "parentDistrictName": "Overberg District",
+      "sourceUrl": "https://municipalities.co.za/contacts/1225/theewaterskloof-local-municipality",
+      "water": {
+        "raw": "028 214 3300 \n \n twkmun@twk.gov.za",
+        "emails": [
+          "twkmun@twk.gov.za"
+        ],
+        "phones": [
+          "0282143300"
+        ],
+        "whatsapps": []
+      },
+      "generalEmails": [
+        "twkmun@twk.gov.za"
+      ],
+      "generalWhatsapps": []
+    },
+    {
+      "id": "1178",
+      "name": "Thembelihle Local",
+      "category": "local",
+      "province": "Northern Cape",
+      "parentDistrictId": "137",
+      "parentDistrictName": "Pixley Ka Seme District",
+      "sourceUrl": "https://municipalities.co.za/contacts/1178/thembelihle-local-municipality",
+      "water": {
+        "raw": "083 265 0932 \n \n tmtechnical@vodamail.co.za",
+        "emails": [
+          "tmtechnical@vodamail.co.za"
+        ],
+        "phones": [
+          "0832650932"
+        ],
+        "whatsapps": []
+      },
+      "generalEmails": [],
+      "generalWhatsapps": []
+    },
+    {
+      "id": "1159",
+      "name": "Thembisile Hani Local",
+      "category": "local",
+      "province": "Mpumalanga",
+      "parentDistrictId": "133",
+      "parentDistrictName": "Nkangala District",
+      "sourceUrl": "https://municipalities.co.za/contacts/1159/thembisile-hani-local-municipality",
+      "water": {
+        "raw": "013 986 9199 \n \n NkosiL@thembisilehanilm.gov.za",
+        "emails": [
+          "nkosil@thembisilehanilm.gov.za"
+        ],
+        "phones": [
+          "0139869199"
+        ],
+        "whatsapps": []
+      },
+      "generalEmails": [
+        "info@thembisilehanilm.gov.za"
+      ],
+      "generalWhatsapps": []
+    },
+    {
+      "id": "1135",
+      "name": "Thulamela Local",
+      "category": "local",
+      "province": "Limpopo",
+      "parentDistrictId": "129",
+      "parentDistrictName": "Vhembe District",
+      "sourceUrl": "https://municipalities.co.za/contacts/1135/thulamela-local-municipality",
+      "water": {
+        "raw": "015 960 2000",
+        "emails": [],
+        "phones": [
+          "0159602000"
+        ],
+        "whatsapps": []
+      },
+      "generalEmails": [
+        "info@thulamela.gov.za"
+      ],
+      "generalWhatsapps": []
+    },
+    {
+      "id": "1046",
+      "name": "Tokologo Local",
+      "category": "local",
+      "province": "Free State",
+      "parentDistrictId": "108",
+      "parentDistrictName": "Lejweleputswa District",
+      "sourceUrl": "https://municipalities.co.za/contacts/1046/tokologo-local-municipality",
+      "water": {
+        "raw": "053 541 0014",
+        "emails": [],
+        "phones": [
+          "0535410014"
+        ],
+        "whatsapps": []
+      },
+      "generalEmails": [
+        "info@tokologo-municipality.co.za"
+      ],
+      "generalWhatsapps": []
+    },
+    {
+      "id": "1186",
+      "name": "Tsantsabane Local",
+      "category": "local",
+      "province": "Northern Cape",
+      "parentDistrictId": "138",
+      "parentDistrictName": "ZF Mgcawu District",
+      "sourceUrl": "https://municipalities.co.za/contacts/1186/tsantsabane-local-municipality",
+      "water": {
+        "raw": "053 313 7300/082 495 5334 \n \n supwaterserv@tsantsabane.gov.za",
+        "emails": [
+          "supwaterserv@tsantsabane.gov.za"
+        ],
+        "phones": [
+          "0533137300",
+          "0824955334"
+        ],
+        "whatsapps": []
+      },
+      "generalEmails": [
+        "info@tsantsabane.gov.za"
+      ],
+      "generalWhatsapps": []
+    },
+    {
+      "id": "1206",
+      "name": "Tswaing Local",
+      "category": "local",
+      "province": "North West",
+      "parentDistrictId": "142",
+      "parentDistrictName": "Ngaka Modiri Molema District",
+      "sourceUrl": "https://municipalities.co.za/contacts/1206/tswaing-local-municipality",
+      "water": {
+        "raw": "053 948 0787",
+        "emails": [],
+        "phones": [
+          "0539480787"
+        ],
+        "whatsapps": []
+      },
+      "generalEmails": [
+        "corporate@tswaing.gov.za"
+      ],
+      "generalWhatsapps": []
+    },
+    {
+      "id": "1047",
+      "name": "Tswelopele Local",
+      "category": "local",
+      "province": "Free State",
+      "parentDistrictId": "108",
+      "parentDistrictName": "Lejweleputswa District",
+      "sourceUrl": "https://municipalities.co.za/contacts/1047/tswelopele-local-municipality",
+      "water": {
+        "raw": "051 853 1111 \n \n keyser@tswelopele.org",
+        "emails": [
+          "keyser@tswelopele.org"
+        ],
+        "phones": [
+          "0518531111"
+        ],
+        "whatsapps": []
+      },
+      "generalEmails": [
+        "logov@tswelopele.org"
+      ],
+      "generalWhatsapps": []
+    },
+    {
+      "id": "1179",
+      "name": "Ubuntu Local",
+      "category": "local",
+      "province": "Northern Cape",
+      "parentDistrictId": "137",
+      "parentDistrictName": "Pixley Ka Seme District",
+      "sourceUrl": "https://municipalities.co.za/contacts/1179/ubuntu-local-municipality",
+      "water": {
+        "raw": "n/a",
+        "emails": [],
+        "phones": [],
+        "whatsapps": []
+      },
+      "generalEmails": [
+        "info@ubuntu.gov.za"
+      ],
+      "generalWhatsapps": []
+    },
+    {
+      "id": "1115",
+      "name": "Ulundi Local",
+      "category": "local",
+      "province": "KwaZulu-Natal",
+      "parentDistrictId": "125",
+      "parentDistrictName": "Zululand District",
+      "sourceUrl": "https://municipalities.co.za/contacts/1115/ulundi-local-municipality",
+      "water": {
+        "raw": "035 874 5100 \n \n info@ulundi.gov.za",
+        "emails": [
+          "info@ulundi.gov.za"
+        ],
+        "phones": [
+          "0358745100"
+        ],
+        "whatsapps": []
+      },
+      "generalEmails": [
+        "info@ulundi.gov.za"
+      ],
+      "generalWhatsapps": []
+    },
+    {
+      "id": "1081",
+      "name": "Umdoni Local",
+      "category": "local",
+      "province": "KwaZulu-Natal",
+      "parentDistrictId": "119",
+      "parentDistrictName": "Ugu District",
+      "sourceUrl": "https://municipalities.co.za/contacts/1081/umdoni-local-municipality",
+      "water": {
+        "raw": "039 976 1333 \n \n thobekile.mhlongo@ugu.gov.za",
+        "emails": [
+          "thobekile.mhlongo@ugu.gov.za"
+        ],
+        "phones": [
+          "0399761333"
+        ],
+        "whatsapps": []
+      },
+      "generalEmails": [
+        "communications@umdoni.gov.za"
+      ],
+      "generalWhatsapps": []
+    },
+    {
+      "id": "1106",
+      "name": "uMfolozi Local",
+      "category": "local",
+      "province": "KwaZulu-Natal",
+      "parentDistrictId": "124",
+      "parentDistrictName": "King Cetshwayo District",
+      "sourceUrl": "https://municipalities.co.za/contacts/1106/umfolozi-local-municipality",
+      "water": {
+        "raw": "n/a",
+        "emails": [],
+        "phones": [],
+        "whatsapps": []
+      },
+      "generalEmails": [
+        "administrator@mbonambi.co.za"
+      ],
+      "generalWhatsapps": []
+    },
+    {
+      "id": "1096",
+      "name": "uMhlabuyalingana Local",
+      "category": "local",
+      "province": "KwaZulu-Natal",
+      "parentDistrictId": "121",
+      "parentDistrictName": "uMkhanyakude District",
+      "sourceUrl": "https://municipalities.co.za/contacts/1096/umhlabuyalingana-local-municipality",
+      "water": {
+        "raw": "n/a",
+        "emails": [],
+        "phones": [],
+        "whatsapps": []
+      },
+      "generalEmails": [
+        "info@mhlabuyalingana.gov.za"
+      ],
+      "generalWhatsapps": []
+    },
+    {
+      "id": "1111",
+      "name": "uMlalazi Local",
+      "category": "local",
+      "province": "KwaZulu-Natal",
+      "parentDistrictId": "124",
+      "parentDistrictName": "King Cetshwayo District",
+      "sourceUrl": "https://municipalities.co.za/contacts/1111/umlalazi-local-municipality",
+      "water": {
+        "raw": "035 799 2500 \n \n moodleyd@uthungulu.co.za",
+        "emails": [
+          "moodleyd@uthungulu.co.za"
+        ],
+        "phones": [
+          "0357992500"
+        ],
+        "whatsapps": []
+      },
+      "generalEmails": [
+        "info@umlalazi.gov.za"
+      ],
+      "generalWhatsapps": []
+    },
+    {
+      "id": "1090",
+      "name": "uMngeni Local",
+      "category": "local",
+      "province": "KwaZulu-Natal",
+      "parentDistrictId": "120",
+      "parentDistrictName": "uMgungundlovu District",
+      "sourceUrl": "https://municipalities.co.za/contacts/1090/umngeni-local-municipality",
+      "water": {
+        "raw": "033 897 6700",
+        "emails": [],
+        "phones": [
+          "0338976700"
+        ],
+        "whatsapps": []
+      },
+      "generalEmails": [
+        "helpdesk@umngeni.gov.za"
+      ],
+      "generalWhatsapps": []
+    },
+    {
+      "id": "1091",
+      "name": "uMshwathi Local",
+      "category": "local",
+      "province": "KwaZulu-Natal",
+      "parentDistrictId": "120",
+      "parentDistrictName": "uMgungundlovu District",
+      "sourceUrl": "https://municipalities.co.za/contacts/1091/umshwathi-local-municipality",
+      "water": {
+        "raw": "0800 864 911 \n \n customercare@umdm.gov.za",
+        "emails": [
+          "customercare@umdm.gov.za"
+        ],
+        "phones": [
+          "0800864911"
+        ],
+        "whatsapps": []
+      },
+      "generalEmails": [
+        "info@umshwathi.gov.za"
+      ],
+      "generalWhatsapps": []
+    },
+    {
+      "id": "1098",
+      "name": "uMsinga Local",
+      "category": "local",
+      "province": "KwaZulu-Natal",
+      "parentDistrictId": "122",
+      "parentDistrictName": "uMzinyathi District",
+      "sourceUrl": "https://municipalities.co.za/contacts/1098/umsinga-local-municipality",
+      "water": {
+        "raw": "n/a",
+        "emails": [],
+        "phones": [],
+        "whatsapps": []
+      },
+      "generalEmails": [
+        "registry@umsinga.gov.za"
+      ],
+      "generalWhatsapps": []
+    },
+    {
+      "id": "1180",
+      "name": "Umsobomvu Local",
+      "category": "local",
+      "province": "Northern Cape",
+      "parentDistrictId": "137",
+      "parentDistrictName": "Pixley Ka Seme District",
+      "sourceUrl": "https://municipalities.co.za/contacts/1180/umsobomvu-local-municipality",
+      "water": {
+        "raw": "051 753 0040 \n \n lethu@umsobomvumun.co.za",
+        "emails": [
+          "lethu@umsobomvumun.co.za"
+        ],
+        "phones": [
+          "0517530040"
+        ],
+        "whatsapps": []
+      },
+      "generalEmails": [
+        "info@umsobomvumun.co.za"
+      ],
+      "generalWhatsapps": []
+    },
+    {
+      "id": "1082",
+      "name": "Umuziwabantu Local",
+      "category": "local",
+      "province": "KwaZulu-Natal",
+      "parentDistrictId": "119",
+      "parentDistrictName": "Ugu District",
+      "sourceUrl": "https://municipalities.co.za/contacts/1082/umuziwabantu-local-municipality",
+      "water": {
+        "raw": "039 688 5830/36 \n \n info@umuziwabantu.gov.za",
+        "emails": [
+          "info@umuziwabantu.gov.za"
+        ],
+        "phones": [
+          "0396885830"
+        ],
+        "whatsapps": []
+      },
+      "generalEmails": [
+        "info@umuziwabantu.gov.za"
+      ],
+      "generalWhatsapps": []
+    },
+    {
+      "id": "1100",
+      "name": "Umvoti Local",
+      "category": "local",
+      "province": "KwaZulu-Natal",
+      "parentDistrictId": "122",
+      "parentDistrictName": "uMzinyathi District",
+      "sourceUrl": "https://municipalities.co.za/contacts/1100/umvoti-local-municipality",
+      "water": {
+        "raw": "033 413 1946 \n \n center@uthukelawater.co.za",
+        "emails": [
+          "center@uthukelawater.co.za"
+        ],
+        "phones": [
+          "0334131946"
+        ],
+        "whatsapps": []
+      },
+      "generalEmails": [
+        "info@umvoti.gov.za"
+      ],
+      "generalWhatsapps": []
+    },
+    {
+      "id": "1078",
+      "name": "Umzimkhulu Local",
+      "category": "local",
+      "province": "KwaZulu-Natal",
+      "parentDistrictId": "118",
+      "parentDistrictName": "Harry Gwala District",
+      "sourceUrl": "https://municipalities.co.za/contacts/1078/umzimkhulu-local-municipality",
+      "water": {
+        "raw": "039 834 8700",
+        "emails": [],
+        "phones": [
+          "0398348700"
+        ],
+        "whatsapps": []
+      },
+      "generalEmails": [
+        "info@umzimkhululm.gov.za"
+      ],
+      "generalWhatsapps": []
+    },
+    {
+      "id": "1002",
+      "name": "Umzimvubu Local",
+      "category": "local",
+      "province": "Eastern Cape",
+      "parentDistrictId": "101",
+      "parentDistrictName": "Alfred Nzo District",
+      "sourceUrl": "https://municipalities.co.za/contacts/1002/umzimvubu-local-municipality",
+      "water": {
+        "raw": "n/a",
+        "emails": [],
+        "phones": [],
+        "whatsapps": []
+      },
+      "generalEmails": [
+        "enquiries@umzimvubu.gov.za"
+      ],
+      "generalWhatsapps": []
+    },
+    {
+      "id": "1083",
+      "name": "Umzumbe Local",
+      "category": "local",
+      "province": "KwaZulu-Natal",
+      "parentDistrictId": "119",
+      "parentDistrictName": "Ugu District",
+      "sourceUrl": "https://municipalities.co.za/contacts/1083/umzumbe-local-municipality",
+      "water": {
+        "raw": "n/a",
+        "emails": [],
+        "phones": [],
+        "whatsapps": []
+      },
+      "generalEmails": [
+        "umzumbe@umzumbe.gov.za"
+      ],
+      "generalWhatsapps": []
+    },
+    {
+      "id": "1116",
+      "name": "uPhongolo Local",
+      "category": "local",
+      "province": "KwaZulu-Natal",
+      "parentDistrictId": "125",
+      "parentDistrictName": "Zululand District",
+      "sourceUrl": "https://municipalities.co.za/contacts/1116/uphongolo-local-municipality",
+      "water": {
+        "raw": "n/a",
+        "emails": [],
+        "phones": [],
+        "whatsapps": []
+      },
+      "generalEmails": [
+        "info@uphongolo.gov.za"
+      ],
+      "generalWhatsapps": []
+    },
+    {
+      "id": "1154",
+      "name": "Victor Khanye Local",
+      "category": "local",
+      "province": "Mpumalanga",
+      "parentDistrictId": "133",
+      "parentDistrictName": "Nkangala District",
+      "sourceUrl": "https://municipalities.co.za/contacts/1154/victor-khanye-local-municipality",
+      "water": {
+        "raw": "013 665 6000 (1147) \n \n diram@vklm.gov.za",
+        "emails": [
+          "diram@vklm.gov.za"
+        ],
+        "phones": [
+          "01366560001147"
+        ],
+        "whatsapps": []
+      },
+      "generalEmails": [
+        "info@vklm.gov.za"
+      ],
+      "generalWhatsapps": []
+    },
+    {
+      "id": "1235",
+      "name": "Walter Sisulu Local",
+      "category": "local",
+      "province": "Eastern Cape",
+      "parentDistrictId": "105",
+      "parentDistrictName": "Joe Gqabi District",
+      "sourceUrl": "https://municipalities.co.za/contacts/1235/walter-sisulu-local-municipality",
+      "water": {
+        "raw": "045 979 3119",
+        "emails": [],
+        "phones": [
+          "0459793119"
+        ],
+        "whatsapps": []
+      },
+      "generalEmails": [
+        "customer.care@wslm.gov.za"
+      ],
+      "generalWhatsapps": []
+    },
+    {
+      "id": "1033",
+      "name": "Winnie Madikizela-Mandela Local",
+      "category": "local",
+      "province": "Eastern Cape",
+      "parentDistrictId": "101",
+      "parentDistrictName": "Alfred Nzo District",
+      "sourceUrl": "https://municipalities.co.za/contacts/1033/winnie-madikizela-mandela-local-municipality",
+      "water": {
+        "raw": "n/a",
+        "emails": [],
+        "phones": [],
+        "whatsapps": []
+      },
+      "generalEmails": [
+        "info@mbizana.gov.za"
+      ],
+      "generalWhatsapps": []
+    },
+    {
+      "id": "1211",
+      "name": "Witzenberg Local",
+      "category": "local",
+      "province": "Western Cape",
+      "parentDistrictId": "143",
+      "parentDistrictName": "Cape Winelands District",
+      "sourceUrl": "https://municipalities.co.za/contacts/1211/witzenberg-local-municipality",
+      "water": {
+        "raw": "023 316 8540 \n \n nathan@witzenberg.gov.za",
+        "emails": [
+          "nathan@witzenberg.gov.za"
+        ],
+        "phones": [
+          "0233168540"
+        ],
+        "whatsapps": []
+      },
+      "generalEmails": [
+        "admin@witzenberg.gov.za"
+      ],
+      "generalWhatsapps": []
+    }
+  ]
+}

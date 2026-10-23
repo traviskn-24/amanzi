@@ -1,0 +1,276 @@
+.saved-areas {
+  grid-column: 1 / -1;
+  border-top: 1px solid #edf1ee;
+  padding-top: 13px;
+  display: grid;
+  gap: 9px;
+}
+
+.saved-areas-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.saved-areas-heading > div {
+  display: grid;
+  gap: 3px;
+}
+
+.saved-areas-heading .eyebrow {
+  font-size: 8px;
+  letter-spacing: .8px;
+  color: #7f9188;
+  font-weight: 700;
+}
+
+.saved-areas-heading h2 {
+  margin: 0;
+  color: #315448;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.saved-areas-count {
+  flex: 0 0 auto;
+  border: 1px solid #d9e8dd;
+  background: #f2f8f3;
+  color: #39775d;
+  border-radius: 20px;
+  padding: 5px 9px;
+  font-size: 9px;
+  font-weight: 700;
+}
+
+.saved-areas-copy,
+.saved-areas-guest p,
+.saved-areas-status {
+  margin: 0;
+  color: #829189;
+  font-size: 9px;
+  line-height: 1.5;
+}
+
+.saved-areas-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 210px), 1fr));
+  gap: 7px;
+}
+
+.saved-area-row {
+  min-width: 0;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  border: 1px solid #e2ebe5;
+  border-radius: 8px;
+  background: #fff;
+  padding: 5px;
+}
+
+.saved-area-row.active {
+  border-color: #8cb99a;
+  background: #f5faf6;
+}
+
+.saved-area-select {
+  min-width: 0;
+  flex: 1;
+  display: grid;
+  gap: 3px;
+  padding: 4px 6px;
+  border: 0;
+  background: transparent;
+  color: #355448;
+  text-align: left;
+  cursor: pointer;
+}
+
+.saved-area-select:focus-visible,
+.saved-area-remove:focus-visible,
+.saved-area-set-default:focus-visible,
+.saved-area-add:focus-visible {
+  outline: 3px solid #7dbb974c;
+  outline-offset: 2px;
+}
+
+.saved-area-name {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-size: 10px;
+  font-weight: 700;
+}
+
+.saved-area-default-tag {
+  margin-left: 6px;
+  border-radius: 10px;
+  padding: 2px 5px;
+  background: #e3f1e6;
+  color: #36744f;
+  font-size: 7px;
+  font-weight: 700;
+  vertical-align: 1px;
+}
+
+.saved-area-place {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  color: #829189;
+  font-size: 8px;
+}
+
+.saved-area-remove {
+  flex: 0 0 auto;
+  border: 0;
+  background: transparent;
+  color: #8b6963;
+  padding: 6px;
+  font-size: 8px;
+  cursor: pointer;
+}
+
+.saved-area-set-default {
+  flex: 0 0 auto;
+  border: 1px solid #dce9df;
+  border-radius: 6px;
+  background: #f6faf7;
+  color: #39775d;
+  padding: 6px 7px;
+  font-size: 8px;
+  cursor: pointer;
+}
+
+.saved-area-set-default:disabled { opacity: .55; cursor: wait; }
+
+.saved-area-remove:disabled {
+  cursor: wait;
+  opacity: .5;
+}
+
+.saved-area-add {
+  justify-self: start;
+  min-height: 32px;
+  padding: 0 11px;
+  border: 1px solid #cfe2d5;
+  border-radius: 7px;
+  background: #eff7f1;
+  color: #2f6d50;
+  font-size: 9px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.saved-area-add:hover:not(:disabled) {
+  border-color: #9ac7a6;
+  background: #e7f3e9;
+}
+
+.saved-area-add:disabled {
+  cursor: not-allowed;
+  opacity: .6;
+}
+
+.saved-area-add-form {
+  display: grid;
+  gap: 9px;
+  padding: 11px;
+  border: 1px solid #d8e9ee;
+  border-radius: 12px;
+  background: #f7fbfc;
+}
+
+.saved-area-add-form .location-search { margin: 0; padding: 0; border: 0; }
+.saved-area-add-form .location-search>label { margin: 0 0 6px; color: #527083; font-size: 9px; }
+.saved-area-add-form .location-search-input.uiverse-input-shell { height: 42px; gap: 8px; padding: 0 11px; border-radius: 11px; transform: none; }
+.saved-area-add-form .location-search-input.uiverse-input-shell:focus-within { transform: none; }
+.saved-area-add-form .location-search-input.uiverse-input-shell>span { font-size: 17px; }
+.saved-area-add-form .location-search-input.uiverse-input-shell input { min-width: 0; width: 0; flex: 1; padding: 0; border: 0!important; outline: 0!important; box-shadow: none!important; transform: none!important; font-size: 11px; }
+.saved-area-add-form .location-search-input.uiverse-input-shell input:focus-visible { outline: 0!important; }
+.saved-area-add-form .location-attribution { margin: 5px 1px 0; font-size: 7px; }
+.saved-area-pending { display: grid; gap: 2px; color: #244a60; font-size: 10px; }
+.saved-area-pending span,.saved-area-duplicate { color: #788f9b; font-size: 9px; }
+.saved-area-duplicate { margin: 0; color: #a34d43; }
+.saved-area-add-actions { display: flex; align-items: center; gap: 8px; }
+.saved-area-cancel { min-height: 32px; padding: 0 11px; border: 1px solid #d9e6ea; border-radius: 8px; background: #fff; color: #607987; font-size: 9px; font-weight: 700; }
+.saved-area-cancel:disabled { cursor: wait; opacity: .6; }
+
+.saved-areas-hint {
+  margin-top: -4px;
+  color: #899890;
+  font-size: 8px;
+}
+
+.saved-areas-guest {
+  display: grid;
+  justify-items: start;
+  gap: 8px;
+}
+
+.area-push-settings {
+  display: grid;
+  gap: 8px;
+  border: 1px solid #e1ebe4;
+  border-radius: 9px;
+  background: #f8fbf8;
+  padding: 10px;
+}
+
+.area-push-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.area-push-heading > div {
+  display: grid;
+  gap: 3px;
+}
+
+.area-push-heading strong { color: #315448; font-size: 10px; }
+.area-push-heading span,
+.area-push-message,
+.area-push-unsupported { color: #829189; font-size: 8px; line-height: 1.45; }
+
+.area-push-toggle {
+  flex: 0 0 auto;
+  min-height: 28px;
+  border: 1px solid #cfe2d5;
+  border-radius: 7px;
+  background: #eff7f1;
+  color: #2f6d50;
+  padding: 0 9px;
+  font-size: 8px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.area-push-toggle.active { background: #fff; color: #6d6250; border-color: #e4ded1; }
+.area-push-toggle:disabled { opacity: .6; cursor: wait; }
+
+.area-push-preferences {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px 14px;
+}
+
+.area-push-preferences label {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  color: #65776d;
+  font-size: 8px;
+}
+
+.area-push-preferences input { accent-color: #36744f; }
+.area-push-preferences input:disabled { opacity: .55; }
+.area-push-message { margin: 0; }
+
+@media (max-width: 760px) {
+  .saved-areas {
+    margin-top: 1px;
+  }
+}

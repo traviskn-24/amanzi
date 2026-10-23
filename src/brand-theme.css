@@ -1,0 +1,131 @@
+:root{
+  --amanzi-navy:#18324f;
+  --amanzi-navy-hover:#102842;
+  --amanzi-water:#11b8d6;
+  --amanzi-water-hover:#0799bd;
+  --amanzi-water-soft:#e5f8fc;
+  --amanzi-page:#f2f8fa;
+  --amanzi-line:#dceaf0;
+  --amanzi-ink:#21384f;
+  --amanzi-muted:#71869a;
+  --amanzi-card:#fff;
+  --amanzi-shadow:0 12px 36px rgba(20,60,83,.08);
+  font-family:'Nunito Sans',sans-serif;
+  color:var(--amanzi-ink);
+  background:var(--amanzi-page);
+  font-synthesis:none;
+  text-rendering:optimizeLegibility;
+  -webkit-font-smoothing:antialiased;
+}
+body{color:var(--amanzi-ink);background:radial-gradient(ellipse at 50% -30%,#e1f8fc 0,transparent 56%),var(--amanzi-page)}
+button,input,textarea,select{font-family:inherit}
+button:focus-visible,a:focus-visible,input:focus-visible,textarea:focus-visible,select:focus-visible{outline:3px solid #11b8d670;outline-offset:2px}
+.topbar{height:68px;background:rgba(255,255,255,.92);border-bottom-color:#deedf2;box-shadow:0 4px 22px rgba(17,61,86,.04);backdrop-filter:blur(14px)}
+.brand{gap:7px;color:var(--amanzi-navy)}
+.brand-logo{width:82px;max-height:42px;object-fit:contain}
+.brand-mark{background:var(--amanzi-water-hover)}
+.top-context{color:var(--amanzi-muted)}
+.avatar{background:var(--amanzi-water-soft);color:var(--amanzi-navy)}
+.layout{gap:26px;padding-top:28px}
+.side-label,.eyebrow{color:#6f899b}
+.select-wrap,.area-trigger,.search-box,.location-search-input,.account-form input,.fault-form-grid input,.fault-form-grid select,.fault-form-grid textarea{border-color:var(--amanzi-line);border-radius:13px}
+.select-wrap{box-shadow:0 4px 14px rgba(26,75,96,.04)}
+.select-wrap select{color:var(--amanzi-ink)}
+.nav-item{border-radius:12px;color:#61788b;transition:background .18s ease,color .18s ease,transform .18s ease}
+.nav-item:hover{background:#edf8fb;color:var(--amanzi-navy);transform:translateX(2px)}
+.nav-item.active{background:var(--amanzi-water-soft);color:var(--amanzi-navy)}
+.nav-icon,.nav-count{color:var(--amanzi-water-hover)}
+.sidebar-note{background:linear-gradient(145deg,#e5f8fc,#f1fbfd);border:1px solid #d5f0f6;border-radius:18px;color:var(--amanzi-navy)}
+.sidebar-note p{color:#648295}
+.welcome-row h1,.brand,.account-card h2,.area-onboarding-card h1,.feed-heading h2,.rail-head h2,.rail-card h3,.chat-header h2,.fault-modal-heading h2{font-family:'Nunito Sans',sans-serif;color:var(--amanzi-navy)}
+.welcome-row h1{font-size:26px;font-weight:900;letter-spacing:-.7px}
+.intro,.rail-summary{color:var(--amanzi-muted)}
+.post-button,.fault-open-button,.fault-send-button{border-radius:12px;background:linear-gradient(135deg,var(--amanzi-navy),#235477);box-shadow:0 7px 18px rgba(24,50,79,.17);transition:transform .18s ease,box-shadow .18s ease,filter .18s ease}
+.post-button:hover,.fault-open-button:hover,.fault-send-button:hover{background:linear-gradient(135deg,#102842,#1f6684);box-shadow:0 10px 24px rgba(24,50,79,.22);transform:translateY(-1px)}
+.status-card{border:1px solid #d9eef4;border-radius:17px;background:linear-gradient(120deg,#e6f7fb,#f4fbfd);box-shadow:0 7px 22px rgba(31,111,138,.05)}
+.status-symbol{border-radius:14px;background:#d5f3f8;color:#078eae}
+.status-title{color:var(--amanzi-navy)}
+.status-pill{background:#d8f3f8;color:#087f9c}
+.feed-toolbar{border-bottom-color:var(--amanzi-line)}
+.feed-tabs{gap:18px}
+.feed-tabs button{font-weight:750}
+.feed-tabs button.selected{color:var(--amanzi-navy);border-color:var(--amanzi-water)}
+.feed-tabs span{background:var(--amanzi-water-soft);color:var(--amanzi-navy)}
+.search-box{height:36px;border-radius:12px;box-shadow:0 3px 10px rgba(29,75,97,.035)}
+.feed-heading h2{font-size:15px;font-weight:850}
+.sort-button{border-radius:10px;padding:8px 10px}
+.sort-button:hover{background:var(--amanzi-water-soft);color:var(--amanzi-navy)}
+.post-card,.rail-card,.community-search-panel,.area-menu,.account-card,.fault-modal,.chat-panel,.area-onboarding-card{border:1px solid rgba(207,227,236,.9);border-radius:18px;background:var(--amanzi-card);box-shadow:var(--amanzi-shadow)}
+.post-card{transition:transform .2s ease,box-shadow .2s ease,border-color .2s ease}
+.post-card:hover{transform:translateY(-2px);border-color:#b9e6ef;box-shadow:0 17px 38px rgba(20,60,83,.11)}
+.post-meta,.post-detail,.post-actions button{color:#668094}
+.post-type,.water-status-tag,.demo-tag,.live-tag{border-radius:99px}
+.post-actions button{border-radius:10px;transition:background .16s ease,color .16s ease}
+.post-actions button:hover{background:var(--amanzi-water-soft);color:var(--amanzi-navy)}
+.rail-card{padding:19px}
+.area-card{background:linear-gradient(165deg,#fff,#f2fbfd)}
+.pulse-icon,.community-search-pin,.location-result-pin{background:var(--amanzi-water-soft);color:var(--amanzi-water-hover);border-radius:13px}
+.notice-card{background:linear-gradient(145deg,#f0fbfd,#fff)}
+.notice-label{color:#0a819e}
+.area-trigger:hover,.area-trigger[aria-expanded=true],.location-search-input:focus-within,.account-form input:focus,.area-onboarding-page .location-search-input:focus-within{border-color:var(--amanzi-water);box-shadow:0 0 0 4px #16b8d41c}
+.area-option{border-radius:10px}
+.area-option.selected{background:var(--amanzi-water-soft);color:var(--amanzi-navy)}
+.location-results{border-radius:16px;box-shadow:0 18px 42px rgba(19,55,75,.14)}
+.community-search-panel{border-color:var(--amanzi-line)}
+.account-backdrop,.fault-modal-backdrop,.chat-backdrop{backdrop-filter:blur(8px)}
+.account-card,.area-onboarding-card{border-radius:24px;box-shadow:0 26px 80px rgba(15,51,76,.18)}
+.account-brand-logo{width:94px;max-height:46px;margin:0 auto 12px;display:block}
+.account-kicker,.area-onboarding-kicker{color:var(--amanzi-water-hover);letter-spacing:1.5px}
+.account-tabs button{border-radius:10px 10px 0 0}
+.account-tabs button.active{border-color:var(--amanzi-water);color:var(--amanzi-navy)}
+.account-form input{height:46px;color:var(--amanzi-ink)}
+.account-form input:focus{border-color:var(--amanzi-water);box-shadow:0 0 0 4px #16b8d41c}
+.account-secondary,.account-signout,.area-onboarding-remove,.area-onboarding-secondary,.install-app-button{border-radius:12px;transition:background .18s ease,border-color .18s ease,transform .18s ease}
+.account-secondary:hover,.account-signout:hover,.area-onboarding-remove:hover,.area-onboarding-secondary:hover,.install-app-button:hover{border-color:#b4e5ed;background:#f0fbfd;transform:translateY(-1px)}
+.account-security-status,.account-message{border-radius:12px;background:#e8f8f7;color:#1b796b}
+.account-error,.area-onboarding-error{border-radius:12px}
+.area-onboarding-choice.is-default{background:#edf9fc}
+.area-onboarding-row{border-radius:14px}
+.area-onboarding-choice input,.area-push-preferences input{accent-color:var(--amanzi-water-hover)}
+.area-default-badge{border-radius:99px;background:#dff5f8;color:#087f9c}
+.fault-modal,.chat-panel{border-radius:22px}
+.chat-header,.fault-modal-heading{border-bottom-color:var(--amanzi-line)}
+.chat-tabs button{border-radius:10px}
+.chat-tabs button.active{background:var(--amanzi-water-soft);color:var(--amanzi-navy)}
+.chat-safety{border-radius:12px;background:#edf9fc;color:#53778a}
+.chat-composer textarea{border-radius:14px}
+.fault-preview,.fault-privacy{border-radius:14px}
+.fault-send-button.whatsapp{background:linear-gradient(135deg,#138c72,#23ae8b)}
+.footer{color:var(--amanzi-muted)}
+.install-app-button{border-color:var(--amanzi-line);background:#f2f9fb;color:var(--amanzi-navy)}
+::selection{background:#bceef5;color:#12364e}
+
+/* Adapted from Uiverse's "Follow me" button by @alshahwan.
+   Amanzi version keeps the hover reveal and sliding label, with an accessible
+   always-visible action label and the app's blue palette. */
+.post-button.uiverse-action{position:relative;min-width:174px;padding:0 42px 0 18px;border:1px solid #0d96b5;background:#fff;color:#087f9c;box-shadow:none;overflow:hidden}
+.uiverse-action .uiverse-action-label{position:absolute;top:50%;left:18px;transform:translateY(-50%);margin:0;padding:0;color:#087f9c;transition:left .35s ease,color .35s ease}
+.uiverse-action svg{position:absolute;top:50%;right:14px;width:17px;height:17px;transform:translateY(-50%);opacity:0;transition:opacity .35s ease,right .35s ease}
+.uiverse-action svg path{fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.post-button.uiverse-action:hover,.post-button.uiverse-action:focus-visible{background:#087f9c;color:#fff;border-color:#087f9c;box-shadow:0 8px 18px rgba(8,127,156,.2)}
+.uiverse-action:hover .uiverse-action-label,.uiverse-action:focus-visible .uiverse-action-label{left:14px;color:#fff}
+.uiverse-action:hover svg,.uiverse-action:focus-visible svg{right:12px;opacity:1}
+.uiverse-action:active{transform:translateY(1px)}
+
+/* Adapted from Uiverse's neumorphic input by @Praashoo7. */
+.uiverse-input-shell{border:1px solid transparent;background:#edf5f7;box-shadow:inset 2px 5px 10px rgba(19,55,75,.11);transition:300ms ease-in-out}
+.uiverse-input-shell:focus-within{border-color:#8adce8;background:#fff;transform:scale(1.01);box-shadow:0 0 0 3px #16b8d426,inset 1px 2px 5px rgba(19,55,75,.04)}
+.location-search-input.uiverse-input-shell{border-radius:15px}
+.location-search-input.uiverse-input-shell input{background:transparent}
+.search-box.uiverse-input-shell{border-radius:15px}
+.uiverse-input{background:#edf5f7!important;box-shadow:inset 2px 5px 10px rgba(19,55,75,.11);transition:300ms ease-in-out!important}
+.uiverse-input:focus{background:#fff!important;transform:scale(1.01);box-shadow:0 0 0 3px #16b8d426,inset 1px 2px 5px rgba(19,55,75,.04)!important}
+
+/* Adapted from Uiverse's compact CSS card by @Javierrocadev:
+   rounded, clipped surface with a soft offset circular highlight. */
+.post-card{position:relative;isolation:isolate;overflow:hidden;border-radius:16px}
+.post-card::before{content:"";position:absolute;z-index:0;top:-46px;right:-24px;width:128px;height:128px;border-radius:50%;background:rgba(17,184,214,.075);pointer-events:none;transition:transform .25s ease,background .25s ease}
+.post-card>*{position:relative;z-index:1}
+.post-card:hover::before{transform:scale(1.16);background:rgba(17,184,214,.11)}
+@media(max-width:700px){.topbar{height:62px;padding-inline:16px;gap:18px}.brand-logo{width:70px;max-height:36px}.layout{padding:18px 16px 48px;gap:18px}.welcome-row h1{font-size:23px}.post-card:hover{transform:none}}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{scroll-behavior:auto!important;animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}}

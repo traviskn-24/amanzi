@@ -1,0 +1,11 @@
+.account-menu{position:relative;display:flex;align-items:center;justify-content:center;z-index:30;margin-left:auto}
+.account-menu .avatar{margin-left:0}
+.account-menu-dropdown{position:absolute;top:calc(100% + 10px);right:0;z-index:60;width:190px;padding:7px;border:1px solid #d8e7ec;border-radius:15px;background:rgba(255,255,255,.98);box-shadow:0 14px 34px rgba(20,56,76,.18);backdrop-filter:blur(16px);transform-origin:top right;animation:account-menu-enter .15s ease-out}
+.account-menu-dropdown[data-open=false]{animation:account-menu-exit .15s ease-in forwards;pointer-events:none}
+.account-menu-signout{display:flex;align-items:center;width:100%;min-height:42px;padding:0 12px;border:0;border-radius:10px;background:transparent;color:#27495d;text-align:left;font:700 12px 'Nunito Sans',sans-serif;cursor:pointer;transition:background .16s,color .16s}
+.account-menu-signout:hover,.account-menu-signout:focus-visible{outline:0;background:#eef8fa;color:#087f98}
+.account-menu-signout:disabled{opacity:.55;cursor:wait}
+.account-menu-error{margin:3px 5px 7px;padding:8px;border-radius:9px;background:#fff1ef;color:#a34d43;font-size:10px;line-height:1.45}
+@keyframes account-menu-enter{from{opacity:0;transform:translateY(-4px) scale(.98)}to{opacity:1;transform:translateY(0) scale(1)}}
+@keyframes account-menu-exit{from{opacity:1;transform:translateY(0) scale(1)}to{opacity:0;transform:translateY(-4px) scale(.98)}}
+@media(prefers-reduced-motion:reduce){.account-menu-dropdown{animation:none}}

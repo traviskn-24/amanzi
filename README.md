@@ -25,3 +25,14 @@ Without Supabase settings, the app opens in demo mode with local browser data. T
 6. In another browser, confirm a report or send a chat message to show that the shared feed updates across sessions.
 
 Official municipal notices and service fault submissions are not integrated yet. Community reports are separate from municipal reports.
+
+## Push notification secrets
+
+Push subscriptions are scoped to an account and its saved areas. The app sends only confirmed water outage, low-pressure, and restoration alerts; ordinary chat messages do not trigger a push. The browser receives only the VAPID public key. Keep the private key in Supabase Edge Function secrets.
+
+1. Generate a VAPID pair once in a terminal: `npx --yes web-push generate-vapid-keys --json`.
+2. In the Supabase dashboard for this project, open **Edge Functions → Secrets** and add `VAPID_PUBLIC_KEY`, `VAPID_PRIVATE_KEY`, and `VAPID_SUBJECT`.
+3. Set `VAPID_SUBJECT` to a stable public HTTPS URL or a real support email. For this project, the HTTPS project URL is `https://ovpgwxhwjtlfcelruiwb.supabase.co`.
+4. Keep the same key pair for future deployments. Never put the private key in `.env.local`, a `VITE_` variable, source control, or chat.
+
+The `manage-push-subscriptions` and `dispatch-water-alert` Edge Functions must be deployed with JWT verification enabled. The app needs an installed, supported browser and at least one saved area to enable push alerts.

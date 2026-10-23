@@ -1,0 +1,17 @@
+.sort-menu{position:relative;z-index:1;min-width:154px}
+.sort-menu[data-open="true"]{z-index:4}
+.sort-menu-trigger{width:100%;height:40px;display:flex;align-items:center;justify-content:space-between;gap:12px;padding:0 13px;border:1px solid #d2e4ea;border-radius:13px;background:linear-gradient(145deg,#fff,#f4fafb);box-shadow:0 3px 9px rgba(21,61,78,.07);color:#244b60;font-size:11px;font-weight:750;text-align:left;transition:border-color .16s ease,box-shadow .16s ease,background-color .16s ease}
+.sort-menu-trigger:hover,.sort-menu-trigger[aria-expanded=true]{border-color:#40a5ba;box-shadow:0 5px 14px rgba(21,95,114,.12)}
+.sort-menu-trigger svg{width:16px;height:16px;flex:0 0 16px;fill:none;stroke:#188aa2;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;transition:transform .18s ease}
+.sort-menu-trigger[aria-expanded=true] svg{transform:rotate(180deg)}
+.sort-menu-options{position:absolute;top:calc(100% + 7px);right:0;z-index:20;width:max(100%,180px);display:grid;gap:3px;padding:6px;border:1px solid #d5e5e9;border-radius:14px;background:rgba(255,255,255,.98);box-shadow:0 14px 32px rgba(20,56,76,.16);backdrop-filter:blur(12px);transform-origin:top right;animation:sort-menu-in .16s cubic-bezier(.2,.8,.2,1) both}
+.sort-menu-options[data-open=false]{animation:sort-menu-out .14s ease-in both;pointer-events:none}
+.sort-menu-option{min-height:38px;display:flex;align-items:center;justify-content:space-between;gap:12px;padding:0 10px;border:0;border-radius:9px;background:transparent;color:#38586b;font-size:11px;text-align:left;transition:background-color .14s ease,color .14s ease,transform .14s ease}
+.sort-menu-option:hover,.sort-menu-option:focus-visible{outline:0;background:#eef8fa;color:#087f98}
+.sort-menu-option[aria-checked=true]{background:#e8f6f8;color:#087f98;font-weight:800}
+.sort-menu-check{color:#078ca7}
+@keyframes sort-menu-in{from{opacity:0;transform:translateY(-5px) scale(.98)}to{opacity:1;transform:translateY(0) scale(1)}}
+@keyframes sort-menu-out{from{opacity:1;transform:translateY(0) scale(1)}to{opacity:0;transform:translateY(-4px) scale(.98)}}
+@media(max-width:760px){.sort-menu{min-width:132px}.sort-menu-trigger{height:38px}}
+@media(max-width:390px){.sort-menu{min-width:122px}.sort-menu-trigger{font-size:10px;padding-left:10px}}
+@media(prefers-reduced-motion:reduce){.sort-menu-options,.sort-menu-trigger svg{animation:none;transition:none}}

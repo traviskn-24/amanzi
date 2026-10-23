@@ -1,0 +1,95 @@
+:where(.app-shell, .about-page) button {
+  transition-property: transform, box-shadow, color, background-color, border-color;
+  transition-duration: 160ms;
+  transition-timing-function: ease;
+}
+
+:where(.app-shell, .about-page) button:active:not(:disabled) {
+  transform: scale(.98);
+}
+
+:where(.app-shell, .about-page) :is(input, textarea, select) {
+  transition: border-color 160ms ease, box-shadow 160ms ease, background-color 160ms ease;
+}
+
+:where(.app-shell, .about-page) :is(button, a, input, textarea, select):focus-visible {
+  outline: 3px solid color-mix(in srgb, #13a8c4 28%, transparent);
+  outline-offset: 3px;
+}
+
+.location-results {
+  transform-origin: top center;
+  animation: results-enter 180ms ease-out both;
+}
+
+.composer {
+  transform-origin: top center;
+  animation: panel-enter 200ms cubic-bezier(.2, .75, .25, 1) both;
+}
+
+.composer[data-open="false"] {
+  animation: panel-exit 180ms ease-in both;
+  pointer-events: none;
+}
+
+.saved-area-add-form {
+  transform-origin: top center;
+  animation: panel-enter 200ms cubic-bezier(.2, .75, .25, 1) both;
+}
+
+.saved-area-add-form[data-open="false"] {
+  animation: panel-exit 180ms ease-in both;
+  pointer-events: none;
+}
+
+.fault-modal-backdrop,
+.chat-backdrop {
+  animation: overlay-enter 180ms ease-out both;
+}
+
+.fault-modal-backdrop[data-open="false"],
+.chat-backdrop[data-open="false"] {
+  animation: overlay-exit 180ms ease-in both;
+  pointer-events: none;
+}
+
+.fault-modal {
+  animation: modal-enter 220ms cubic-bezier(.2, .8, .2, 1) both;
+}
+
+.fault-modal-backdrop[data-open="false"] .fault-modal {
+  animation: modal-exit 180ms ease-in both;
+}
+
+.chat-panel {
+  animation: drawer-enter 220ms cubic-bezier(.2, .8, .2, 1) both;
+}
+
+.chat-backdrop[data-open="false"] .chat-panel {
+  animation: drawer-exit 180ms ease-in both;
+}
+
+@keyframes results-enter {
+  from { opacity: 0; transform: translateY(-5px) scale(.99); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+@keyframes panel-enter { from { opacity: 0; transform: translateY(-9px) scale(.99); } to { opacity: 1; transform: translateY(0) scale(1); } }
+@keyframes panel-exit { from { opacity: 1; transform: translateY(0) scale(1); } to { opacity: 0; transform: translateY(-6px) scale(.99); } }
+@keyframes overlay-enter { from { opacity: 0; } to { opacity: 1; } }
+@keyframes overlay-exit { from { opacity: 1; } to { opacity: 0; } }
+@keyframes modal-enter { from { opacity: 0; transform: translateY(10px) scale(.98); } to { opacity: 1; transform: translateY(0) scale(1); } }
+@keyframes modal-exit { from { opacity: 1; transform: translateY(0) scale(1); } to { opacity: 0; transform: translateY(8px) scale(.985); } }
+@keyframes drawer-enter { from { opacity: 0; transform: translateX(22px); } to { opacity: 1; transform: translateX(0); } }
+@keyframes drawer-exit { from { opacity: 1; transform: translateX(0); } to { opacity: 0; transform: translateX(22px); } }
+
+@media (prefers-reduced-motion: reduce) {
+  :where(.app-shell, .about-page) *,
+  :where(.app-shell, .about-page) *::before,
+  :where(.app-shell, .about-page) *::after {
+    scroll-behavior: auto !important;
+    animation-duration: .01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: .01ms !important;
+  }
+}
