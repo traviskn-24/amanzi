@@ -11,9 +11,9 @@ const seed = [
 
 const areas = ['Phoenix', 'Mount Edgecombe', 'Verulam', 'Durban North']
 const waterStatuses = [
-  { value: 'no_water', label: 'No water' },
-  { value: 'low_pressure', label: 'Low pressure' },
-  { value: 'restored', label: 'Water restored' },
+  { value: 'no_water', label: 'No water', description: 'The taps are dry', icon: '×' },
+  { value: 'low_pressure', label: 'Low pressure', description: 'Water is running slowly', icon: '≈' },
+  { value: 'restored', label: 'Water restored', description: 'Water is back on', icon: '✓' },
 ]
 const waterStatusLabels = Object.fromEntries(waterStatuses.map(({ value, label }) => [value, label]))
 const pulseStatuses = [...waterStatuses, { value: 'unclassified', label: 'Status not captured' }]
@@ -29,7 +29,7 @@ function App() {
   const [showComposer, setShowComposer] = useState(false)
   const [draft, setDraft] = useState('')
   const [draftArea, setDraftArea] = useState('Phoenix')
-  const [draftStatus, setDraftStatus] = useState('no_water')
+  const [draftStatus, setDraftStatus] = useState('')
   const [notice, setNotice] = useState('')
   const [dbStatus, setDbStatus] = useState(isSupabaseConfigured ? 'connecting' : 'demo')
   const [dbMessage, setDbMessage] = useState('')
@@ -119,7 +119,7 @@ function App() {
 
   async function publish(event) {
     event.preventDefault()
-    if (!draft.trim()) return
+    if (draft.trim().length < 8 || !draftStatus) return
     if (supabase) {
       if (dbStatus !== 'connected') {
         setNotice('Amanzi is not connected, so this update was not shared. Refresh after Supabase is enabled.')
@@ -193,7 +193,13 @@ function App() {
           {dbStatus === 'connecting' && <div className="toast" role="status">Connecting to Amanzi’s shared community updates…</div>}
           {dbStatus === 'error' && <div className="toast" role="status">Shared updates aren’t available: {dbMessage}. You can still explore the demo view.</div>}
           {notice && <div className="toast" role="status">✓ {notice}</div>}
-          {showComposer && <form className="composer" onSubmit={publish}><div className="composer-head"><div className="mini-avatar">T</div><div><strong>{scope === 'all' ? 'Share a Durban update' : `Share with ${area}`}</strong><small>Neighbour report · don’t include your exact address.</small></div><button type="button" className="close-button" onClick={() => setShowComposer(false)} aria-label="Close">×</button></div><div className="report-fields">{scope === 'all' && <label>Neighbourhood<select value={draftArea} onChange={(event) => setDraftArea(event.target.value)}>{areas.map((name) => <option key={name} value={name}>{name}</option>)}</select></label>}<label>Water status<select value={draftStatus} onChange={(event) => setDraftStatus(event.target.value)}>{waterStatuses.map((status) => <option key={status.value} value={status.value}>{status.label}</option>)}</select></label></div><textarea autoFocus minLength={8} maxLength={180} value={draft} onChange={(e) => setDraft(e.target.value)} placeholder="What are you noticing? Add useful context, not your exact address…" /><div className="composer-foot"><span>{draft.length}/180 · {draftArea} · Community report</span><button className="post-button small" disabled={draft.trim().length < 8}>Post update <span>↗</span></button></div></form>}
+          {showComposer && <form className="composer" onSubmit={publish}>
+            <div className="composer-head"><div className="mini-avatar">T</div><div><strong>{scope === 'all' ? 'Share a Durban update' : `Share with ${area}`}</strong><small>Neighbour report · don’t include your exact address.</small></div><button type="button" className="close-button" onClick={() => setShowComposer(false)} aria-label="Close">×</button></div>
+            {scope === 'all' && <fieldset className="choice-group"><legend>Which neighbourhood?</legend><div className="area-choices">{areas.map((name) => <label className={`area-choice ${draftArea === name ? 'selected' : ''}`} key={name}><input type="radio" name="report-area" value={name} checked={draftArea === name} onChange={() => setDraftArea(name)} /><span>{name}</span><span className="choice-check" aria-hidden="true">✓</span></label>)}</div></fieldset>}
+            <fieldset className="choice-group status-choice-group"><legend>What’s happening with the water?</legend><div className="status-choices">{waterStatuses.map((status) => <label className={`status-choice ${draftStatus === status.value ? `selected status-${status.value}` : ''}`} key={status.value}><input type="radio" name="water-status" value={status.value} checked={draftStatus === status.value} onChange={() => setDraftStatus(status.value)} /><span className="status-choice-icon" aria-hidden="true">{status.icon}</span><span className="status-choice-copy"><strong>{status.label}</strong><small>{status.description}</small></span><span className="choice-check" aria-hidden="true">✓</span></label>)}</div></fieldset>
+            <textarea autoFocus minLength={8} maxLength={180} value={draft} onChange={(e) => setDraft(e.target.value)} placeholder="Add useful context, such as when it started or if it has returned…" />
+            <div className="composer-foot"><span>{draft.length}/180 · {draftArea} · {waterStatusLabels[draftStatus] || 'Choose a status'}</span><button className="post-button small" disabled={draft.trim().length < 8 || !draftStatus}>Post update <span>↗</span></button></div>
+          </form>}
 
           <div className="feed-heading"><h2>Latest from your community</h2><button className="sort-button">Most recent <span>⌄</span></button></div>
           <div className="posts-list">{visiblePosts.map((post) => <article className="post-card" key={post.id}>
