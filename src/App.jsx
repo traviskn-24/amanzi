@@ -35,6 +35,11 @@ function App() {
     if (confirmationsError) throw confirmationsError
     const counts = new Map()
     for (const confirmation of confirmations) counts.set(confirmation.update_id, (counts.get(confirmation.update_id) || 0) + 1)
+    const chatCounts = new Map(await Promise.all([...new Set(updates.map((row) => row.area))].map(async (updateArea) => {
+      const { count, error } = await supabase.from('community_messages').select('id', { count: 'exact', head: true }).eq('area', updateArea)
+      if (error) throw error
+      return [updateArea, count || 0]
+    })))
     const sharedPosts = updates.map((row) => ({
       id: row.id,
       area: row.area,
@@ -43,7 +48,7 @@ function App() {
       time: new Intl.RelativeTimeFormat('en', { numeric: 'auto' }).format(-Math.max(0, Math.round((Date.now() - new Date(row.created_at).getTime()) / 60000)), 'minute'),
       author: row.display_name,
       kind: 'Community update',
-      replies: 0,
+      replies: chatCounts.get(row.area) || 0,
       confirms: counts.get(row.id) || 0,
       verified: false,
     }))
@@ -67,6 +72,7 @@ function App() {
       channel = supabase.channel('amanzi-water-updates')
         .on('postgres_changes', { event: '*', schema: 'public', table: 'water_updates' }, () => loadSharedUpdates().catch(() => {}))
         .on('postgres_changes', { event: '*', schema: 'public', table: 'update_confirmations' }, () => loadSharedUpdates().catch(() => {}))
+        .on('postgres_changes', { event: '*', schema: 'public', table: 'community_messages' }, () => loadSharedUpdates().catch(() => {}))
         .subscribe()
     }
     connect().catch((error) => {
@@ -178,7 +184,7 @@ function App() {
             <h3>{post.title}</h3><p className="post-detail">{post.detail}</p>
             {post.verified && <a className="source-link" href="https://www.durban.gov.za/" target="_blank" rel="noreferrer">View municipal source <span>↗</span></a>}
             <div className="post-meta"><span className="mini-avatar">{post.author === 'You' ? 'T' : post.author.charAt(0)}</span><strong>{post.author}</strong><span className="meta-dot">·</span><span>{post.area}</span><span className="meta-dot">·</span><span>{post.time}</span></div>
-            <div className="post-actions"><button onClick={() => confirm(post.id)}><span>◉</span> I’m seeing this too <b>{post.confirms}</b></button><button onClick={() => setChatArea(post.area)}><span>◌</span> Join conversation <b>{post.replies}</b></button><button className="share-action" onClick={() => navigator.clipboard?.writeText(`${post.title} — Amanzi ${post.area}`)}><span>↗</span> Share</button></div>
+            <div className="post-actions"><button onClick={() => confirm(post.id)}><span>◉</span> I’m seeing this too <b>{post.confirms}</b></button><button onClick={() => setChatArea(post.area)}><span>◌</span> Join area chat <b title={`${post.replies} messages in ${post.area} chat`}>{post.replies}</b></button><button className="share-action" onClick={() => navigator.clipboard?.writeText(`${post.title} — Amanzi ${post.area}`)}><span>↗</span> Share</button></div>
           </article>)}
           {visiblePosts.length === 0 && <div className="empty-state"><div>⌕</div><strong>No updates found</strong><p>Try another search or check a wider area.</p></div>}
           </div>
