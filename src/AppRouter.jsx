@@ -4,6 +4,7 @@ import App from './App'
 import AreaOnboardingPage from './pages/AreaOnboardingPage'
 import CreateAccountPage from './pages/CreateAccountPage'
 import AboutPage from './pages/AboutPage'
+import UsernameSetupPage from './pages/UsernameSetupPage'
 import LoadingScreen from './components/feedback/LoadingScreen'
 import ResetPasswordPage from './pages/ResetPasswordPage'
 
@@ -11,6 +12,7 @@ function readPath() {
   if (window.location.pathname === '/create-account') return 'create-account'
   if (window.location.pathname === '/reset-password') return 'reset-password'
   if (window.location.pathname === '/onboarding') return 'onboarding'
+  if (window.location.pathname === '/username') return 'username'
   if (window.location.pathname === '/about') return 'about'
   return 'home'
 }
@@ -64,6 +66,15 @@ export default function AppRouter() {
     beginRouteTransition('Opening your communities…')
     try {
       if (!supabase) { navigate('/create-account'); return }
+      const { data: { user }, error: userError } = await supabase.auth.getUser()
+      if (userError || !user || user.is_anonymous) { navigate('/create-account'); return }
+      const { data: profile, error: profileError } = await supabase.from('profiles')
+        .select('username').eq('user_id', user.id).maybeSingle()
+      if (profileError || !profile?.username) {
+        setSessionValidated(true)
+        navigate('/username')
+        return
+      }
       const { data, error } = await supabase.from('user_areas').select('slot').limit(1)
       setSessionValidated(true)
       navigate(error || !data?.length ? '/onboarding' : '/')
@@ -128,6 +139,8 @@ export default function AppRouter() {
     content = <ResetPasswordPage supabase={supabase} onSignIn={() => navigate('/create-account')} onLoadingChange={reportOperation} />
   } else if (page === 'onboarding') {
     content = <AreaOnboardingPage supabase={supabase} onComplete={() => navigate('/')} onRequireSignIn={requireSignIn} onLoadingChange={reportOperation} />
+  } else if (page === 'username') {
+    content = <UsernameSetupPage supabase={supabase} onComplete={routeAfterAuthentication} onRequireSignIn={requireSignIn} onLoadingChange={reportOperation} />
   } else if (page === 'about') {
     content = <AboutPage onHome={() => navigate('/')} />
   } else {

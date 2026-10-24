@@ -14,6 +14,7 @@ export default function AccountSecurity({ supabase, user, onClose, onAuthChange,
   const [mode, setMode] = useState(initialMode)
   const [step, setStep] = useState(user && !user.is_anonymous ? 'checking' : 'account')
   const [email, setEmail] = useState('')
+  const [username, setUsername] = useState('')
   const [password, setPassword] = useState('')
   const [confirmPassword, setConfirmPassword] = useState('')
   const [showPassword, setShowPassword] = useState(false)
@@ -116,9 +117,18 @@ export default function AccountSecurity({ supabase, user, onClose, onAuthChange,
         setMessage(`If an Amanzi account exists for ${email.trim()}, we sent a password reset link. Check your inbox and spam folder.`)
       } else if (mode === 'create') {
         if (password !== confirmPassword) throw new Error('Your passwords do not match.')
+        const normalizedUsername = username.trim().toLowerCase()
+        if (!/^[a-z0-9_]{3,20}$/.test(normalizedUsername)) {
+          throw new Error('Choose a username with 3–20 lowercase letters, numbers, or underscores.')
+        }
+        const { data: existingUsername, error: usernameError } = await supabase.from('profiles')
+          .select('user_id').eq('username', normalizedUsername).maybeSingle()
+        if (usernameError) throw usernameError
+        if (existingUsername) throw new Error('That username is already taken. Try another one.')
         const { error: signupError } = user?.is_anonymous
-          ? await supabase.auth.updateUser({ email: email.trim(), password }, { emailRedirectTo: authRedirectUrl('/create-account') })
-          : await supabase.auth.signUp({ email: email.trim(), password, options: { emailRedirectTo: authRedirectUrl('/create-account') } })
+          ? await supabase.auth.updateUser({ email: email.trim(), password, data: { username: normalizedUsername } }, { emailRedirectTo: authRedirectUrl('/create-account') })
+          : await supabase.auth.signUp({ email: email.trim(), password, options: { emailRedirectTo: authRedirectUrl('/create-account'), data: { username: normalizedUsername } } })
+        if (signupError?.code === '23505') throw new Error('That username is already taken. Try another one.')
         if (signupError) throw signupError
         setStep('confirmation')
         setMessage(`We sent a confirmation link to ${email.trim()}. Confirm your email, then return here to finish setting up two-step verification.`)
@@ -211,6 +221,7 @@ export default function AccountSecurity({ supabase, user, onClose, onAuthChange,
         <p className="account-copy">{mode === 'forgot-password' ? 'Enter your account email and we’ll send you a secure password reset link.' : 'Your account keeps you signed in and protects your Amanzi activity.'}</p>
         {mode !== 'forgot-password' && <div className="account-tabs"><button className={mode === 'sign-in' ? 'active' : ''} onClick={() => { setMode('sign-in'); setError(''); setMessage(''); setConfirmPassword(''); setShowPassword(false); setShowConfirmPassword(false) }}>Sign in</button><button className={mode === 'create' ? 'active' : ''} onClick={() => { setMode('create'); setError(''); setMessage(''); setShowPassword(false); setShowConfirmPassword(false) }}>Create account</button></div>}
         <form key={mode} className="account-form account-form-transition" onSubmit={submitAccount}>
+          {mode === 'create' && <><label>Username<input className="uiverse-input" type="text" required autoComplete="username" autoCapitalize="none" spellCheck="false" minLength={3} maxLength={20} pattern="[a-zA-Z0-9_]{3,20}" title="Use 3–20 letters, numbers, or underscores." value={username} onChange={(event) => setUsername(event.target.value)} placeholder="e.g. waterwatcher" /></label><small className="account-hint">This is shown on your community updates and area chats.</small></>}
           <label>Email address<input className="uiverse-input" type="email" required autoComplete="email" maxLength={254} value={email} onChange={(event) => setEmail(event.target.value)} placeholder="you@example.com" /></label>
           {mode !== 'forgot-password' && <div className="account-password-field"><label htmlFor="account-password">Password</label><div className="password-input-wrap"><input id="account-password" className="uiverse-input" type={showPassword ? 'text' : 'password'} required minLength={10} maxLength={72} autoComplete={mode === 'create' ? 'new-password' : 'current-password'} value={password} onChange={(event) => setPassword(event.target.value)} placeholder={mode === 'create' ? 'At least 10 characters' : 'Your password'} /><PasswordVisibilityButton visible={showPassword} onToggle={() => setShowPassword((visible) => !visible)} controls="account-password" /></div></div>}
           {mode === 'create' && <div className="account-password-field"><label htmlFor="account-confirm-password">Confirm password</label><div className="password-input-wrap"><input id="account-confirm-password" className="uiverse-input" type={showConfirmPassword ? 'text' : 'password'} required minLength={10} maxLength={72} autoComplete="new-password" value={confirmPassword} onChange={(event) => setConfirmPassword(event.target.value)} placeholder="Re-enter your password" /><PasswordVisibilityButton visible={showConfirmPassword} onToggle={() => setShowConfirmPassword((visible) => !visible)} controls="account-confirm-password" /></div></div>}

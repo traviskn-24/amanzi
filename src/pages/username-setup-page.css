@@ -1,0 +1,20 @@
+.username-setup-page{min-height:100svh;display:grid;place-items:center;padding:28px 18px;background:radial-gradient(ellipse at 50% 0%,#e7f7fa 0%,#f5f8fa 56%,#edf3f5 100%);color:var(--amanzi-ink,#19334a)}
+.username-setup-card{width:min(500px,100%);padding:clamp(24px,5vw,42px);border:1px solid #dce7eb;border-radius:24px;background:#fff;box-shadow:0 20px 60px rgba(20,53,75,.09)}
+.username-setup-card .account-brand-logo{display:block;width:96px;max-height:50px;object-fit:contain;margin:0 auto 17px}
+.username-setup-kicker{display:block;text-align:center;color:#0787a3;font-size:10px;font-weight:850;letter-spacing:.15em}
+.username-setup-card h1{margin:9px 0;color:#19334a;text-align:center;font:750 clamp(24px,5vw,32px)/1.15 Manrope,sans-serif;letter-spacing:-.04em}
+.username-setup-intro{margin:12px 0 24px;color:#718696;text-align:center;font-size:13px;line-height:1.65}
+.username-setup-form{display:grid;gap:9px}
+.username-setup-form>label{color:#425d6d;font-size:12px;font-weight:750}
+.username-input-wrap{display:flex;align-items:center;gap:8px;min-height:50px;padding:0 14px;border:1px solid #d3e4e9;border-radius:14px;background:#fff;color:#0787a3;transition:border-color .18s,box-shadow .18s}
+.username-input-wrap:focus-within{border-color:#1398b8;box-shadow:0 0 0 4px rgba(19,152,184,.14)}
+.username-input-wrap>span{font-size:15px;font-weight:800}
+.username-input-wrap input{width:100%;min-width:0;border:0;outline:0;background:transparent;color:#17364b;font:inherit;font-size:14px}
+.username-input-wrap input::placeholder{color:#91a3ad}
+.username-setup-form>small{color:#8295a0;font-size:10px;line-height:1.5}
+.username-setup-error,.username-setup-status{margin:5px 0 0;padding:10px 12px;border-radius:11px;font-size:11px;line-height:1.5}
+.username-setup-error{background:#fff1ee;color:#994f44}
+.username-setup-status{background:#e9f8fa;color:#277283}
+.username-setup-submit{min-height:46px;margin-top:10px;border-radius:13px;font-weight:800}
+.username-setup-submit:disabled{opacity:.65;cursor:wait}
+@media(max-width:480px){.username-setup-page{padding:20px 14px}.username-setup-card{border-radius:20px;padding:24px 20px}}

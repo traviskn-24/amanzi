@@ -100,12 +100,14 @@ function App({ onRequireAccount, onLoadingChange, onNavigateAbout }) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
   const [mobileMenuRendered, setMobileMenuRendered] = useState(false)
   const [mobilePage, setMobilePage] = useState('home')
+  const [usernames, setUsernames] = useState({})
   const [savedAreas, setSavedAreas] = useState([])
   const [savedAreasLoading, setSavedAreasLoading] = useState(false)
   const [savedAreasBusy, setSavedAreasBusy] = useState(false)
   const [savedAreasMessage, setSavedAreasMessage] = useState('')
   const [clockNow, setClockNow] = useState(() => Date.now())
   const [sortMode, setSortMode] = useState('newest')
+  const currentUsername = authUser ? usernames[authUser.id] || authUser.user_metadata?.username || '' : ''
   const canContribute = Boolean(authUser && !authUser.is_anonymous && authLevel === 'aal2')
 
   useEffect(() => () => {
@@ -326,12 +328,16 @@ function App({ onRequireAccount, onLoadingChange, onNavigateAbout }) {
   }
 
   async function loadSharedUpdates() {
-    const [{ data: updates, error: updatesError }, { data: confirmations, error: confirmationsError }] = await Promise.all([
-      supabase.from('water_updates').select('id, area, municipality, province, message, water_status, display_name, created_at').order('created_at', { ascending: false }).limit(100),
+    const [{ data: updates, error: updatesError }, { data: confirmations, error: confirmationsError }, { data: profiles, error: profilesError }] = await Promise.all([
+      supabase.from('water_updates').select('id, area, municipality, province, message, water_status, display_name, created_by, created_at').order('created_at', { ascending: false }).limit(100),
       supabase.from('update_confirmations').select('update_id, user_id'),
+      supabase.from('profiles').select('user_id, username').not('username', 'is', null),
     ])
     if (updatesError) throw updatesError
     if (confirmationsError) throw confirmationsError
+    if (profilesError) throw profilesError
+    const profileNames = Object.fromEntries((profiles || []).map(({ user_id, username }) => [user_id, username]))
+    setUsernames(profileNames)
     const counts = new Map()
     for (const confirmation of confirmations) counts.set(confirmation.update_id, (counts.get(confirmation.update_id) || 0) + 1)
     const locations = new Map(updates.map((row) => [locationKey(row), row]))
@@ -349,9 +355,9 @@ function App({ onRequireAccount, onLoadingChange, onNavigateAbout }) {
       waterStatus: row.water_status,
       createdAt: row.created_at,
       title: row.message,
-      detail: `Shared by a neighbour in ${row.area}.`,
+      detail: `Shared by ${profileNames[row.created_by] || 'a neighbour'} in ${row.area}.`,
       time: formatRelativeTime(row.created_at),
-      author: row.display_name,
+      author: profileNames[row.created_by] || row.display_name || 'Neighbour',
       kind: 'Community update',
       replies: chatCounts.get(locationKey(row)) || 0,
       confirms: counts.get(row.id) || 0,
@@ -474,7 +480,7 @@ function App({ onRequireAccount, onLoadingChange, onNavigateAbout }) {
       }
       onLoadingChange?.('publish-update', true, 'Sharing your update…')
       try {
-        const { data: insertedUpdate, error } = await supabase.from('water_updates').insert({ area: draftArea.trim(), municipality: draftMunicipality.trim(), province: draftProvince, message: draft.trim(), water_status: draftStatus, display_name: 'Neighbour' }).select('id').single()
+        const { data: insertedUpdate, error } = await supabase.from('water_updates').insert({ area: draftArea.trim(), municipality: draftMunicipality.trim(), province: draftProvince, message: draft.trim(), water_status: draftStatus, display_name: currentUsername }).select('id').single()
         if (error) throw error
         supabase.functions.invoke('dispatch-water-alert', { body: { updateId: insertedUpdate.id } }).catch(() => {})
         await loadSharedUpdates()
@@ -490,7 +496,7 @@ function App({ onRequireAccount, onLoadingChange, onNavigateAbout }) {
       window.setTimeout(() => setNotice(''), 3500)
       return
     }
-    const next = [{ id: Date.now(), area: draftArea.trim(), municipality: draftMunicipality.trim(), province: draftProvince, waterStatus: draftStatus, title: draft.trim().slice(0, 72), detail: 'Shared with your local Amanzi community. Add a reply if you have more context.', time: 'Just now', createdAt: new Date().toISOString(), author: 'You', kind: 'Community update', replies: 0, confirms: 0, verified: false }, ...posts]
+    const next = [{ id: Date.now(), area: draftArea.trim(), municipality: draftMunicipality.trim(), province: draftProvince, waterStatus: draftStatus, title: draft.trim().slice(0, 72), detail: 'Shared with your local Amanzi community. Add a reply if you have more context.', time: 'Just now', createdAt: new Date().toISOString(), author: currentUsername || 'You', kind: 'Community update', replies: 0, confirms: 0, verified: false }, ...posts]
     save(next)
     setDraft('')
     closeComposer()
@@ -626,7 +632,7 @@ function App({ onRequireAccount, onLoadingChange, onNavigateAbout }) {
         {supabase && dbStatus === 'connected' ? <SavedAreasPanel key={authUser?.id || 'guest'} supabase={supabase} location={location} areas={savedAreas} loading={savedAreasLoading} busy={savedAreasBusy} message={savedAreasMessage} canManage={canContribute} signedIn={Boolean(authUser && !authUser.is_anonymous)} searchDisabled={dbStatus !== 'connected'} onSave={saveCurrentArea} onSelect={chooseLocation} onRemove={removeSavedArea} onSetDefault={setDefaultArea} onRequireAccount={requireAccountOrMfa} /> : <div className="mobile-areas-unavailable">{dbStatus === 'connecting' ? 'Connecting to your saved areas…' : 'Saved areas are unavailable while Amanzi is offline.'}</div>}
       </main> : <main id="home" className="layout">
         <section className="feed-column">
-          <div className="welcome-row"><div><p className="eyebrow">{area.toUpperCase()} <span>·</span> {municipality.toUpperCase()}, {province.toUpperCase()}</p><h1>Good morning, neighbour.</h1><p className="intro">What’s happening with water around you?</p></div><button className="post-button uiverse-action" onClick={() => openComposer()}><span className="uiverse-action-label">Share an update</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" /></svg></button><svg className="hero-watermark" viewBox="0 0 180 120" aria-hidden="true"><path d="M16 72c22 20 49 30 76 24 23-5 35-26 53-37 9-6 18-8 25-3-5-18-19-31-36-31-21 0-30 19-46 31-22 17-49 18-72 16Z" fill="currentColor"/><path d="M44 88c29 11 67 8 97-12" fill="none" stroke="currentColor" strokeWidth="8" strokeLinecap="round"/></svg></div>
+          <div className="welcome-row"><div><p className="eyebrow">{area.toUpperCase()} <span>·</span> {municipality.toUpperCase()}, {province.toUpperCase()}</p><h1>Good day, {currentUsername || 'neighbour'}.</h1><p className="intro">What’s happening with water around you?</p></div><button className="post-button uiverse-action" onClick={() => openComposer()}><span className="uiverse-action-label">Share an update</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" /></svg></button><svg className="hero-watermark" viewBox="0 0 180 120" aria-hidden="true"><path d="M16 72c22 20 49 30 76 24 23-5 35-26 53-37 9-6 18-8 25-3-5-18-19-31-36-31-21 0-30 19-46 31-22 17-49 18-72 16Z" fill="currentColor"/><path d="M44 88c29 11 67 8 97-12" fill="none" stroke="currentColor" strokeWidth="8" strokeLinecap="round"/></svg></div>
           <section className="community-search-panel" aria-labelledby="community-search-title">
             <div className="community-search-current"><span className="community-search-pin" aria-hidden="true"><img src={locationIcon} alt="" /></span><div><span className="community-search-overline">YOUR COMMUNITY</span><strong id="community-search-title">{area}</strong><small>{municipality}, {province}</small></div></div>
             <LocationSearch location={location} onChoose={chooseLocation} disabled={dbStatus !== 'connected'} />
@@ -665,7 +671,7 @@ function App({ onRequireAccount, onLoadingChange, onNavigateAbout }) {
         </aside>
       </main>}
       {renderFaultReport && faultContact && <WaterFaultReport location={location} contact={faultContact} isOpen={showFaultReport} onClose={closeFaultReport} />}
-          {renderChat && chatArea && <CommunityChat initialLocation={chatArea} isOpen={showChat} onClose={closeChat} dbStatus={dbStatus} canContribute={canContribute} onRequireAccount={requireAccountOrMfa} onLoadingChange={onLoadingChange} />}
+          {renderChat && chatArea && <CommunityChat initialLocation={chatArea} isOpen={showChat} onClose={closeChat} dbStatus={dbStatus} canContribute={canContribute} onRequireAccount={requireAccountOrMfa} onLoadingChange={onLoadingChange} usernames={usernames} currentUsername={currentUsername} />}
       <footer className="footer"><span>© 2026 Amanzi</span><span>Community-powered water updates for South Africa</span><a className="footer-about" href="/about" onClick={(event) => { event.preventDefault(); onNavigateAbout?.() }}>About Amanzi</a></footer>
     </div>
   )
@@ -734,7 +740,7 @@ function WaterFaultReport({ location, contact, onClose, isOpen }) {
   </section></div>
 }
 
-function CommunityChat({ initialLocation, onClose, dbStatus, canContribute, onRequireAccount, onLoadingChange, isOpen }) {
+function CommunityChat({ initialLocation, onClose, dbStatus, canContribute, onRequireAccount, onLoadingChange, isOpen, usernames, currentUsername }) {
   const [room, setRoom] = useState('area')
   const [chatResult, setChatResult] = useState({ key: null, messages: [], error: '' })
   const [draft, setDraft] = useState('')
@@ -752,7 +758,7 @@ function CommunityChat({ initialLocation, onClose, dbStatus, canContribute, onRe
     const loadMessages = async () => {
       onLoadingChange?.(`load-chat-${chatKey}`, true, 'Opening your community chat…')
       try {
-      let query = supabase.from('community_messages').select('id, area, municipality, province, message, display_name, created_at')
+      let query = supabase.from('community_messages').select('id, area, municipality, province, message, display_name, created_by, created_at')
       if (room === 'area') query = query.eq('area', initialLocation.area).eq('municipality', initialLocation.municipality).eq('province', initialLocation.province)
       else if (room === 'province') query = query.eq('province', initialLocation.province)
       const { data, error: queryError } = await query.order('created_at', { ascending: false }).limit(100)
@@ -781,7 +787,7 @@ function CommunityChat({ initialLocation, onClose, dbStatus, canContribute, onRe
     setSending(true)
     onLoadingChange?.('send-chat-message', true, 'Sending your message…')
     try {
-      const { error: insertError } = await supabase.from('community_messages').insert({ area: initialLocation.area, municipality: initialLocation.municipality, province: initialLocation.province, message, display_name: 'Neighbour' })
+      const { error: insertError } = await supabase.from('community_messages').insert({ area: initialLocation.area, municipality: initialLocation.municipality, province: initialLocation.province, message, display_name: currentUsername })
       if (insertError) throw insertError
       setDraft('')
       setChatResult((current) => ({ ...current, error: '' }))
@@ -802,7 +808,7 @@ function CommunityChat({ initialLocation, onClose, dbStatus, canContribute, onRe
         {loading && <div className="chat-empty">Loading the community conversation…</div>}
         {!loading && error && messages.length === 0 && <div className="chat-empty">{error}</div>}
         {!loading && !error && messages.length === 0 && <div className="chat-empty"><strong>Start the conversation</strong><span>No messages yet. Share what you’re seeing in {room === 'area' ? initialLocation.area : room === 'province' ? initialLocation.province : 'South Africa'}.</span></div>}
-        {messages.map((item) => <article className="chat-message" key={item.id}><div className="chat-avatar">{item.display_name?.charAt(0) || 'N'}</div><div className="chat-message-body"><div className="chat-message-meta"><strong>{item.display_name}</strong>{room !== 'area' && <span>{item.area}, {item.municipality}</span>}<time>{new Intl.DateTimeFormat('en-ZA', { hour: '2-digit', minute: '2-digit' }).format(new Date(item.created_at))}</time></div><p>{item.message}</p></div></article>)}
+        {messages.map((item) => { const author = usernames[item.created_by] || item.display_name || 'Neighbour'; return <article className="chat-message" key={item.id}><div className="chat-avatar">{author.charAt(0)}</div><div className="chat-message-body"><div className="chat-message-meta"><strong>{author}</strong>{room !== 'area' && <span>{item.area}, {item.municipality}</span>}<time>{new Intl.DateTimeFormat('en-ZA', { hour: '2-digit', minute: '2-digit' }).format(new Date(item.created_at))}</time></div><p>{item.message}</p></div></article>})}
       </div>
       <form className="chat-composer" onSubmit={sendMessage}><label className="sr-only" htmlFor="chat-draft">Message your neighbours</label><textarea id="chat-draft" maxLength={300} value={draft} onChange={(event) => setDraft(event.target.value)} placeholder={`Message from ${locationLabel}…`} /><div className="chat-composer-foot"><span>{draft.length}/300 · Keep it kind and useful</span><button className="post-button small" disabled={!draft.trim() || sending}>{sending ? 'Sending…' : 'Send message'} <span>↑</span></button></div></form>
       {error && messages.length > 0 && <p className="chat-error" role="status">{error}</p>}
