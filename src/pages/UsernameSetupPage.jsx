@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react'
 import './username-setup-page.css'
+import { containsBlockedLanguage, USERNAME_LANGUAGE_ERROR } from '../lib/content-moderation'
 
 const noop = () => {}
 
@@ -48,6 +49,10 @@ export default function UsernameSetupPage({ supabase, onComplete, onRequireSignI
     event.preventDefault()
     if (!user || saving) return
     const nextUsername = username.trim().toLowerCase()
+    if (containsBlockedLanguage(nextUsername)) {
+      setError(USERNAME_LANGUAGE_ERROR)
+      return
+    }
     if (!/^[a-z0-9_]{3,20}$/.test(nextUsername)) {
       setError('Use 3–20 characters: lowercase letters, numbers, or underscores.')
       return

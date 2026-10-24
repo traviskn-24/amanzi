@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 import './account-security.css'
 import { authRedirectUrl } from './lib/auth-urls'
+import { containsBlockedLanguage, PASSWORD_LANGUAGE_ERROR, USERNAME_LANGUAGE_ERROR } from './lib/content-moderation'
 
 const noop = () => {}
 
@@ -118,6 +119,8 @@ export default function AccountSecurity({ supabase, user, onClose, onAuthChange,
       } else if (mode === 'create') {
         if (password !== confirmPassword) throw new Error('Your passwords do not match.')
         const normalizedUsername = username.trim().toLowerCase()
+        if (containsBlockedLanguage(normalizedUsername)) throw new Error(USERNAME_LANGUAGE_ERROR)
+        if (containsBlockedLanguage(password)) throw new Error(PASSWORD_LANGUAGE_ERROR)
         if (!/^[a-z0-9_]{3,20}$/.test(normalizedUsername)) {
           throw new Error('Choose a username with 3–20 lowercase letters, numbers, or underscores.')
         }

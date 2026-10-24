@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react'
+import { containsBlockedLanguage, PASSWORD_LANGUAGE_ERROR } from '../lib/content-moderation'
 
 export default function ResetPasswordPage({ supabase, onSignIn, onLoadingChange }) {
   const [ready, setReady] = useState(false)
@@ -25,6 +26,7 @@ export default function ResetPasswordPage({ supabase, onSignIn, onLoadingChange 
     event.preventDefault()
     if (busy || !supabase) return
     if (password !== confirmPassword) { setError('Your passwords do not match.'); return }
+    if (containsBlockedLanguage(password)) { setError(PASSWORD_LANGUAGE_ERROR); return }
     setBusy(true)
     setError('')
     onLoadingChange('password-reset', true, 'Updating your password…')

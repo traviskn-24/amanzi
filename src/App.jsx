@@ -6,6 +6,7 @@ import LocationSearch from './components/community/LocationSearch'
 import SortMenu from './components/community/SortMenu'
 import SavedAreasPanel from './components/community/SavedAreasPanel'
 import { locationKey, locationMatches, maxSavedAreas, readSavedLocation } from './lib/locations'
+import { containsBlockedLanguage, MESSAGE_LANGUAGE_ERROR } from './lib/content-moderation'
 import locationIcon from './assets/status-icons/location.png'
 import restoredIcon from './assets/status-icons/restored.png'
 import lowPressureIcon from './assets/status-icons/low_pressure.png'
@@ -606,14 +607,14 @@ function App({ onRequireAccount, onLoadingChange, onNavigateAbout }) {
         <button className="mobile-menu-trigger" type="button" aria-label="Open navigation menu" aria-expanded={mobileMenuOpen} aria-controls="mobile-navigation" onClick={openMobileMenu}>
           <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h16" /></svg>
         </button>
-        <a className="brand" href="#home" aria-label="Amanzi home"><img className="brand-logo" src="/brand/amanzi-logo.png" alt="Amanzi" /></a>
+        <a className="brand" href="/" aria-label="Amanzi home" onClick={(event) => { event.preventDefault(); setMobilePage('home'); window.scrollTo({ top: 0, behavior: 'smooth' }) }}><img className="brand-logo" src="/brand/amanzi-logo.png" alt="Amanzi" /></a>
         <div className="topbar-context"><span className="topbar-context-label">YOUR AREA</span><strong>{area}</strong><span>{municipality}</span></div>
         <AccountMenu user={authUser} supabase={supabase} onRequireAccount={onRequireAccount} onLoadingChange={onLoadingChange} />
       </header>
 
       {mobileMenuRendered && <div className="mobile-menu-backdrop" data-open={mobileMenuOpen} onPointerDown={(event) => { if (event.target === event.currentTarget) closeMobileMenu() }}>
         <nav className="mobile-navigation" id="mobile-navigation" aria-label="Main navigation" aria-modal="true" role="dialog" aria-hidden={!mobileMenuOpen} inert={!mobileMenuOpen}>
-          <div className="mobile-navigation-heading"><span className="eyebrow">AMANZI MENU</span><button type="button" className="mobile-navigation-close" aria-label="Close menu" onClick={closeMobileMenu}>×</button></div>
+          <div className="mobile-navigation-heading"><span className="eyebrow">AMANZI MENU</span></div>
           <button type="button" className={`mobile-navigation-item ${mobilePage === 'home' ? 'active' : ''}`} onClick={() => { setMobilePage('home'); closeMobileMenu() }}><span className="mobile-navigation-item-icon"><img src="/brand/menu-icons/home_community.png" alt="" /></span><span><strong>Community updates</strong><small>See what neighbours are reporting</small></span></button>
           <button type="button" className={`mobile-navigation-item ${mobilePage === 'areas' ? 'active' : ''}`} onClick={() => { setMobilePage('areas'); closeMobileMenu() }}><span className="mobile-navigation-item-icon"><img src="/brand/menu-icons/location.png" alt="" /></span><span><strong>My areas</strong><small>Manage your saved communities</small></span></button>
           <button type="button" className="mobile-navigation-item" onClick={() => void startFaultReport()}><span className="mobile-navigation-item-icon"><img src="/brand/menu-icons/report.png" alt="" /></span><span><strong>Report a water fault</strong><small>Prepare a report for your water service</small></span></button>
@@ -782,6 +783,7 @@ function CommunityChat({ initialLocation, onClose, dbStatus, canContribute, onRe
     event.preventDefault()
     const message = draft.trim()
     if (!message || sending) return
+    if (containsBlockedLanguage(message)) { setChatResult((current) => ({ ...current, error: MESSAGE_LANGUAGE_ERROR })); return }
     if (supabase && !canContribute) { onRequireAccount(); setChatResult((current) => ({ ...current, error: 'Create an account and complete two-step verification to send messages.' })); return }
     if (!supabase || dbStatus !== 'connected') { setChatResult((current) => ({ ...current, error: 'Chat is unavailable until Amanzi reconnects.' })); return }
     setSending(true)
@@ -791,8 +793,9 @@ function CommunityChat({ initialLocation, onClose, dbStatus, canContribute, onRe
       if (insertError) throw insertError
       setDraft('')
       setChatResult((current) => ({ ...current, error: '' }))
-    } catch {
-      setChatResult((current) => ({ ...current, error: 'Could not send that message. Check your connection and try again.' }))
+    } catch (cause) {
+      const moderationError = String(cause?.message || '').includes('Amanzi does not allow')
+      setChatResult((current) => ({ ...current, error: moderationError ? cause.message : 'Could not send that message. Check your connection and try again.' }))
     } finally {
       setSending(false)
       onLoadingChange?.('send-chat-message', false)
