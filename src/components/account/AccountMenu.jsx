@@ -3,11 +3,60 @@ import './account-menu.css'
 
 const noop = () => {}
 
+function useAccountSignOut({ supabase, onRequireAccount, onLoadingChange = noop, onSuccess = noop }) {
+  const [busy, setBusy] = useState(false)
+  const [error, setError] = useState('')
+
+  async function signOut() {
+    if (busy) return
+    setBusy(true)
+    setError('')
+    onLoadingChange('account-signout', true, 'Signing you out…')
+    try {
+      const registration = await navigator.serviceWorker?.ready
+      const pushSubscription = await registration?.pushManager?.getSubscription()
+      if (pushSubscription) {
+        const { error: pushError } = await supabase.functions.invoke('manage-push-subscriptions', {
+          body: { action: 'unsubscribe', endpoint: pushSubscription.endpoint },
+        })
+        if (pushError) throw pushError
+        await pushSubscription.unsubscribe()
+      }
+      const { error: signoutError } = await supabase.auth.signOut()
+      if (signoutError) throw signoutError
+      onSuccess()
+      onRequireAccount()
+    } catch {
+      setError('Could not sign out. Check your connection and try again.')
+    } finally {
+      setBusy(false)
+      onLoadingChange('account-signout', false)
+    }
+  }
+
+  return { busy, error, clearError: () => setError(''), signOut }
+}
+
+export function MobileSignOutButton({ user, supabase, onRequireAccount, onLoadingChange = noop, onClose }) {
+  const { busy, error, signOut } = useAccountSignOut({
+    supabase,
+    onRequireAccount,
+    onLoadingChange,
+    onSuccess: onClose,
+  })
+
+  if (!user || user.is_anonymous) return null
+  return <div className="mobile-navigation-account">
+    {error && <p className="account-menu-error" role="alert">{error}</p>}
+    <button className="account-menu-signout mobile-navigation-signout" type="button" onClick={signOut} disabled={busy}>
+      {busy ? 'Signing out…' : 'Sign out'}
+    </button>
+  </div>
+}
+
 export default function AccountMenu({ user, supabase, onRequireAccount, onLoadingChange = noop }) {
   const [open, setOpen] = useState(false)
   const [rendered, setRendered] = useState(false)
-  const [busy, setBusy] = useState(false)
-  const [error, setError] = useState('')
   const menuRef = useRef(null)
   const triggerRef = useRef(null)
   const closeTimer = useRef(null)
@@ -25,8 +74,15 @@ export default function AccountMenu({ user, supabase, onRequireAccount, onLoadin
       setRendered(true)
       setOpen(true)
     }
-    setError('')
+    clearError()
   }
+
+  const { busy, error, clearError, signOut } = useAccountSignOut({
+    supabase,
+    onRequireAccount,
+    onLoadingChange,
+    onSuccess: closeMenu,
+  })
 
   useEffect(() => () => window.clearTimeout(closeTimer.current), [])
 
@@ -48,33 +104,6 @@ export default function AccountMenu({ user, supabase, onRequireAccount, onLoadin
       document.removeEventListener('keydown', handleKeyDown)
     }
   }, [open])
-
-  async function signOut() {
-    if (busy) return
-    setBusy(true)
-    setError('')
-    onLoadingChange('account-signout', true, 'Signing you out…')
-    try {
-      const registration = await navigator.serviceWorker?.ready
-      const pushSubscription = await registration?.pushManager?.getSubscription()
-      if (pushSubscription) {
-        const { error: pushError } = await supabase.functions.invoke('manage-push-subscriptions', {
-          body: { action: 'unsubscribe', endpoint: pushSubscription.endpoint },
-        })
-        if (pushError) throw pushError
-        await pushSubscription.unsubscribe()
-      }
-      const { error: signoutError } = await supabase.auth.signOut()
-      if (signoutError) throw signoutError
-      closeMenu()
-      onRequireAccount()
-    } catch {
-      setError('Could not sign out. Check your connection and try again.')
-    } finally {
-      setBusy(false)
-      onLoadingChange('account-signout', false)
-    }
-  }
 
   return <div className="account-menu" ref={menuRef}>
     <button ref={triggerRef} className="avatar" type="button" aria-label="Open account menu" aria-haspopup="menu" aria-expanded={open} aria-controls="account-menu" onClick={toggleMenu}>

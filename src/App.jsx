@@ -1,7 +1,7 @@
 import { useEffect, useMemo, useRef, useState } from 'react'
 import { isSupabaseConfigured, supabase } from './lib/supabase'
 import { findMunicipalFaultContact } from './data/municipalFaultContacts'
-import AccountMenu from './components/account/AccountMenu'
+import AccountMenu, { MobileSignOutButton } from './components/account/AccountMenu'
 import LocationSearch from './components/community/LocationSearch'
 import SortMenu from './components/community/SortMenu'
 import SavedAreasPanel from './components/community/SavedAreasPanel'
@@ -617,6 +617,7 @@ function App({ onRequireAccount, onLoadingChange, onNavigateAbout }) {
             <a href={province === 'KwaZulu-Natal' ? 'https://www.durban.gov.za/' : 'https://www.gov.za/about-government/contact-government'} target="_blank" rel="noreferrer">Find official services <span aria-hidden="true">↗</span></a>
           </section>
           <a className="mobile-navigation-about" href="/about" onClick={(event) => { event.preventDefault(); closeMobileMenu(); onNavigateAbout?.() }}>About Amanzi <span aria-hidden="true">↗</span></a>
+          <MobileSignOutButton user={authUser} supabase={supabase} onRequireAccount={onRequireAccount} onLoadingChange={onLoadingChange} onClose={closeMobileMenu} />
         </nav>
       </div>}
 

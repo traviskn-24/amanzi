@@ -347,11 +347,13 @@ body {
 @media (max-width: 760px) {
   .topbar { height: 64px; padding-inline: 16px; gap: 12px; }
   .brand-logo { width: 58px; max-height: 34px; }
-  .topbar-context { padding-left: 10px; column-gap: 6px; }
+  .brand { margin-left: auto; }
+  .topbar-context { margin-right: 0; padding-left: 10px; column-gap: 6px; }
   .topbar-context-label { font-size: 8px; }
   .topbar-context strong { font-size: 12px; }
   .topbar-context>span:last-child { font-size: 10px; }
-  .mobile-menu-trigger { display: grid; place-items: center; width: 40px; height: 40px; flex: 0 0 40px; margin-right: 8px; padding: 0; border: 1px solid #d7e8ed; border-radius: 13px; background: linear-gradient(145deg,#fff,#f2fafb); color: #15344f; box-shadow: 0 3px 10px rgba(21,61,78,.07); }
+  .account-menu { display: none; }
+  .mobile-menu-trigger { display: grid; place-items: center; width: 40px; height: 40px; flex: 0 0 40px; margin-right: 0; padding: 0; border: 1px solid #d7e8ed; border-radius: 13px; background: linear-gradient(145deg,#fff,#f2fafb); color: #15344f; box-shadow: 0 3px 10px rgba(21,61,78,.07); }
   .mobile-menu-trigger svg { width: 20px; height: 20px; fill: none; stroke: currentColor; stroke-width: 1.9; stroke-linecap: round; }
   .mobile-menu-backdrop { position: fixed; z-index: 80; inset: 0; display: block; background: rgba(14,35,50,.38); opacity: 0; transition: opacity .19s ease; touch-action: manipulation; }
   .mobile-menu-backdrop[data-open="true"] { opacity: 1; animation: mobile-menu-backdrop-enter .19s ease both; }
@@ -377,6 +379,8 @@ body {
   .mobile-navigation-item small { color: #718696; font-size: 10px; line-height: 1.4; }
   .mobile-navigation-about { display: flex; align-items: center; justify-content: space-between; margin-top: auto; padding: 18px 5px 5px; border-top: 1px solid #e4eef1; color: #607e8e; font-size: 12px; font-weight: 700; text-decoration: none; }
   .mobile-navigation-about span { color: #108ca6; font-size: 16px; }
+  .mobile-navigation-account { display: grid; gap: 7px; padding-top: 6px; }
+  .mobile-navigation-signout { min-height: 46px; justify-content: center; border: 1px solid #d7e8ed; background: #f5fafb; text-align: center; }
   .desktop-only-fault-card,.desktop-only-saved-areas,.desktop-only-notice-card { display: none; }
   .mobile-areas-page { display: block; width: min(100%,640px); min-height: calc(100vh - 64px); margin: 0 auto; padding: 20px 16px 48px; }
   .mobile-areas-intro { margin-bottom: 19px; }
