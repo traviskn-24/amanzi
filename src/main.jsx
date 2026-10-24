@@ -4,6 +4,7 @@ import './index.css'
 import './interactions.css'
 import AppRouter from './AppRouter.jsx'
 import AppErrorBoundary from './components/feedback/AppErrorBoundary.jsx'
+import './responsive.css'
 
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', () => {

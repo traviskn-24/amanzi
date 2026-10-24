@@ -80,8 +80,8 @@ button:focus-visible,a:focus-visible,input:focus-visible,textarea:focus-visible,
 .account-tabs button.active{border-color:var(--amanzi-water);color:var(--amanzi-navy)}
 .account-form input{height:46px;color:var(--amanzi-ink)}
 .account-form input:focus{border-color:var(--amanzi-water);box-shadow:0 0 0 4px #16b8d41c}
-.account-secondary,.account-signout,.area-onboarding-remove,.area-onboarding-secondary,.install-app-button{border-radius:12px;transition:background .18s ease,border-color .18s ease,transform .18s ease}
-.account-secondary:hover,.account-signout:hover,.area-onboarding-remove:hover,.area-onboarding-secondary:hover,.install-app-button:hover{border-color:#b4e5ed;background:#f0fbfd;transform:translateY(-1px)}
+.account-secondary,.account-signout,.area-onboarding-remove,.area-onboarding-secondary{border-radius:12px;transition:background .18s ease,border-color .18s ease,transform .18s ease}
+.account-secondary:hover,.account-signout:hover,.area-onboarding-remove:hover,.area-onboarding-secondary:hover{border-color:#b4e5ed;background:#f0fbfd;transform:translateY(-1px)}
 .account-security-status,.account-message{border-radius:12px;background:#e8f8f7;color:#1b796b}
 .account-error,.area-onboarding-error{border-radius:12px}
 .area-onboarding-choice.is-default{background:#edf9fc}
@@ -97,7 +97,6 @@ button:focus-visible,a:focus-visible,input:focus-visible,textarea:focus-visible,
 .fault-preview,.fault-privacy{border-radius:14px}
 .fault-send-button.whatsapp{background:linear-gradient(135deg,#138c72,#23ae8b)}
 .footer{color:var(--amanzi-muted)}
-.install-app-button{border-color:var(--amanzi-line);background:#f2f9fb;color:var(--amanzi-navy)}
 ::selection{background:#bceef5;color:#12364e}
 
 /* Adapted from Uiverse's "Follow me" button by @alshahwan.

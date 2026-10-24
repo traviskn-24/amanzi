@@ -431,7 +431,6 @@ body {
 @media (min-width: 761px) { .mobile-areas-page { display: none; } }
 @media (max-width: 420px) {
   .topbar-context>span:last-child { display: none; }
-  .install-app-button { font-size: 10px; }
   .post-actions button { font-size: 8px; }
   .status-pill { display: none; }
 }

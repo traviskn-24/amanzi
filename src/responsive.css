@@ -1,0 +1,251 @@
+/* Final layout safeguards for compact phones, tablets and desktop widths. */
+html,
+body,
+#root,
+.app-shell {
+  width: 100%;
+  min-width: 320px;
+}
+
+html,
+body {
+  overflow-x: clip;
+}
+
+img,
+video,
+canvas,
+svg {
+  max-width: 100%;
+}
+
+.topbar,
+.layout,
+.feed-column,
+.right-rail,
+.post-card,
+.rail-card {
+  min-width: 0;
+}
+
+@media (min-width: 761px) and (max-width: 1120px) {
+  .topbar {
+    padding-inline: 22px;
+    gap: 18px;
+  }
+
+  .layout {
+    padding: 26px 22px 54px;
+  }
+}
+
+@media (max-width: 760px) {
+  .topbar {
+    gap: 12px;
+    padding-inline: 14px;
+  }
+
+  .topbar-context {
+    min-width: 0;
+    max-width: min(42vw, 190px);
+    overflow: hidden;
+    padding-left: 12px;
+  }
+
+  .topbar-context strong,
+  .topbar-context > span:last-child {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .mobile-navigation {
+    width: min(400px, 88vw);
+    max-height: 100dvh;
+    padding-bottom: max(20px, env(safe-area-inset-bottom));
+    overflow-y: auto;
+    overscroll-behavior: contain;
+  }
+
+  .layout {
+    width: 100%;
+    padding: 20px 16px 38px;
+  }
+
+  .welcome-row > div,
+  .status-copy,
+  .community-search-current > div {
+    min-width: 0;
+  }
+
+  .welcome-row .eyebrow {
+    overflow-wrap: anywhere;
+    line-height: 1.5;
+  }
+
+  .feed-toolbar {
+    align-items: stretch;
+    flex-wrap: wrap;
+    row-gap: 9px;
+  }
+
+  .feed-tabs {
+    min-width: 0;
+    width: 100%;
+    gap: clamp(8px, 3vw, 18px);
+  }
+
+  .feed-tabs button {
+    min-width: 0;
+  }
+
+  .feed-toolbar .sort-menu {
+    flex: 0 0 auto;
+    max-width: 44%;
+  }
+
+  .search-box.uiverse-input-shell {
+    min-width: 0;
+    width: 100%;
+    flex: 1 0 100%;
+  }
+
+  .post-meta {
+    flex-wrap: wrap;
+    overflow-wrap: anywhere;
+    line-height: 1.5;
+  }
+
+  .post-actions {
+    min-height: 44px;
+    height: auto;
+    flex-wrap: wrap;
+    gap: 2px 8px;
+    padding-block: 5px;
+  }
+
+  .post-actions button {
+    min-height: 32px;
+    max-width: 100%;
+    white-space: normal;
+    text-align: left;
+  }
+
+  .post-actions .share-action {
+    margin-left: auto;
+  }
+
+  .footer {
+    padding-inline: 16px;
+  }
+}
+
+@media (max-width: 420px) {
+  .topbar {
+    gap: 9px;
+    padding-inline: 11px;
+  }
+
+  .mobile-menu-trigger {
+    width: 38px;
+    height: 38px;
+    flex: 0 0 38px;
+  }
+
+  .brand-logo {
+    width: 54px;
+    max-height: 32px;
+  }
+
+  .topbar-context {
+    max-width: 32vw;
+    padding-left: 9px;
+  }
+
+  .topbar-context-label,
+  .topbar-context > span:last-child {
+    display: none;
+  }
+
+  .topbar-context strong {
+    font-size: 11px;
+  }
+
+  .layout {
+    padding: 17px 12px 32px;
+  }
+
+  .welcome-row {
+    gap: 14px;
+    padding: 20px;
+  }
+
+  .welcome-row h1 {
+    font-size: clamp(21px, 6.2vw, 25px);
+    overflow-wrap: anywhere;
+  }
+
+  .status-card {
+    align-items: flex-start;
+    padding: 14px;
+  }
+
+  .status-breakdown {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .feed-tabs button {
+    font-size: clamp(9px, 2.8vw, 11px);
+  }
+
+  .post-card {
+    padding-inline: 13px;
+  }
+
+  .post-actions {
+    column-gap: 5px;
+  }
+
+  .post-actions button {
+    font-size: 9px;
+  }
+}
+
+@media (max-width: 350px) {
+  .topbar-context {
+    max-width: 27vw;
+  }
+
+  .brand-logo {
+    width: 48px;
+  }
+
+  .layout {
+    padding-inline: 10px;
+  }
+
+  .feed-tabs {
+    gap: 5px;
+  }
+
+  .feed-tabs button {
+    padding-inline: 2px;
+    font-size: 9px;
+  }
+
+  .post-actions button {
+    font-size: 8px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .mobile-navigation,
+  .post-card,
+  .rail-card,
+  .welcome-row button {
+    scroll-behavior: auto;
+    transition-duration: 0.01ms;
+    animation-duration: 0.01ms;
+    animation-iteration-count: 1;
+  }
+}
