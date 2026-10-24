@@ -219,7 +219,7 @@ export default function AccountSecurity({ supabase, user, onClose, onAuthChange,
           {message && <p className="account-message" role="status">{message}</p>}
           <button className="post-button account-submit" disabled={busy}>{busy ? 'Please wait…' : mode === 'create' ? 'Create secure account' : mode === 'forgot-password' ? 'Send reset link' : 'Sign in'}</button>
         </form>
-        {mode === 'sign-in' && <button className="account-text-button" type="button" onClick={() => { setMode('forgot-password'); setError(''); setMessage(''); setPassword('') }}>Forgot password?</button>}
+        {(mode === 'sign-in' || mode === 'create') && <button className="account-text-button" type="button" onClick={() => { setMode('forgot-password'); setError(''); setMessage(''); setPassword('') }}>Forgot password?</button>}
         {mode === 'forgot-password' && <button className="account-secondary" type="button" onClick={() => { setMode('sign-in'); setError(''); setMessage('') }}>Back to sign in</button>}
       </>}
       {visibleStep === 'confirmation' && <><p className="account-copy">{visibleMessage}</p>{error && <p className="account-error" role="alert">{error}</p>}<button className="account-secondary" onClick={() => { setStep('account'); setMode('sign-in'); setMessage(''); setError('') }}>Back to sign in</button></>}
