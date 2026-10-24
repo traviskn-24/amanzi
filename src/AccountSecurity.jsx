@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react'
 import './account-security.css'
+import { authRedirectUrl } from './lib/auth-urls'
 
 const noop = () => {}
 
@@ -109,11 +110,15 @@ export default function AccountSecurity({ supabase, user, onClose, onAuthChange,
     setError('')
     setMessage('')
     try {
-      if (mode === 'create') {
+      if (mode === 'forgot-password') {
+        const { error: resetError } = await supabase.auth.resetPasswordForEmail(email.trim(), { redirectTo: authRedirectUrl('/reset-password') })
+        if (resetError) throw resetError
+        setMessage(`If an Amanzi account exists for ${email.trim()}, we sent a password reset link. Check your inbox and spam folder.`)
+      } else if (mode === 'create') {
         if (password !== confirmPassword) throw new Error('Your passwords do not match.')
         const { error: signupError } = user?.is_anonymous
-          ? await supabase.auth.updateUser({ email: email.trim(), password }, { emailRedirectTo: window.location.origin })
-          : await supabase.auth.signUp({ email: email.trim(), password, options: { emailRedirectTo: window.location.origin } })
+          ? await supabase.auth.updateUser({ email: email.trim(), password }, { emailRedirectTo: authRedirectUrl('/create-account') })
+          : await supabase.auth.signUp({ email: email.trim(), password, options: { emailRedirectTo: authRedirectUrl('/create-account') } })
         if (signupError) throw signupError
         setStep('confirmation')
         setMessage(`We sent a confirmation link to ${email.trim()}. Confirm your email, then return here to finish setting up two-step verification.`)
@@ -199,21 +204,23 @@ export default function AccountSecurity({ supabase, user, onClose, onAuthChange,
       {!standalone && <button className="close-button account-close" onClick={onClose} aria-label="Close account window">×</button>}
       <img className="account-brand-logo" src="/brand/amanzi-logo.png" alt="Amanzi" />
       <span className="account-kicker">AMANZI ACCOUNT SECURITY</span>
-      <h2 id="account-title">{visibleStep === 'confirmation' ? 'Confirm your email' : visibleStep === 'profile' ? 'Your Amanzi account' : visibleStep === 'enroll' ? 'Set up two-step verification' : visibleStep === 'challenge' ? 'Verify it’s you' : visibleStep === 'checking' ? 'Checking your secure session…' : user && !user.is_anonymous ? 'Secure your account' : mode === 'create' ? 'Create your account' : 'Welcome back'}</h2>
+      <h2 id="account-title">{visibleStep === 'confirmation' ? 'Confirm your email' : visibleStep === 'profile' ? 'Your Amanzi account' : visibleStep === 'enroll' ? 'Set up two-step verification' : visibleStep === 'challenge' ? 'Verify it’s you' : visibleStep === 'checking' ? 'Checking your secure session…' : user && !user.is_anonymous ? 'Secure your account' : mode === 'create' ? 'Create your account' : mode === 'forgot-password' ? 'Reset your password' : 'Welcome back'}</h2>
       {sessionWarning && <p className="account-error" role="status">{sessionWarning}</p>}
       {visibleStep === 'profile' && <><p className="account-copy">Signed in as <strong>{user?.email}</strong></p><div className="account-security-status">✓ Two-step verification is active on this session.</div>{error && <p className="account-error" role="alert">{error}</p>}<button className="account-secondary" onClick={addBackupFactor} disabled={busy}>Add a backup authenticator</button><small className="account-hint">Supabase does not issue recovery codes. A second authenticator device helps prevent lockout.</small><button className="account-signout" onClick={signOut} disabled={busy}>Sign out</button></>}
       {visibleStep === 'account' && <>
-        <p className="account-copy">Your account keeps you signed in and protects your Amanzi activity.</p>
-        <div className="account-tabs"><button className={mode === 'sign-in' ? 'active' : ''} onClick={() => { setMode('sign-in'); setError(''); setMessage(''); setConfirmPassword(''); setShowPassword(false); setShowConfirmPassword(false) }}>Sign in</button><button className={mode === 'create' ? 'active' : ''} onClick={() => { setMode('create'); setError(''); setMessage(''); setShowPassword(false); setShowConfirmPassword(false) }}>Create account</button></div>
+        <p className="account-copy">{mode === 'forgot-password' ? 'Enter your account email and we’ll send you a secure password reset link.' : 'Your account keeps you signed in and protects your Amanzi activity.'}</p>
+        {mode !== 'forgot-password' && <div className="account-tabs"><button className={mode === 'sign-in' ? 'active' : ''} onClick={() => { setMode('sign-in'); setError(''); setMessage(''); setConfirmPassword(''); setShowPassword(false); setShowConfirmPassword(false) }}>Sign in</button><button className={mode === 'create' ? 'active' : ''} onClick={() => { setMode('create'); setError(''); setMessage(''); setShowPassword(false); setShowConfirmPassword(false) }}>Create account</button></div>}
         <form key={mode} className="account-form account-form-transition" onSubmit={submitAccount}>
           <label>Email address<input className="uiverse-input" type="email" required autoComplete="email" maxLength={254} value={email} onChange={(event) => setEmail(event.target.value)} placeholder="you@example.com" /></label>
-          <div className="account-password-field"><label htmlFor="account-password">Password</label><div className="password-input-wrap"><input id="account-password" className="uiverse-input" type={showPassword ? 'text' : 'password'} required minLength={10} maxLength={72} autoComplete={mode === 'create' ? 'new-password' : 'current-password'} value={password} onChange={(event) => setPassword(event.target.value)} placeholder={mode === 'create' ? 'At least 10 characters' : 'Your password'} /><PasswordVisibilityButton visible={showPassword} onToggle={() => setShowPassword((visible) => !visible)} controls="account-password" /></div></div>
+          {mode !== 'forgot-password' && <div className="account-password-field"><label htmlFor="account-password">Password</label><div className="password-input-wrap"><input id="account-password" className="uiverse-input" type={showPassword ? 'text' : 'password'} required minLength={10} maxLength={72} autoComplete={mode === 'create' ? 'new-password' : 'current-password'} value={password} onChange={(event) => setPassword(event.target.value)} placeholder={mode === 'create' ? 'At least 10 characters' : 'Your password'} /><PasswordVisibilityButton visible={showPassword} onToggle={() => setShowPassword((visible) => !visible)} controls="account-password" /></div></div>}
           {mode === 'create' && <div className="account-password-field"><label htmlFor="account-confirm-password">Confirm password</label><div className="password-input-wrap"><input id="account-confirm-password" className="uiverse-input" type={showConfirmPassword ? 'text' : 'password'} required minLength={10} maxLength={72} autoComplete="new-password" value={confirmPassword} onChange={(event) => setConfirmPassword(event.target.value)} placeholder="Re-enter your password" /><PasswordVisibilityButton visible={showConfirmPassword} onToggle={() => setShowConfirmPassword((visible) => !visible)} controls="account-confirm-password" /></div></div>}
           {mode === 'create' && <small className="account-hint">We’ll ask you to confirm your email, then set up an authenticator app.</small>}
           {error && <p className="account-error" role="alert">{error}</p>}
           {message && <p className="account-message" role="status">{message}</p>}
-          <button className="post-button account-submit" disabled={busy}>{busy ? 'Please wait…' : mode === 'create' ? 'Create secure account' : 'Sign in'}</button>
+          <button className="post-button account-submit" disabled={busy}>{busy ? 'Please wait…' : mode === 'create' ? 'Create secure account' : mode === 'forgot-password' ? 'Send reset link' : 'Sign in'}</button>
         </form>
+        {mode === 'sign-in' && <button className="account-text-button" type="button" onClick={() => { setMode('forgot-password'); setError(''); setMessage(''); setPassword('') }}>Forgot password?</button>}
+        {mode === 'forgot-password' && <button className="account-secondary" type="button" onClick={() => { setMode('sign-in'); setError(''); setMessage('') }}>Back to sign in</button>}
       </>}
       {visibleStep === 'confirmation' && <><p className="account-copy">{visibleMessage}</p>{error && <p className="account-error" role="alert">{error}</p>}<button className="account-secondary" onClick={() => { setStep('account'); setMode('sign-in'); setMessage(''); setError('') }}>Back to sign in</button></>}
       {visibleStep === 'checking' && <p className="account-copy">Preparing your sign-in verification…</p>}

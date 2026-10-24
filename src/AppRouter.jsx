@@ -5,9 +5,11 @@ import AreaOnboardingPage from './pages/AreaOnboardingPage'
 import CreateAccountPage from './pages/CreateAccountPage'
 import AboutPage from './pages/AboutPage'
 import LoadingScreen from './components/feedback/LoadingScreen'
+import ResetPasswordPage from './pages/ResetPasswordPage'
 
 function readPath() {
   if (window.location.pathname === '/create-account') return 'create-account'
+  if (window.location.pathname === '/reset-password') return 'reset-password'
   if (window.location.pathname === '/onboarding') return 'onboarding'
   if (window.location.pathname === '/about') return 'about'
   return 'home'
@@ -122,6 +124,8 @@ export default function AppRouter() {
   let content
   if (page === 'create-account') {
     content = <CreateAccountPage supabase={supabase} onClose={() => navigate('/')} onAuthChange={handleAccountReady} onLoadingChange={reportOperation} />
+  } else if (page === 'reset-password') {
+    content = <ResetPasswordPage supabase={supabase} onSignIn={() => navigate('/create-account')} onLoadingChange={reportOperation} />
   } else if (page === 'onboarding') {
     content = <AreaOnboardingPage supabase={supabase} onComplete={() => navigate('/')} onRequireSignIn={requireSignIn} onLoadingChange={reportOperation} />
   } else if (page === 'about') {
