@@ -1,2 +1,2 @@
-.loading-screen{position:fixed;inset:0;z-index:10000;display:grid;place-items:center;overflow:hidden;background:#fdfbf9}
+.loading-screen{position:fixed;inset:0;z-index:10000;display:grid;place-items:center;overflow:hidden;background:#fdfdfd}
 .loading-screen-video{display:block;width:min(450px,80vw);height:auto;max-height:42svh;aspect-ratio:16/9;object-fit:contain;background:transparent}
