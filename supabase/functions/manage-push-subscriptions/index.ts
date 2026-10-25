@@ -23,6 +23,22 @@ function jwtClaims(token: string) {
   }
 }
 
+function inspectVapidPublicKey(value: string) {
+  try {
+    const padded = `${value}${"=".repeat((4 - value.length % 4) % 4)}`;
+    const base64 = padded.replace(/-/g, "+").replace(/_/g, "/");
+    const bytes = Uint8Array.from(atob(base64), (character) => character.charCodeAt(0));
+    return {
+      chars: value.length,
+      bytes: bytes.length,
+      base64url: /^[A-Za-z0-9_-]+$/.test(value),
+      uncompressedP256: bytes.length === 65 && bytes[0] === 4,
+    };
+  } catch {
+    return { chars: value.length, bytes: 0, base64url: false, uncompressedP256: false };
+  }
+}
+
 Deno.serve(async (req: Request) => {
   if (req.method === "OPTIONS") return new Response("ok", { headers: corsHeaders });
   if (req.method !== "POST") return response({ error: "Method not allowed" }, 405);
@@ -45,6 +61,20 @@ Deno.serve(async (req: Request) => {
     const body = await req.json();
     if (body.action === "config") {
       if (!publicKey) return response({ error: "Push notifications are being configured." }, 503);
+      const keyFormat = inspectVapidPublicKey(publicKey);
+      let validP256Point = false;
+      try {
+        const padded = `${publicKey}${"=".repeat((4 - publicKey.length % 4) % 4)}`;
+        const raw = Uint8Array.from(atob(padded.replace(/-/g, "+").replace(/_/g, "/")), (character) => character.charCodeAt(0));
+        await crypto.subtle.importKey("raw", raw, { name: "ECDSA", namedCurve: "P-256" }, false, ["verify"]);
+        validP256Point = true;
+      } catch {
+        validP256Point = false;
+      }
+      console.info("VAPID public key validation", { ...keyFormat, validP256Point });
+      if (!keyFormat.uncompressedP256 || !validP256Point) {
+        return response({ error: "Push notifications are misconfigured. Please contact support." }, 503);
+      }
       return response({ publicKey });
     }
     if (body.action === "status") {

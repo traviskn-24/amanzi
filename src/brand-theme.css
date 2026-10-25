@@ -126,5 +126,8 @@ button:focus-visible,a:focus-visible,input:focus-visible,textarea:focus-visible,
 .post-card::before{content:"";position:absolute;z-index:0;top:-46px;right:-24px;width:128px;height:128px;border-radius:50%;background:rgba(17,184,214,.075);pointer-events:none;transition:transform .25s ease,background .25s ease}
 .post-card>*{position:relative;z-index:1}
 .post-card:hover::before{transform:scale(1.16);background:rgba(17,184,214,.11)}
+.judge-preview-banner{display:flex;align-items:flex-start;gap:10px;margin:14px 0;padding:13px 15px;border:1px solid #b9e4eb;border-radius:14px;background:#e9f8fa;color:#315c69;font-size:11px;line-height:1.5}
+.judge-preview-banner strong{flex:0 0 auto;color:#087f9c}
+.post-actions button:disabled{cursor:default;opacity:.48}
 @media(max-width:700px){.topbar{height:62px;padding-inline:16px;gap:18px}.brand-logo{width:70px;max-height:36px}.layout{padding:18px 16px 48px;gap:18px}.welcome-row h1{font-size:23px}.post-card:hover{transform:none}}
 @media(prefers-reduced-motion:reduce){*,*::before,*::after{scroll-behavior:auto!important;animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}}

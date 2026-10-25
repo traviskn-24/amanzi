@@ -2,6 +2,7 @@ import { useCallback, useEffect, useState } from 'react'
 import AccountSecurity from '../AccountSecurity'
 import '../account-security.css'
 import './create-account-page.css'
+import { isJudgeDemoUser } from '../lib/judge-demo'
 
 export default function CreateAccountPage({ supabase, onClose, onAuthChange, onLoadingChange }) {
   const [user, setUser] = useState(null)
@@ -16,6 +17,10 @@ export default function CreateAccountPage({ supabase, onClose, onAuthChange, onL
       if (error) { setSessionWarning('We could not check your current session. You can still try to sign in or create an account.'); return }
       const nextUser = data.session?.user || null
       if (!nextUser || nextUser.is_anonymous) return
+      if (isJudgeDemoUser(nextUser)) {
+        setUser(nextUser)
+        return
+      }
       const { data: assurance, error: assuranceError } = await supabase.auth.mfa.getAuthenticatorAssuranceLevel()
       if (!active) return
       if (assuranceError) { setSessionWarning('We could not verify your current session. Sign in again if this page does not continue.'); return }

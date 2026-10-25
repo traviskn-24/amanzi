@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react'
 import './account-security.css'
 import { authRedirectUrl } from './lib/auth-urls'
 import { containsBlockedLanguage, PASSWORD_LANGUAGE_ERROR, USERNAME_LANGUAGE_ERROR } from './lib/content-moderation'
+import { isJudgeDemoUser, getJudgeDemoUsername } from './lib/judge-demo'
 
 const noop = () => {}
 
@@ -55,6 +56,10 @@ export default function AccountSecurity({ supabase, user, onClose, onAuthChange,
     async function initializeMfa() {
       onLoadingChange('account-security', true, 'Preparing secure sign-in…')
       try {
+        if (isJudgeDemoUser(user)) {
+          setStep('judge-demo')
+          return
+        }
         const { data: assurance, error: assuranceError } = await supabase.auth.mfa.getAuthenticatorAssuranceLevel()
         if (assuranceError) throw assuranceError
         if (!active) return
@@ -142,6 +147,11 @@ export default function AccountSecurity({ supabase, user, onClose, onAuthChange,
           await supabase.auth.signOut()
           throw new Error('Please confirm your email address before signing in.')
         }
+        if (isJudgeDemoUser(data.user)) {
+          setStep('judge-demo')
+          onAuthChange(data.user, 'judge-pending')
+          return
+        }
         onAuthChange(data.user, 'aal1')
       }
     } catch (cause) {
@@ -217,7 +227,7 @@ export default function AccountSecurity({ supabase, user, onClose, onAuthChange,
       {!standalone && <button className="close-button account-close" onClick={onClose} aria-label="Close account window">×</button>}
       <img className="account-brand-logo" src="/brand/amanzi-logo.png" alt="Amanzi" />
       <span className="account-kicker">AMANZI ACCOUNT SECURITY</span>
-      <h2 id="account-title">{visibleStep === 'confirmation' ? 'Confirm your email' : visibleStep === 'profile' ? 'Your Amanzi account' : visibleStep === 'enroll' ? 'Set up two-step verification' : visibleStep === 'challenge' ? 'Verify it’s you' : visibleStep === 'checking' ? 'Checking your secure session…' : user && !user.is_anonymous ? 'Secure your account' : mode === 'create' ? 'Create your account' : mode === 'forgot-password' ? 'Reset your password' : 'Welcome back'}</h2>
+      <h2 id="account-title">{visibleStep === 'judge-demo' ? 'Judge account recognized' : visibleStep === 'confirmation' ? 'Confirm your email' : visibleStep === 'profile' ? 'Your Amanzi account' : visibleStep === 'enroll' ? 'Set up two-step verification' : visibleStep === 'challenge' ? 'Verify it’s you' : visibleStep === 'checking' ? 'Checking your secure session…' : user && !user.is_anonymous ? 'Secure your account' : mode === 'create' ? 'Create your account' : mode === 'forgot-password' ? 'Reset your password' : 'Welcome back'}</h2>
       {sessionWarning && <p className="account-error" role="status">{sessionWarning}</p>}
       {visibleStep === 'profile' && <><p className="account-copy">Signed in as <strong>{user?.email}</strong></p><div className="account-security-status">✓ Two-step verification is active on this session.</div>{error && <p className="account-error" role="alert">{error}</p>}<button className="account-secondary" onClick={addBackupFactor} disabled={busy}>Add a backup authenticator</button><small className="account-hint">Supabase does not issue recovery codes. A second authenticator device helps prevent lockout.</small><button className="account-signout" onClick={signOut} disabled={busy}>Sign out</button></>}
       {visibleStep === 'account' && <>
@@ -238,6 +248,7 @@ export default function AccountSecurity({ supabase, user, onClose, onAuthChange,
       </>}
       {visibleStep === 'confirmation' && <><p className="account-copy">{visibleMessage}</p>{error && <p className="account-error" role="alert">{error}</p>}<button className="account-secondary" onClick={() => { setStep('account'); setMode('sign-in'); setMessage(''); setError('') }}>Back to sign in</button></>}
       {visibleStep === 'checking' && <p className="account-copy">Preparing your sign-in verification…</p>}
+      {visibleStep === 'judge-demo' && <><p className="account-copy"><strong>Judge account recognized.</strong> You can continue without setting up an authenticator to keep the review moving. This shared judge account is read-only, so it cannot post, confirm, chat, or change saved areas.</p><div className="account-security-status">Judge preview · signed in as {getJudgeDemoUsername(user)}</div><button className="post-button account-submit" onClick={() => onAuthChange(user, 'judge-demo')}>Continue to Amanzi</button></>}
       {visibleStep === 'enroll' && <>
         <p className="account-copy">Scan this QR code with an authenticator app such as Google Authenticator, Microsoft Authenticator, or 1Password. Enter the current six-digit code to confirm setup.</p>
         {qrCode && <img className="account-qr" src={qrCode} alt="QR code for Amanzi two-step verification" />}
