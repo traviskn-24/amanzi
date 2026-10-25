@@ -1,4 +1,5 @@
-import { useMemo, useState } from 'react'
+import { useEffect, useMemo, useState } from 'react'
+import { isJudgeDemoUser } from '../lib/judge-demo'
 import './water-marketplace-page.css'
 
 const volumeChoices = [20, 200, 500, 1000]
@@ -13,7 +14,7 @@ function deliveryRate(litres) {
   return 0.75
 }
 
-export default function WaterMarketplacePage({ onSignIn, onAbout }) {
+export default function WaterMarketplacePage({ supabase, onSignIn, onAbout }) {
   const [litres, setLitres] = useState(200)
   const [area, setArea] = useState('Phoenix, eThekwini')
   const [address, setAddress] = useState('')
@@ -21,6 +22,9 @@ export default function WaterMarketplacePage({ onSignIn, onAbout }) {
   const [requestSent, setRequestSent] = useState(false)
   const [name, setName] = useState('')
   const [phone, setPhone] = useState('')
+  const [orders, setOrders] = useState([])
+  const [orderError, setOrderError] = useState('')
+  const [savingOrder, setSavingOrder] = useState(false)
   const safeLitres = Math.floor(Math.max(1, Math.min(20000, Number(litres) || 1)))
   const rate = deliveryRate(safeLitres)
   const quote = useMemo(() => {
@@ -31,9 +35,64 @@ export default function WaterMarketplacePage({ onSignIn, onAbout }) {
     return { water, delivery, subtotal, vat, total: subtotal + vat }
   }, [safeLitres, rate])
 
-  function submitRequest(event) {
+  useEffect(() => {
+    let active = true
+    async function loadOrders() {
+      if (!supabase) return
+      const { data: { user } } = await supabase.auth.getUser()
+      if (!active || !user || user.is_anonymous) return
+      const { data, error } = await supabase.from('water_delivery_requests')
+        .select('id, delivery_area, litres, estimated_total, status, created_at')
+        .order('created_at', { ascending: false })
+        .limit(5)
+      if (active && !error) setOrders(data || [])
+    }
+    void loadOrders()
+    return () => { active = false }
+  }, [supabase])
+
+  async function submitRequest(event) {
     event.preventDefault()
     if (!address.trim() || !name.trim() || !phone.trim()) return
+    setOrderError('')
+    if (!supabase) {
+      setOrderError('Order requests are unavailable because Amanzi is not connected to its database.')
+      return
+    }
+    setSavingOrder(true)
+    const { data: { user }, error: userError } = await supabase.auth.getUser()
+    if (userError || !user || user.is_anonymous) {
+      setSavingOrder(false)
+      setOrderError('Sign in to save and track your delivery request.')
+      onSignIn()
+      return
+    }
+    if (isJudgeDemoUser(user)) {
+      setSavingOrder(false)
+      setOrderError('Judge preview accounts are read-only. Sign in with a customer account to place a request.')
+      return
+    }
+    const { data, error } = await supabase.from('water_delivery_requests').insert({
+      customer_id: user.id,
+      customer_name: name.trim(),
+      phone: phone.trim(),
+      delivery_area: area.trim(),
+      delivery_address: address.trim(),
+      litres: safeLitres,
+      water_cost: quote.water,
+      delivery_rate: rate,
+      delivery_cost: quote.delivery,
+      estimated_vat: quote.vat,
+      estimated_total: quote.total,
+    }).select('id, delivery_area, litres, estimated_total, status, created_at').single()
+    setSavingOrder(false)
+    if (error) {
+      setOrderError(error.code === '42501'
+        ? 'Your account needs a verified sign-in session before it can place a request.'
+        : 'Amanzi could not save this request. Please try again in a moment.')
+      return
+    }
+    setOrders((current) => [data, ...current].slice(0, 5))
     setRequestSent(true)
   }
 
@@ -79,6 +138,15 @@ export default function WaterMarketplacePage({ onSignIn, onAbout }) {
         </section>
       </section>
 
+      {orders.length > 0 && <section className="customer-orders" aria-labelledby="customer-orders-title">
+        <div className="customer-orders-heading"><div><span className="marketplace-kicker">SAVED TO YOUR ACCOUNT</span><h2 id="customer-orders-title">Your water requests</h2></div><span>{orders.length} recent</span></div>
+        <div className="customer-order-list">{orders.map((order) => <article className="customer-order" key={order.id}>
+          <div><strong>{Number(order.litres).toLocaleString()} L for {order.delivery_area}</strong><span>Request {order.id.slice(0, 8).toUpperCase()} · {new Date(order.created_at).toLocaleString('en-ZA', { dateStyle: 'medium', timeStyle: 'short' })}</span></div>
+          <div className="customer-order-meta"><span className={`customer-order-status status-${order.status}`}>{order.status === 'awaiting_supplier_confirmation' ? 'Awaiting supplier' : order.status.replaceAll('_', ' ')}</span><strong>{money(Number(order.estimated_total))}</strong></div>
+        </article>)}</div>
+        <p className="customer-orders-note">Requests are saved privately to your account. Supplier matching and live delivery updates are not connected yet.</p>
+      </section>}
+
       <section className="marketplace-strip" aria-label="Amanzi benefits">
         <div><span className="benefit-number">01</span><div><strong>Choose your volume</strong><small>From a few containers to a bulk tank.</small></div></div>
         <div><span className="benefit-number">02</span><div><strong>Know the estimate</strong><small>See water, delivery and estimated VAT separately.</small></div></div>
@@ -110,14 +178,15 @@ export default function WaterMarketplacePage({ onSignIn, onAbout }) {
 
     {requestOpen && <div className="order-modal-backdrop" role="presentation" onMouseDown={(event) => { if (event.target === event.currentTarget) closeRequest() }}><section className="order-modal" role="dialog" aria-modal="true" aria-labelledby="order-modal-title">
       <button className="order-modal-close" type="button" onClick={closeRequest} aria-label="Close order request">×</button>
-      {requestSent ? <div className="order-success"><span className="order-success-mark" aria-hidden="true">&#10003;</span><span className="marketplace-kicker">REQUEST PREPARED</span><h2 id="order-modal-title">Your delivery request is ready.</h2><p>This is a prototype. Your contact details were not saved or sent to a supplier. Live supplier matching and quote confirmation still need to be connected.</p><button type="button" className="marketplace-primary" onClick={closeRequest}>Back to Amanzi</button></div> : <>
+      {requestSent ? <div className="order-success"><span className="order-success-mark" aria-hidden="true">&#10003;</span><span className="marketplace-kicker">REQUEST SAVED</span><h2 id="order-modal-title">Your request is in your account.</h2><p>Amanzi saved request {orders[0]?.id?.slice(0, 8).toUpperCase()} with an estimated total of {money(quote.total)}. It is awaiting supplier confirmation. No supplier has received it yet, and no payment was taken.</p><button type="button" className="marketplace-primary" onClick={closeRequest}>View my requests</button></div> : <>
         <span className="marketplace-kicker">DELIVERY REQUEST</span><h2 id="order-modal-title">Where should we bring it?</h2><p className="order-modal-intro">{safeLitres.toLocaleString()} litres to {area || 'your chosen area'} · estimate {money(quote.total)}</p>
         <form className="delivery-request-form" onSubmit={submitRequest}>
           <label className="marketplace-field">Street address<input required value={address} onChange={(event) => setAddress(event.target.value)} placeholder="Street, building or nearest landmark" /></label>
           <div className="delivery-form-row"><label className="marketplace-field">Your name<input required value={name} onChange={(event) => setName(event.target.value)} autoComplete="name" placeholder="Name" /></label><label className="marketplace-field">Phone number<input required value={phone} onChange={(event) => setPhone(event.target.value)} autoComplete="tel" inputMode="tel" placeholder="For supplier confirmation" /></label></div>
           <div className="order-breakdown"><p><span>Water · {safeLitres.toLocaleString()} L</span><strong>{money(quote.water)}</strong></p><p><span>Delivery · {safeLitres < 200 ? 'under 200 L tier' : safeLitres < 1000 ? '200 to 999 L tier' : '1,000 L and up'} at R{rate.toFixed(2)} per litre</span><strong>{money(quote.delivery)}</strong></p><p><span>Estimated VAT</span><strong>{money(quote.vat)}</strong></p><p className="order-breakdown-total"><span>Estimated total</span><strong>{money(quote.total)}</strong></p></div>
-          <button className="marketplace-primary" type="submit">Prepare delivery request <span aria-hidden="true">→</span></button>
-          <small className="order-form-disclaimer">No payment is taken. A supplier must confirm stock, delivery cost and timing before an order can be completed.</small>
+          {orderError && <p className="order-form-error" role="alert">{orderError}</p>}
+          <button className="marketplace-primary" type="submit" disabled={savingOrder}>{savingOrder ? 'Saving request…' : 'Save delivery request'} <span aria-hidden="true">→</span></button>
+          <small className="order-form-disclaimer">Your request is stored privately with your account. No payment is taken, and a supplier must still confirm stock, final cost and delivery timing.</small>
         </form>
       </>}
     </section></div>}

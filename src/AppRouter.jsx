@@ -126,7 +126,7 @@ export default function AppRouter() {
   } else if (page === 'community') {
     content = <App onRequireAccount={requireSignIn} onLoadingChange={reportOperation} onNavigateAbout={() => navigate('/about')} />
   } else {
-    content = <WaterMarketplacePage onSignIn={requireSignIn} onAbout={() => navigate('/about')} />
+    content = <WaterMarketplacePage supabase={supabase} onSignIn={requireSignIn} onAbout={() => navigate('/about')} />
   }
 
   const operationLabel = Object.values(operations)[0]
