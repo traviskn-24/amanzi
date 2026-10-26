@@ -1,7 +1,6 @@
 import { useCallback, useEffect, useRef, useState } from 'react'
 import { supabase } from './lib/supabase'
 import App from './App'
-import WaterMarketplacePage from './pages/WaterMarketplacePage'
 import AreaOnboardingPage from './pages/AreaOnboardingPage'
 import CreateAccountPage from './pages/CreateAccountPage'
 import AboutPage from './pages/AboutPage'
@@ -16,13 +15,12 @@ function readPath() {
   if (window.location.pathname === '/onboarding') return 'onboarding'
   if (window.location.pathname === '/username') return 'username'
   if (window.location.pathname === '/about') return 'about'
-  if (window.location.pathname === '/community') return 'community'
   return 'home'
 }
 
 export default function AppRouter() {
   const [page, setPage] = useState(readPath)
-  const [routeLoading, setRouteLoading] = useState(false)
+  const [routeLoading, setRouteLoading] = useState(readPath() === 'home')
   const [routeLabel, setRouteLabel] = useState('Checking your Amanzi account…')
   const [operations, setOperations] = useState({})
   const [sessionValidated, setSessionValidated] = useState(false)
@@ -112,6 +110,34 @@ export default function AppRouter() {
     })
   }, [])
 
+  useEffect(() => {
+    if (page !== 'home' || sessionValidated) return undefined
+    let active = true
+    async function checkEntry() {
+      try {
+        if (!supabase) { navigate('/create-account'); return }
+        const { data, error } = await supabase.auth.getSession()
+        if (error) throw error
+        const user = data?.session?.user
+        if (!user || user.is_anonymous) { navigate('/create-account'); return }
+        if (isJudgeDemoUser(user)) {
+          await routeAfterAuthentication()
+          return
+        }
+        const { data: assurance, error: assuranceError } = await supabase.auth.mfa.getAuthenticatorAssuranceLevel()
+        if (assuranceError) throw assuranceError
+        if (assurance.currentLevel !== 'aal2') { navigate('/create-account'); return }
+        await routeAfterAuthentication()
+      } catch {
+        if (active) navigate('/create-account')
+      } finally {
+        if (active) finishRouteTransition()
+      }
+    }
+    void checkEntry()
+    return () => { active = false }
+  }, [page, navigate, routeAfterAuthentication, sessionValidated, finishRouteTransition])
+
   let content
   if (page === 'create-account') {
     content = <CreateAccountPage supabase={supabase} onClose={() => navigate('/')} onAuthChange={handleAccountReady} onLoadingChange={reportOperation} />
@@ -123,10 +149,8 @@ export default function AppRouter() {
     content = <UsernameSetupPage supabase={supabase} onComplete={routeAfterAuthentication} onRequireSignIn={requireSignIn} onLoadingChange={reportOperation} />
   } else if (page === 'about') {
     content = <AboutPage onHome={() => navigate('/')} />
-  } else if (page === 'community') {
-    content = <App onRequireAccount={requireSignIn} onLoadingChange={reportOperation} onNavigateAbout={() => navigate('/about')} />
   } else {
-    content = <WaterMarketplacePage supabase={supabase} onSignIn={requireSignIn} onAbout={() => navigate('/about')} />
+    content = <App onRequireAccount={requireSignIn} onLoadingChange={reportOperation} onNavigateAbout={() => navigate('/about')} />
   }
 
   const operationLabel = Object.values(operations)[0]
