@@ -6,6 +6,7 @@ import LocationSearch from './components/community/LocationSearch'
 import SortMenu from './components/community/SortMenu'
 import SavedAreasPanel from './components/community/SavedAreasPanel'
 import WaterSafetyCaseStudy from './components/community/WaterSafetyCaseStudy'
+import OfficialNoticesPanel from './components/community/OfficialNoticesPanel'
 import { locationKey, locationMatches, maxSavedAreas, readSavedLocation } from './lib/locations'
 import { containsBlockedLanguage, MESSAGE_LANGUAGE_ERROR } from './lib/content-moderation'
 import { getJudgeDemoUsername, isJudgeDemoUser } from './lib/judge-demo'
@@ -668,6 +669,8 @@ function App({ onRequireAccount, onLoadingChange, onNavigateAbout }) {
             <LocationSearch location={location} onChoose={chooseLocation} disabled={dbStatus !== 'connected'} />
           </section>
           <div className="feed-toolbar"><div className="feed-tabs"><button className={scope === 'nearby' ? 'selected' : ''} onClick={() => setScope('nearby')}>My area <span>{areaPosts.length}</span></button><button className={scope === 'all' ? 'selected' : ''} onClick={() => setScope('all')}>Across South Africa</button></div><label className="search-box uiverse-input-shell"><svg className="search-icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="10.8" cy="10.8" r="6.4"/><path d="m15.6 15.6 4 4"/></svg><input type="search" aria-label="Search updates" value={query} onChange={(e) => setQuery(e.target.value)} placeholder="Search updates" /></label></div>
+
+          <OfficialNoticesPanel supabase={supabase} user={authUser} location={location} />
 
           {isJudgeDemoUser(authUser) && <div className="judge-preview-banner" role="status"><strong>Judge preview</strong><span>Read-only access. Sample updates are labelled and do not describe live service conditions.</span></div>}
 
