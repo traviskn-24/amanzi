@@ -41,13 +41,6 @@ export default function WaterSafetyCaseStudy({ isOpen, onClose }) {
     return () => document.removeEventListener('keydown', onKeyDown)
   }, [isOpen, onClose])
 
-  useEffect(() => {
-    if (!isOpen) {
-      setPhaseIndex(0)
-      setShowPreview(false)
-    }
-  }, [isOpen])
-
   if (!isOpen) return null
   const phase = phases[phaseIndex]
 

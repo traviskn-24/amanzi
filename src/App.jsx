@@ -670,7 +670,7 @@ function App({ onRequireAccount, onLoadingChange, onNavigateAbout }) {
           </section>
           <div className="feed-toolbar"><div className="feed-tabs"><button className={scope === 'nearby' ? 'selected' : ''} onClick={() => setScope('nearby')}>My area <span>{areaPosts.length}</span></button><button className={scope === 'all' ? 'selected' : ''} onClick={() => setScope('all')}>Across South Africa</button></div><label className="search-box uiverse-input-shell"><svg className="search-icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="10.8" cy="10.8" r="6.4"/><path d="m15.6 15.6 4 4"/></svg><input type="search" aria-label="Search updates" value={query} onChange={(e) => setQuery(e.target.value)} placeholder="Search updates" /></label></div>
 
-          <OfficialNoticesPanel supabase={supabase} user={authUser} location={location} />
+          <OfficialNoticesPanel key={authUser?.id || 'guest'} supabase={supabase} user={authUser} location={location} />
 
           {isJudgeDemoUser(authUser) && <div className="judge-preview-banner" role="status"><strong>Judge preview</strong><span>Read-only access. Sample updates are labelled and do not describe live service conditions.</span></div>}
 
@@ -705,7 +705,7 @@ function App({ onRequireAccount, onLoadingChange, onNavigateAbout }) {
         </aside>
       </main>}
       {renderFaultReport && faultContact && <WaterFaultReport location={location} contact={faultContact} isOpen={showFaultReport} onClose={closeFaultReport} />}
-      <WaterSafetyCaseStudy isOpen={showWaterSafetyCaseStudy} onClose={() => setShowWaterSafetyCaseStudy(false)} />
+      {showWaterSafetyCaseStudy && <WaterSafetyCaseStudy isOpen onClose={() => setShowWaterSafetyCaseStudy(false)} />}
           {renderChat && chatArea && <CommunityChat initialLocation={chatArea} isOpen={showChat} onClose={closeChat} dbStatus={dbStatus} canContribute={canContribute} onRequireAccount={requireAccountOrMfa} onLoadingChange={onLoadingChange} usernames={usernames} currentUsername={currentUsername} />}
       <footer className="footer"><span>© 2026 Amanzi</span><span>Community-powered water updates for South Africa</span><a className="footer-about" href="/about" onClick={(event) => { event.preventDefault(); onNavigateAbout?.() }}>About Amanzi</a></footer>
     </div>

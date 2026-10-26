@@ -42,11 +42,7 @@ export default function OfficialNoticesPanel({ supabase, user, location }) {
 
   useEffect(() => {
     let alive = true
-    if (!supabase || !user || user.is_anonymous) {
-      setPublisher(null)
-      setEmailPreference(null)
-      return () => { alive = false }
-    }
+    if (!supabase || !user || user.is_anonymous) return () => { alive = false }
     supabase.from('notice_publishers').select('publisher_label, organization_name, role, active').eq('user_id', user.id).maybeSingle()
       .then(({ data }) => { if (alive) setPublisher(data?.active ? data : null) })
     supabase.functions.invoke('manage-official-notice-email', { body: { action: 'status' } })
