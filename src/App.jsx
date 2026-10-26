@@ -670,8 +670,6 @@ function App({ onRequireAccount, onLoadingChange, onNavigateAbout }) {
           </section>
           <div className="feed-toolbar"><div className="feed-tabs"><button className={scope === 'nearby' ? 'selected' : ''} onClick={() => setScope('nearby')}>My area <span>{areaPosts.length}</span></button><button className={scope === 'all' ? 'selected' : ''} onClick={() => setScope('all')}>Across South Africa</button></div><label className="search-box uiverse-input-shell"><svg className="search-icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="10.8" cy="10.8" r="6.4"/><path d="m15.6 15.6 4 4"/></svg><input type="search" aria-label="Search updates" value={query} onChange={(e) => setQuery(e.target.value)} placeholder="Search updates" /></label></div>
 
-          <OfficialNoticesPanel key={authUser?.id || 'guest'} supabase={supabase} user={authUser} location={location} />
-
           {isJudgeDemoUser(authUser) && <div className="judge-preview-banner" role="status"><strong>Judge preview</strong><span>Read-only access. Sample updates are labelled and do not describe live service conditions.</span></div>}
 
           {dbStatus === 'connecting' && <div className="toast" role="status">Connecting to Amanzi’s shared community updates…</div>}
@@ -703,6 +701,7 @@ function App({ onRequireAccount, onLoadingChange, onNavigateAbout }) {
           <div className="desktop-only-fault-card"><WaterFaultCard location={location} onReport={() => findMunicipalFaultContact(location).then(openFaultReport)} /></div>
           {supabase && dbStatus === 'connected' && <div className="desktop-only-saved-areas"><SavedAreasPanel key={authUser?.id || 'guest'} supabase={supabase} location={location} areas={savedAreas} loading={savedAreasLoading} busy={savedAreasBusy} message={savedAreasMessage} canManage={canContribute} signedIn={Boolean(authUser && !authUser.is_anonymous)} searchDisabled={dbStatus !== 'connected'} onSave={saveCurrentArea} onSelect={chooseLocation} onRemove={removeSavedArea} onSetDefault={setDefaultArea} onRequireAccount={requireAccountOrMfa} /></div>}
         </aside>
+        <OfficialNoticesPanel key={authUser?.id || 'guest'} supabase={supabase} user={authUser} location={location} />
       </main>}
       {renderFaultReport && faultContact && <WaterFaultReport location={location} contact={faultContact} isOpen={showFaultReport} onClose={closeFaultReport} />}
       {showWaterSafetyCaseStudy && <WaterSafetyCaseStudy isOpen onClose={() => setShowWaterSafetyCaseStudy(false)} />}

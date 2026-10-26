@@ -50,7 +50,6 @@ export default function WaterSafetyCaseStudy({ isOpen, onClose }) {
         <div><span className="water-safety-kicker">CASE STUDY · BRONKHORSTSPRUIT · OCTOBER 2026</span><h2 id="water-safety-title">How Amanzi could help during a water safety incident</h2></div>
         <button className="water-safety-close" type="button" onClick={onClose} aria-label="Close case study"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="m5 5 10 10M15 5 5 15" /></svg></button>
       </header>
-      <p className="water-safety-disclaimer"><strong>Workflow demonstration, not a live alert.</strong> Amanzi is not connected to a municipal notice feed and cannot test water or determine whether it is safe. Check the authority’s current notice before acting.</p>
       <div className="water-safety-phases" role="tablist" aria-label="Incident response steps">
         {phases.map((item, index) => <button key={item.title} type="button" role="tab" aria-selected={index === phaseIndex} className={index === phaseIndex ? 'active' : ''} onClick={() => { setPhaseIndex(index); setShowPreview(false) }}><span>{String(index + 1).padStart(2, '0')}</span>{item.title}</button>)}
       </div>

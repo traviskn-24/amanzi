@@ -7,3 +7,25 @@
 @media(prefers-reduced-motion:reduce){.official-notice-subscribe button{scroll-behavior:auto}}
 .official-notice-alert-info{margin-top:14px;padding:13px 15px;border:1px solid #cce8eb;border-radius:14px;background:#f0fafb}.official-notice-alert-info strong{color:#193d56;font-size:12px}.official-notice-alert-info p{margin:5px 0 0;color:#637b8b;font-size:10px;line-height:1.55}
 .official-notice-card{scroll-margin-top:90px}.official-notice-card.is-focused{border-color:#11a9ca;box-shadow:0 0 0 4px #11a9ca20;animation:noticeFocus 1.2s ease-out}@keyframes noticeFocus{from{box-shadow:0 0 0 7px #11a9ca38}to{box-shadow:0 0 0 4px #11a9ca20}}
+
+/* Place source notices at the end of the feed and keep the section readable on phones. */
+.layout>.official-notices-panel{grid-column:1/-1;margin:0 0 8px}
+.official-notices-header p{max-width:48ch}
+.official-notice-alert-info{padding:12px 14px}
+.official-notice-alert-info p{font-size:11px}
+.official-notice-disclaimer{margin-top:10px}
+@media(max-width:760px){
+  .layout>.official-notices-panel{margin:4px 0 0}
+  .official-notices-panel{padding:18px}
+  .official-notices-header{gap:10px}
+  .official-notices-header p{max-width:38ch}
+  .official-notice-alert-info{margin-top:12px;padding:12px}
+}
+@media(max-width:420px){
+  .official-notices-panel{padding:15px;border-radius:17px}
+  .official-notices-location{padding:6px 9px}
+  .official-notice-empty{padding:12px;font-size:11px}
+  .official-notice-card h3{font-size:15px}
+  .official-notice-meta{gap:6px 9px}
+  .official-notice-alert-info p{font-size:10px}
+}

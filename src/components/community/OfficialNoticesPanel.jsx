@@ -119,9 +119,9 @@ export default function OfficialNoticesPanel({ supabase, user, location }) {
   return <section className="official-notices-panel" aria-labelledby="official-notices-heading">
     <div className="official-notices-header">
       <div>
-        <span className="official-notices-kicker">SOURCE-LINKED INFORMATION</span>
+        <span className="official-notices-kicker">OFFICIAL SOURCES</span>
         <h2 id="official-notices-heading">Official notices</h2>
-        <p>Authority notices are published by approved accounts and linked to their source. Resident reports stay labelled as community reports.</p>
+        <p>Notices from approved publishers, linked to their original source.</p>
       </div>
       <span className="official-notices-location">{location.area}</span>
     </div>
@@ -146,10 +146,10 @@ export default function OfficialNoticesPanel({ supabase, user, location }) {
           {publisher?.active && notice.published_by === user?.id && notice.is_demo === (publisher.role === 'demo') && <button className="official-notice-edit" type="button" onClick={() => { setFormMode('update'); setSelectedNotice(notice.id); setForm({ title: notice.title, summary: notice.summary, sourceUrl: notice.source_url, sourcePublishedAt: notice.source_published_at ? new Date(notice.source_published_at).toISOString().slice(0, 16) : '', status: notice.status === 'active' ? 'updated' : notice.status }) }}>Update this notice</button>}
         </article>
       })}
-      {relevantNotices.length === 0 && <p className="official-notice-empty">No source-linked official notices for {location.area} right now. Community reports may still appear in the feed below.</p>}
+      {relevantNotices.length === 0 && <p className="official-notice-empty">No official notices for {location.area} right now.</p>}
     </div>
 
-    <div className="official-notice-alert-info"><strong>Get alerts for official notices</strong><p>Turn on <b>Official notices</b> under <b>My areas, Important area alerts</b>. Alerts go to this device for your saved areas. Notices remain available here even when browser notifications are off.</p></div>
+    <div className="official-notice-alert-info"><strong>Want notice alerts?</strong><p>Turn on <b>Official notices</b> in <b>My areas</b> for this device.</p></div>
 
     {publisher?.active && <details className="official-notice-publisher">
       <summary><span>{publisher.role === 'demo' ? 'Judge demo publisher tools' : 'Approved publisher tools'}</span><small>{publisher.organization_name}</small></summary>
@@ -168,6 +168,6 @@ export default function OfficialNoticesPanel({ supabase, user, location }) {
       </div>
     </details>}
     {message && <p className="official-notice-feedback" role="status">{message}</p>}
-    <p className="official-notice-disclaimer">Amanzi displays source-linked notices but does not verify the issuing authority’s live systems. A community post is not an official warning, and contacting a provider through Amanzi does not confirm that the provider received a report.</p>
+    <p className="official-notice-disclaimer">Check the linked source for the latest official guidance.</p>
   </section>
 }
