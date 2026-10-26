@@ -5,6 +5,7 @@ import AccountMenu, { MobileSignOutButton } from './components/account/AccountMe
 import LocationSearch from './components/community/LocationSearch'
 import SortMenu from './components/community/SortMenu'
 import SavedAreasPanel from './components/community/SavedAreasPanel'
+import WaterSafetyCaseStudy from './components/community/WaterSafetyCaseStudy'
 import { locationKey, locationMatches, maxSavedAreas, readSavedLocation } from './lib/locations'
 import { containsBlockedLanguage, MESSAGE_LANGUAGE_ERROR } from './lib/content-moderation'
 import { getJudgeDemoUsername, isJudgeDemoUser } from './lib/judge-demo'
@@ -29,6 +30,7 @@ const waterStatuses = [
   { value: 'no_water', label: 'No water', description: 'The taps are dry', icon: noWaterIcon },
   { value: 'low_pressure', label: 'Low pressure', description: 'Water is running slowly', icon: lowPressureIcon },
   { value: 'restored', label: 'Water restored', description: 'Water is back on', icon: restoredIcon },
+  { value: 'water_safety_concern', label: 'Water safety concern', description: 'Report an unusual observation', icon: null },
 ]
 const waterStatusLabels = Object.fromEntries(waterStatuses.map(({ value, label }) => [value, label]))
 const relativeTimeFormatter = new Intl.RelativeTimeFormat('en', { numeric: 'auto' })
@@ -83,6 +85,7 @@ function App({ onRequireAccount, onLoadingChange, onNavigateAbout }) {
   const [draftMunicipality, setDraftMunicipality] = useState('eThekwini')
   const [draftProvince, setDraftProvince] = useState('KwaZulu-Natal')
   const [draftStatus, setDraftStatus] = useState('')
+  const [safetyAcknowledged, setSafetyAcknowledged] = useState(false)
   const [notice, setNotice] = useState('')
   const [dbStatus, setDbStatus] = useState(isSupabaseConfigured ? 'connecting' : 'demo')
   const [dbMessage, setDbMessage] = useState('')
@@ -101,6 +104,7 @@ function App({ onRequireAccount, onLoadingChange, onNavigateAbout }) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
   const [mobileMenuRendered, setMobileMenuRendered] = useState(false)
   const [mobilePage, setMobilePage] = useState('home')
+  const [showWaterSafetyCaseStudy, setShowWaterSafetyCaseStudy] = useState(false)
   const [usernames, setUsernames] = useState({})
   const [savedAreas, setSavedAreas] = useState([])
   const [savedAreasLoading, setSavedAreasLoading] = useState(false)
@@ -498,7 +502,7 @@ function App({ onRequireAccount, onLoadingChange, onNavigateAbout }) {
       requireAccountOrMfa()
       return
     }
-    if (draft.trim().length < 8 || !draftStatus || draftArea.trim().length < 2 || draftMunicipality.trim().length < 2) return
+    if (draft.trim().length < 8 || !draftStatus || (draftStatus === 'water_safety_concern' && !safetyAcknowledged) || draftArea.trim().length < 2 || draftMunicipality.trim().length < 2) return
     if (supabase) {
       if (dbStatus !== 'connected') {
         setNotice('Amanzi is not connected, so this update was not shared. Refresh after Supabase is enabled.')
@@ -643,10 +647,10 @@ function App({ onRequireAccount, onLoadingChange, onNavigateAbout }) {
           <button type="button" className={`mobile-navigation-item ${mobilePage === 'home' ? 'active' : ''}`} onClick={() => { setMobilePage('home'); closeMobileMenu() }}><span className="mobile-navigation-item-icon"><img src="/brand/menu-icons/home_community.png" alt="" /></span><span><strong>Community updates</strong><small>See what neighbours are reporting</small></span></button>
           <button type="button" className={`mobile-navigation-item ${mobilePage === 'areas' ? 'active' : ''}`} onClick={() => { setMobilePage('areas'); closeMobileMenu() }}><span className="mobile-navigation-item-icon"><img src="/brand/menu-icons/location.png" alt="" /></span><span><strong>My areas</strong><small>Manage your saved communities</small></span></button>
           <button type="button" className="mobile-navigation-item" onClick={() => void startFaultReport()}><span className="mobile-navigation-item-icon"><img src="/brand/menu-icons/report.png" alt="" /></span><span><strong>Report a water fault</strong><small>Prepare a report for your water service</small></span></button>
-          <section className="mobile-notices-info" aria-label="Official notice information">
-            <h2>Official notices</h2>
-            <p>Community reports are not official municipal notices. Official notices are labelled and linked to their source. A live municipal notice feed is not connected yet.</p>
-            <a href={province === 'KwaZulu-Natal' ? 'https://www.durban.gov.za/' : 'https://www.gov.za/about-government/contact-government'} target="_blank" rel="noreferrer">Find official services <span aria-hidden="true">↗</span></a>
+          <section className="mobile-notices-info" aria-label="Water safety response case study">
+            <h2>Water safety response</h2>
+            <p>See how community reports and official warnings should work together during a water safety incident.</p>
+            <button type="button" onClick={() => { closeMobileMenu(); setShowWaterSafetyCaseStudy(true) }}>View Bronkhorstspruit case study <span aria-hidden="true">↗</span></button>
           </section>
           <a className="mobile-navigation-about" href="/about" onClick={(event) => { event.preventDefault(); closeMobileMenu(); onNavigateAbout?.() }}>About Amanzi <span aria-hidden="true">↗</span></a>
           <MobileSignOutButton user={authUser} supabase={supabase} onRequireAccount={onRequireAccount} onLoadingChange={onLoadingChange} onClose={closeMobileMenu} />
@@ -673,9 +677,10 @@ function App({ onRequireAccount, onLoadingChange, onNavigateAbout }) {
           {renderComposer && <form className="composer" data-open={showComposer} inert={!showComposer} onSubmit={publish}>
             <div className="composer-head"><span className="composer-mark" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 3.5S6.5 10 6.5 14.3a5.5 5.5 0 0 0 11 0C17.5 10 12 3.5 12 3.5Z"/><path d="M9.5 15.2a2.7 2.7 0 0 0 2.7 2.7"/></svg></span><div className="composer-heading-copy"><span className="composer-kicker">COMMUNITY UPDATE</span><strong>{scope === 'all' ? 'Share across South Africa' : `Share with ${area}`}</strong><small>Help neighbours understand what’s happening. Don’t include your exact address.</small></div><button type="button" className="composer-close" onClick={closeComposer} aria-label="Close update form"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="m5 5 10 10M15 5 5 15"/></svg></button></div>
             {scope === 'all' && <fieldset className="choice-group nationwide-report-location"><legend>Where is this happening?</legend><div className="report-location-current"><span>REPORT LOCATION</span><strong>{draftArea}</strong><small>{draftMunicipality}, {draftProvince}</small></div><LocationSearch location={{ area: draftArea, municipality: draftMunicipality, province: draftProvince }} onChoose={(next) => { setDraftArea(next.area); setDraftMunicipality(next.municipality); setDraftProvince(next.province) }} disabled={dbStatus !== 'connected'} inputId="report-community-search" label="Search to change the report location" /></fieldset>}
-            <fieldset className="choice-group status-choice-group"><legend>What’s happening with the water?<span>Select one status</span></legend><div className="status-choices">{waterStatuses.map((status) => <label className={`status-choice ${draftStatus === status.value ? `selected status-${status.value}` : ''}`} key={status.value}><input type="radio" name="water-status" value={status.value} checked={draftStatus === status.value} onChange={() => setDraftStatus(status.value)} /><span className="status-choice-icon" aria-hidden="true"><img src={status.icon} alt="" /></span><span className="status-choice-copy"><strong>{status.label}</strong><small>{status.description}</small></span><span className="choice-check" aria-hidden="true"><svg viewBox="0 0 16 16"><path d="m3.5 8.2 3 3 6-6.2"/></svg></span></label>)}</div></fieldset>
+            <fieldset className="choice-group status-choice-group"><legend>What’s happening with the water?<span>Select one status</span></legend><div className="status-choices">{waterStatuses.map((status) => <label className={`status-choice ${draftStatus === status.value ? `selected status-${status.value}` : ''}`} key={status.value}><input type="radio" name="water-status" value={status.value} checked={draftStatus === status.value} onChange={() => { setDraftStatus(status.value); setSafetyAcknowledged(false) }} /><span className="status-choice-icon" aria-hidden="true">{status.icon ? <img src={status.icon} alt="" /> : <svg viewBox="0 0 24 24"><path d="M12 3 20 6v5c0 5-3.4 8.5-8 10-4.6-1.5-8-5-8-10V6l8-3Z"/><path d="M12 8v4m0 3h.01"/></svg>}</span><span className="status-choice-copy"><strong>{status.label}</strong><small>{status.description}</small></span><span className="choice-check" aria-hidden="true"><svg viewBox="0 0 16 16"><path d="m3.5 8.2 3 3 6-6.2"/></svg></span></label>)}</div></fieldset>
+            {draftStatus === 'water_safety_concern' && <div className="water-safety-report-note"><strong>Report what you observed, not a safety conclusion.</strong><p>Amanzi cannot test water. This community post is not an official warning and does not reach the municipality.</p><label><input type="checkbox" checked={safetyAcknowledged} onChange={(event) => setSafetyAcknowledged(event.target.checked)} /> I understand this is an unverified observation, not proof that water is safe or unsafe.</label></div>}
             <label className="composer-field-label" htmlFor="update-details">What have you noticed?</label><div className="composer-editor"><textarea id="update-details" autoFocus minLength={8} maxLength={180} value={draft} onChange={(e) => setDraft(e.target.value)} placeholder="Add useful context, like when it started or if water has returned…" /><div className="composer-editor-foot"><span>Keep it brief and useful for neighbours.</span><span>{draft.length}/180</span></div></div>
-            <div className="composer-foot"><span className="composer-location-summary"><strong>{draftArea}</strong><small>{draftMunicipality} · {waterStatusLabels[draftStatus] || 'Choose a water status'}</small></span><button className="post-button small composer-submit" disabled={draft.trim().length < 8 || !draftStatus || draftArea.trim().length < 2 || draftMunicipality.trim().length < 2}><span>Post update</span><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M4 10h11M10 5l5 5-5 5"/></svg></button></div>
+            <div className="composer-foot"><span className="composer-location-summary"><strong>{draftArea}</strong><small>{draftMunicipality} · {waterStatusLabels[draftStatus] || 'Choose a water status'}</small></span><button className="post-button small composer-submit" disabled={draft.trim().length < 8 || !draftStatus || (draftStatus === 'water_safety_concern' && !safetyAcknowledged) || draftArea.trim().length < 2 || draftMunicipality.trim().length < 2}><span>Post update</span><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M4 10h11M10 5l5 5-5 5"/></svg></button></div>
           </form>}
 
           <div className="feed-heading"><h2>Latest from your community</h2><SortMenu value={sortMode} onChange={setSortMode} /></div>
@@ -691,12 +696,13 @@ function App({ onRequireAccount, onLoadingChange, onNavigateAbout }) {
         </section>
 
         <aside className="right-rail">
-          <div className="desktop-only-notice-card"><div className="rail-card notice-card"><div className="notice-label"><span>i</span> OFFICIAL NOTICES</div><h3>Source matters</h3><p>Amanzi community reports are not official municipal notices. We’ll label official sources clearly when a live notice feed is connected.</p><a href={province === 'KwaZulu-Natal' ? 'https://www.durban.gov.za/' : 'https://www.gov.za/about-government/contact-government'} target="_blank" rel="noreferrer">Find official services <span>↗</span></a></div></div>
+          <div className="desktop-only-notice-card"><div className="rail-card notice-card"><div className="notice-label"><span>i</span> WATER SAFETY RESPONSE</div><h3>Reports and warnings have different roles</h3><p>Community observations can highlight concern. Only a linked notice from the responsible authority can set official safety guidance.</p><button className="water-safety-case-study-link" type="button" onClick={() => setShowWaterSafetyCaseStudy(true)}>See the Bronkhorstspruit case study <span>↗</span></button></div></div>
           <div className="desktop-only-fault-card"><WaterFaultCard location={location} onReport={() => findMunicipalFaultContact(location).then(openFaultReport)} /></div>
           {supabase && dbStatus === 'connected' && <div className="desktop-only-saved-areas"><SavedAreasPanel key={authUser?.id || 'guest'} supabase={supabase} location={location} areas={savedAreas} loading={savedAreasLoading} busy={savedAreasBusy} message={savedAreasMessage} canManage={canContribute} signedIn={Boolean(authUser && !authUser.is_anonymous)} searchDisabled={dbStatus !== 'connected'} onSave={saveCurrentArea} onSelect={chooseLocation} onRemove={removeSavedArea} onSetDefault={setDefaultArea} onRequireAccount={requireAccountOrMfa} /></div>}
         </aside>
       </main>}
       {renderFaultReport && faultContact && <WaterFaultReport location={location} contact={faultContact} isOpen={showFaultReport} onClose={closeFaultReport} />}
+      <WaterSafetyCaseStudy isOpen={showWaterSafetyCaseStudy} onClose={() => setShowWaterSafetyCaseStudy(false)} />
           {renderChat && chatArea && <CommunityChat initialLocation={chatArea} isOpen={showChat} onClose={closeChat} dbStatus={dbStatus} canContribute={canContribute} onRequireAccount={requireAccountOrMfa} onLoadingChange={onLoadingChange} usernames={usernames} currentUsername={currentUsername} />}
       <footer className="footer"><span>© 2026 Amanzi</span><span>Community-powered water updates for South Africa</span><a className="footer-about" href="/about" onClick={(event) => { event.preventDefault(); onNavigateAbout?.() }}>About Amanzi</a></footer>
     </div>

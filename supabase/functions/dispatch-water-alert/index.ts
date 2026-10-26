@@ -47,9 +47,9 @@ Deno.serve(async (req: Request) => {
     if (updateError) throw updateError;
     if (!update) return response({ error: "Update not found." }, 404);
 
-    const eventType = update.water_status === "restored" ? "restoration" : ["no_water", "low_pressure"].includes(update.water_status) ? "outage" : null;
+    const eventType = update.water_status === "restored" ? "restoration" : update.water_status === "water_safety_concern" ? "safety_concern" : ["no_water", "low_pressure"].includes(update.water_status) ? "outage" : null;
     if (!eventType) return response({ skipped: true, reason: "This update is not a water status alert." });
-    const preferenceColumn = eventType === "outage" ? "alert_outages" : "alert_restorations";
+    const preferenceColumn = eventType === "restoration" ? "alert_restorations" : "alert_outages";
     const { data: confirmations, error: confirmationError } = await admin.from("update_confirmations").select("user_id").eq("update_id", updateId);
     if (confirmationError) throw confirmationError;
     const independentConfirmations = new Set((confirmations || []).map((entry) => entry.user_id).filter((id) => id !== update.created_by)).size;
@@ -73,8 +73,10 @@ Deno.serve(async (req: Request) => {
     if (subscriptionsError) throw subscriptionsError;
 
     webpush.setVapidDetails(vapidSubject, vapidPublic, vapidPrivate);
-    const title = eventType === "restoration" ? `Water restored in ${update.area}` : `Water alert for ${update.area}`;
-    const body = eventType === "restoration"
+    const title = eventType === "restoration" ? `Water restored in ${update.area}` : eventType === "safety_concern" ? `Water safety concern in ${update.area}` : `Water alert for ${update.area}`;
+    const body = eventType === "safety_concern"
+      ? `${update.municipality}: a neighbour reported an unverified water safety concern. Check official guidance; this is not a safety assessment.`
+      : eventType === "restoration"
       ? `${update.municipality}: a neighbour reports that water is back. Check the latest area updates.`
       : `${update.municipality}: neighbours report ${update.water_status === "no_water" ? "no water" : "low pressure"}. Check the area updates.`;
     const payload = JSON.stringify({ title, body, tag: `amanzi-${update.id}`, url: `/?area=${encodeURIComponent(update.area)}` });
