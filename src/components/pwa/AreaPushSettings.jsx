@@ -12,6 +12,7 @@ export default function AreaPushSettings({ supabase, enabled, areaCount }) {
   const [busy, setBusy] = useState(false)
   const [alertOutages, setAlertOutages] = useState(true)
   const [alertRestorations, setAlertRestorations] = useState(true)
+  const [alertOfficialNotices, setAlertOfficialNotices] = useState(false)
   const [message, setMessage] = useState('')
 
   useEffect(() => {
@@ -32,6 +33,7 @@ export default function AreaPushSettings({ supabase, enabled, areaCount }) {
             if (data.subscription) {
               setAlertOutages(data.subscription.alertOutages)
               setAlertRestorations(data.subscription.alertRestorations)
+              setAlertOfficialNotices(data.subscription.alertOfficialNotices ?? false)
             } else {
               await subscription.unsubscribe()
               setActive(false)
@@ -55,6 +57,7 @@ export default function AreaPushSettings({ supabase, enabled, areaCount }) {
         keys: json.keys,
         alertOutages: preferences.alertOutages ?? alertOutages,
         alertRestorations: preferences.alertRestorations ?? alertRestorations,
+        alertOfficialNotices: preferences.alertOfficialNotices ?? alertOfficialNotices,
       },
     })
     if (error) throw error
@@ -76,7 +79,7 @@ export default function AreaPushSettings({ supabase, enabled, areaCount }) {
       const subscription = await registration.pushManager.subscribe({ userVisibleOnly: true, applicationServerKey: decodeVapidKey(config.publicKey) })
       await saveSubscription(subscription)
       setActive(true)
-      setMessage('This device will receive important updates for your saved areas.')
+      setMessage('This device will receive the alerts you select for saved areas.')
     } catch (error) {
       setMessage(error?.message || 'Could not enable notifications. Please try again.')
     } finally {
@@ -106,9 +109,10 @@ export default function AreaPushSettings({ supabase, enabled, areaCount }) {
   }
 
   async function updatePreference(key, value) {
-    const next = { alertOutages, alertRestorations, [key]: value }
+    const next = { alertOutages, alertRestorations, alertOfficialNotices, [key]: value }
     setAlertOutages(next.alertOutages)
     setAlertRestorations(next.alertRestorations)
+    setAlertOfficialNotices(next.alertOfficialNotices)
     if (!active) return
     setBusy(true)
     setMessage('')
@@ -135,8 +139,9 @@ export default function AreaPushSettings({ supabase, enabled, areaCount }) {
     {supported && <div className="area-push-preferences">
       <label><input type="checkbox" checked={alertOutages} disabled={!active || busy} onChange={(event) => updatePreference('alertOutages', event.target.checked)} /> Outages and low pressure</label>
       <label><input type="checkbox" checked={alertRestorations} disabled={!active || busy} onChange={(event) => updatePreference('alertRestorations', event.target.checked)} /> Water restored</label>
+      <label><input type="checkbox" checked={alertOfficialNotices} disabled={!active || busy} onChange={(event) => updatePreference('alertOfficialNotices', event.target.checked)} /> Official notices</label>
     </div>}
     {message && <p className="area-push-message" role="status">{message}</p>}
-    {active && !message && <p className="area-push-message">A report needs two neighbour confirmations before an alert is sent. Chat messages never trigger pushes.</p>}
+    {active && !message && <p className="area-push-message">Community alerts need two neighbour confirmations. Official notice alerts only come from approved publishers and include a source link.</p>}
   </div>
 }

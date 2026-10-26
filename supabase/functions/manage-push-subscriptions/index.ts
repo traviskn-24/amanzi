@@ -82,10 +82,10 @@ Deno.serve(async (req: Request) => {
       if (error) throw error;
       const endpoint = typeof body.endpoint === "string" ? body.endpoint : "";
       const { data: subscription, error: subscriptionError } = endpoint
-        ? await admin.from("push_subscriptions").select("alert_outages, alert_restorations").eq("user_id", user.id).eq("endpoint", endpoint).maybeSingle()
+        ? await admin.from("push_subscriptions").select("alert_outages, alert_restorations, alert_official_notices").eq("user_id", user.id).eq("endpoint", endpoint).maybeSingle()
         : { data: null, error: null };
       if (subscriptionError) throw subscriptionError;
-      return response({ enabled: (count || 0) > 0, deviceCount: count || 0, subscription: subscription ? { alertOutages: subscription.alert_outages, alertRestorations: subscription.alert_restorations } : null });
+      return response({ enabled: (count || 0) > 0, deviceCount: count || 0, subscription: subscription ? { alertOutages: subscription.alert_outages, alertRestorations: subscription.alert_restorations, alertOfficialNotices: subscription.alert_official_notices } : null });
     }
 
     if (body.action === "subscribe") {
@@ -102,6 +102,7 @@ Deno.serve(async (req: Request) => {
         auth_key: authKey,
         alert_outages: body.alertOutages !== false,
         alert_restorations: body.alertRestorations !== false,
+        alert_official_notices: body.alertOfficialNotices === true,
         updated_at: new Date().toISOString(),
       }, { onConflict: "endpoint" });
       if (error) throw error;
