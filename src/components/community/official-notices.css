@@ -29,3 +29,12 @@
   .official-notice-meta{gap:6px 9px}
   .official-notice-alert-info p{font-size:10px}
 }
+
+/* Give authority notices a source-panel appearance that is distinct from resident posts. */
+.official-notices-panel{position:relative;overflow:hidden;border-color:#b9d9e2;background:linear-gradient(145deg,#e8f7fa 0%,#eff5f8 56%,#f4f6f2 100%);box-shadow:0 14px 34px rgba(18,77,101,.09)}
+.official-notices-panel::before{content:"";position:absolute;inset:0 0 auto;height:5px;background:linear-gradient(90deg,#173f5e 0%,#087f9c 58%,#18b7ca 100%);pointer-events:none}
+.official-notices-header{border-bottom-color:#d2e5e9}
+.official-notice-card{border-color:#c5dce4;border-left:4px solid #1b8298;background:rgba(255,255,255,.66);box-shadow:0 4px 12px rgba(23,72,94,.035)}
+.official-notice-card.is-demo{border-left-color:#c49a42;border-color:#e2d3a9;background:#fffaf0;box-shadow:none}
+.official-notice-empty{border:1px dashed #bdd6de;background:rgba(255,255,255,.55)}
+@media(max-width:620px){.official-notice-card{border-radius:13px}.official-notices-panel::before{height:4px}}
