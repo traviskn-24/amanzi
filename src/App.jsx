@@ -350,8 +350,14 @@ function App({ onRequireAccount, onLoadingChange, onNavigateAbout }) {
     if (profilesError) throw profilesError
     const profileNames = Object.fromEntries((profiles || []).map(({ user_id, username }) => [user_id, username]))
     setUsernames(profileNames)
-    const counts = new Map()
-    for (const confirmation of confirmations) counts.set(confirmation.update_id, (counts.get(confirmation.update_id) || 0) + 1)
+    const authorsByUpdate = new Map(updates.map((row) => [row.id, row.created_by]))
+    const confirmersByUpdate = new Map()
+    for (const confirmation of confirmations) {
+      if (confirmation.user_id === authorsByUpdate.get(confirmation.update_id)) continue
+      if (!confirmersByUpdate.has(confirmation.update_id)) confirmersByUpdate.set(confirmation.update_id, new Set())
+      confirmersByUpdate.get(confirmation.update_id).add(confirmation.user_id)
+    }
+    const counts = new Map([...confirmersByUpdate].map(([updateId, confirmers]) => [updateId, confirmers.size]))
     const locations = new Map(updates.map((row) => [locationKey(row), row]))
     const chatCounts = new Map(await Promise.all([...locations.values()].map(async (updateLocation) => {
       const { count, error } = await supabase.from('community_messages').select('id', { count: 'exact', head: true })
@@ -690,6 +696,15 @@ function App({ onRequireAccount, onLoadingChange, onNavigateAbout }) {
             <h3>{post.title}</h3><p className="post-detail">{post.detail}</p>
             {post.verified && <a className="source-link" href="https://www.durban.gov.za/" target="_blank" rel="noreferrer">View municipal source <span>↗</span></a>}
             <div className="post-meta"><span className="mini-avatar">{post.author === 'You' ? 'T' : post.author.charAt(0)}</span><strong>{post.author}</strong><span className="meta-dot">·</span><span>{post.area}, {post.municipality}, {post.province}</span><span className="meta-dot">·</span><time dateTime={post.createdAt || undefined}>{formatPostRelativeTime(post, clockNow)}</time></div>
+            {!post.isDemo && post.waterStatus && <div className={`community-report-context ${post.waterStatus === 'water_safety_concern' ? 'safety-observation' : ''}`}>
+              <strong>{post.waterStatus === 'water_safety_concern' ? 'Unverified water-safety observation' : post.confirms >= 2 ? 'Neighbour corroborated' : 'Awaiting neighbour confirmations'}</strong>
+              <span>{post.waterStatus === 'water_safety_concern' ? 'Neighbour confirmations do not test water or prove it safe or unsafe. Check an official source.' : `${post.confirms || 0} of 2 independent neighbours confirmed. This reflects similar reports, not the cause or official service status.`}</span>
+            </div>}
+            {!post.isDemo && post.waterStatus && (clockNow - new Date(post.createdAt).getTime() >= 86_400_000 || posts.some((candidate) => {
+              const candidateTime = new Date(candidate.createdAt || '').getTime()
+              const postTime = new Date(post.createdAt || '').getTime()
+              return !candidate.isDemo && candidate.id !== post.id && candidate.waterStatus && candidate.waterStatus !== post.waterStatus && locationMatches(candidate, post) && candidateTime > postTime && candidateTime >= clockNow - 6 * 60 * 60 * 1000
+            })) && <p className="community-report-freshness">{clockNow - new Date(post.createdAt).getTime() >= 86_400_000 ? 'This report is over 24 hours old. Check newer updates before relying on it.' : 'Recent reports for this area differ. Review timestamps and linked official notices for current guidance.'}</p>}
             <div className="post-actions"><button disabled={post.isDemo} title={post.isDemo ? 'Sample updates cannot be confirmed' : undefined} onClick={() => confirm(post.id)}><span>◉</span> I’m seeing this too <b>{post.confirms}</b></button><button disabled={post.isDemo} title={post.isDemo ? 'Sample updates do not have live chats' : undefined} onClick={() => openChat(post)}><span>◌</span> Join area chat <b title={`${post.replies} messages in ${post.area} chat`}>{post.replies}</b></button><button className="share-action" onClick={() => void shareUpdate(post)}><span>↗</span> Share</button></div>
           </article>)}
           {visiblePosts.length === 0 && <div className="empty-state"><div>⌕</div><strong>No updates found</strong><p>Try another search or check a wider area.</p></div>}

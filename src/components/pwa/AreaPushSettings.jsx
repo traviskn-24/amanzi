@@ -137,11 +137,11 @@ export default function AreaPushSettings({ supabase, enabled, areaCount }) {
         : <button type="button" className="area-push-toggle" onClick={enable} disabled={busy}>{busy ? 'Setting up…' : 'Turn on'}</button>}
     </div>
     {supported && <div className="area-push-preferences">
-      <label><input type="checkbox" checked={alertOutages} disabled={!active || busy} onChange={(event) => updatePreference('alertOutages', event.target.checked)} /> Outages and low pressure</label>
+      <label><input type="checkbox" checked={alertOutages} disabled={!active || busy} onChange={(event) => updatePreference('alertOutages', event.target.checked)} /> Outages, low pressure and water concerns</label>
       <label><input type="checkbox" checked={alertRestorations} disabled={!active || busy} onChange={(event) => updatePreference('alertRestorations', event.target.checked)} /> Water restored</label>
       <label><input type="checkbox" checked={alertOfficialNotices} disabled={!active || busy} onChange={(event) => updatePreference('alertOfficialNotices', event.target.checked)} /> Official notices</label>
     </div>}
     {message && <p className="area-push-message" role="status">{message}</p>}
-    {active && !message && <p className="area-push-message">Community alerts need two neighbour confirmations. Official notice alerts only come from approved publishers and include a source link.</p>}
+    {active && !message && <p className="area-push-message">Community alerts need two independent neighbour confirmations. Safety observations are not water tests or official guidance. Official notices come from approved publishers and include a source link.</p>}
   </div>
 }
